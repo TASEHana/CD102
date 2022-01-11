@@ -1,0 +1,46 @@
+\section{Systematic Uncertainties}
+In order to understand the systematic errors, We reviewed the steps of the analysis and listed the possible causes of systematic errors.
+
+First is the SG filter, using different window and order will give us slightly different result, so we will try different SG filter and count them as systematic error.
+
+Second is the gain, we don’t understand much about Hemt gain now, so we use the calibrated gain before the data taking as our systematic error.
+
+Third, when doing the weighting algorithm Section. \ref{weighting_algorithm}, $\sigma$ is included in the weight. In theory, the system temperature derived from  $\sigma$ and $\mu$ should be the same, But in Fig\ref{fig:system_temp}, they are not exactly the same, Therefore, a systematic uncertainty is derived by replacing $\sigma$ with $\frac{\mu}{\sqrt{N}}$, where $N$ is the number of spectra that share the same frequency bin.  
+
+
+I will sum Up these limit with following formula.
+
+error band = $\sqrt{(G_{\gamma1}-G_{\gamma0})^2+(G_{\gamma2}-G_{\gamma0})^2+... }$
+\begin{figure}[ht!]
+    \centering
+%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg.png}
+    \caption{using different window and order to test te sg filter, With order 3 window 101, we have the largest $\sigma$, It seems that low order and high windows have some problems.}
+    \label{fig:systematic_sg}
+\end{figure}
+\begin{figure}[hbt!]
+    \centering
+%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_step_1_3_101.png}
+    \caption{step 1 after sg filter, It seems like low order and high filter can't remove the periodic structure well.}
+    \label{fig:systematic_sg_step_1_3_101}
+\end{figure}
+\begin{figure}[hbt!]
+    \centering
+%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_Gain.png}
+    \caption{Using the Original and predict Gain gives us similar result.}
+    \label{fig:systematic_sg_Gain}
+\end{figure}
+\begin{figure}[hbt!]
+    \centering
+%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_mean.png}
+    \caption{In principle, the system temperature calculate by  $\sigma$ and $\mu$ should be the same, so I replace the }
+    \label{fig:systematic_sg_mean}
+\end{figure}
+\begin{figure}[hbt!]
+    \centering
+%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_final.png}
+    \caption{After sum all the limit to get the  systematic errror band}
+    \label{fig:systematic_sg_mean}
+\end{figure}
+
+
+
