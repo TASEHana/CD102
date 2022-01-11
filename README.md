@@ -9,6 +9,7 @@ cd CD102_paper
 ## Download the zipped revtex4 file
 ```
 wget https://cdn.journals.aps.org/test/0e380411-3c3b-492a-8e56-2101d1d4822f/revtex-tds-2020-10-22.zip
+unzip revtex-tds-2020-10-22.zip
 ``` 
 
 ## Put the tex style files in the same directory as your tex files
@@ -18,7 +19,13 @@ cp -p revtex-tds/tex/latex/revtex/* .
 
 ## Put the bib style files in the same directory as your tex files
 ```
-cp -p revtex-tds/bibtex/bst/revtex/*
+cp -p revtex-tds/bibtex/bst/revtex/* .
+```
+
+## Remove the zipped file and unnecessary files
+```
+rm revtex-tds-2020-10-22.zip
+rm -rf revtex-tds
 ```
 
 ## Compile
@@ -36,3 +43,11 @@ pdflatex main.tex
 
 ## Output 
 The produced PDF file is called main.pdf
+
+# How to commit new changes
+```
+git add xxx.tex
+git commit -m "some changes"
+git push origin
+
+```
