@@ -12,7 +12,7 @@ Our goal is to find the axion signal hidden in the white noise. In order to achi
         \item Apply Savitzky-Golay (SG) filter to the oscillating structure of the frequency-dependent spectrum
         \item Combine all power spectra from different frequency scans with weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
-        \item Merge bins in the combined spectrum to maximize the signal-to-noise ratio (SNR).
+        \item Merge bins in the combined spectrum to maximize the SNR.
         %\item Set threshold at ${3.355\ \sigma}$.
         \item Set limit on ${g_{a\gamma \gamma}}$.
     \end{enumerate}
@@ -122,7 +122,7 @@ where N is the number of data points ($N_A $ = 2000 in our experiment), and R is
 
 In case of absence axion signal, the output data is the noise of the cavity and the amplification chain. If axion presents in the cavity, its power will be buried in the noise because the signal is very weak. Therefore, the structure of the raw output power spectrum, as shown in Fig. \ref{fig:sg_result}, is the product of the noise and the gain of the system. The Savitzky Golay (SG) filter \cite{SGFilter} was applied to remove the structure/background. The SG filter is a digital filter that can smooth data without distorting the signal tendency. The filter was performed by fitting adjacent points of successive sub-sets of data with a nth-order polynomial. The result depends on two parameters: the number of data points used for fitting, so-called the window width, and the order of the polynomial. If the window is too wide, the filter will not remove small structures and if it is too narrow, it may kill the signal. The window and order were first chosen during the data taking based on the structure of data and the ratio between raw data and the filter output. After data taking, the window and order were optimized by injecting axion signal on top of noise data and found that they were consistent with the first choice.
 After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the background - output of the SG filter - and subtract 1. Therefore, if the signal exists, the excess power will be above 0.
-Since we adjusted the resonant frequency of the cavity to scan the large range of signal and reduce the noise at overlapped region, we need to combine all the spectra of all scans to create one big spectrum. Before doing this, the normalized spectrum of each scan was rescaled by the system noise and the signal power with taking the cavity Lorentzian shape into account. The rescaled spectrum, shown in Fig. \cite{}, was computed with formula:
+Since we adjusted the resonant frequency of the cavity to scan the large range of signal and reduce the noise at overlapped region, we need to combine all the spectra of all scans to create one big spectrum. Before doing this, the normalized spectrum of each scan was rescaled by the system noise [detailed in Sec \cite{hemtcalibration}] and the signal power with taking the cavity Lorentzian shape into account. The rescaled spectrum, shown in Fig. \cite{}, was computed with formula:
 
 \begin{equation}
   \label{eq:respower_eqn}
@@ -208,40 +208,48 @@ The purpose of weighting algorithm is to add different spectra vertically, parti
 
 \subsection{Merging bins}
 
-With the quality factor of $10^6$, the expected axion bandwidth is of 5 kHz at frequency of 5 GHz. Our interested range is 4.7 - 4.8 GHz and the bin width is of 1 kHz. Therefore, in order to maximize the SNR without splitting the signal power in multiple successive bins in the final spectrum, we merged 5 bins with overlapping.
-Therefore, in order to maximize the SNR, we merged 5 consecutive bins with overlapping of the combined spectrum to construct a final spectrum. The purpose of overlapping is to avoid the signal power broken into different neighbouring bins of the merged spectrum.
-As in combining spectra, the maximum likelihood weights were used to merge bins. And the weights were defined in Eq. \cite{eq:merge_weight} based on the The Maxwellian lineshape for axion (Eq. \cite{}).
+With the quality factor of $10^6$, the expected axion bandwidth is of 5 kHz at frequency of 5 GHz. Our interested range is 4.7 - 4.8 GHz and the bin width is of 1 kHz. Therefore, in order to maximize the SNR without splitting the signal power in multiple successive bins in the final spectrum, we merged M = 5 bins with overlapping.
+Therefore, in order to maximize the SNR, we merged 5 consecutive bins with overlapping of the combined spectrum to construct a final spectrum. The purpose of overlapping is to avoid the signal power broken into different neighbouring bins of the merged spectrum. Before defining weights for merging, we multiplied the power and standard deviation of each bin in the combined spectrum by M: $\delta^{com}_n \rightarrow M\delta^{com}_n$ and $\sigma^{com})_n \rightarrow M \sigma^{com})_n$. This rescaling gives the expected mean of the normalized power $\mu^{comb}_k = 1$ if a KSVZ axion signal power leaves a fraction of 1/M of its power in the combined spectrum k.
+Then the maximum likelihood weights, defined in Eq. \cite{eq:merge_weight} based on the The Maxwellian lineshape for axion (Eq. \cite{}) used, were used to build the merged spectrum.
 
 %In theory, the expected Axion bandwidth is 5KHz, and our frequency resolution is 1KHz, therefore we need to merge 5 bins. Due to the expected Maxwellian signal line shape, a weight will be applied when merging five neighbouring bins
 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{k} = \frac{L_{q}}{(\sigma_{k}^{com})^{2}}
+    w_{q} = \frac{L_{q}}{(\sigma_{q}^{com}/5)^{2}}
 \end{equation}
+
+%\begin{equation}
+%    \label{eq:axion_line_shape}
+%    f(\nu) = \frac{2}{\sqrt{\pi}}\sqrt{\nu - \nu_a} \left( \frac{3}{\nu_a \big \langle \beta^{2} \big \rangle }\right)^{\frac{3}{2}} e^{- \frac{3(\nu-\nu_a)}{\nu_a \big \langle \beta^{2} \big \rangle}}
+%\end{equation}
+
 \begin{equation}
-    \label{eq:axion_line_shape}
-    f(\nu) = \frac{2}{\sqrt{\pi}}\sqrt{\nu - \nu_a} \left( \frac{3}{\nu_a \big \langle \beta^{2} \big \rangle }\right)^{\frac{3}{2}} e^{- \frac{3(\nu-\nu_a)}{\nu_a \big \langle \beta^{2} \big \rangle}}
-\end{equation}
-\begin{equation}
-    \label{eq:L_q_integtal}
+    \label{eq:Lq_integtal}
     L_{q} = \int_{\nu_a +\nu_q + (q+1)\Delta\nu}^{\nu_a +\nu_q + q\Delta\nu} f(\nu) \,d\nu
 \end{equation}
 
-We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal}, 
+where $L_q$ is the integral of the lineshape from the lower edge to higher edge of ${q^{th}}$ bin, $\sigma_{q}^{com})^{2}$ is the standard deviation of the combined spectrum as defined in Eq.\cite{eq:weighted_sigma}. The power, standard deviation and SNR of the merged spectrum are:
+
+%We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal},
+
 \begin{equation}
     \label{eq:merged_power}
-    (\delta_{merged})_q = k \cdot \frac{ \sum_{i = q-k/2}^{q+k/2}(\delta_{weighted})_{q}^{i} \cdot {w_{q}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    (\delta_{merged})_q = k \cdot \frac{ \sum_{i = q-k/2}^{q+k/2}(\delta_{norm})_{q}^{i}/M \cdot {w_{q}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
 \end{equation}
 \begin{equation}
     \label{eq:merged_sigma}
-    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{weighted})_{q}^{i} \cdot {w_{q}}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}^{2}}
-\end{equation}
-\begin{equation}
-    \label{eq:merged_snr}
-    ({SNR}_{merged})_q = \frac{(\delta_{merged})_q}{(\sigma_{merged})_q} = \frac{\sum_{i = q-k/2}^{q+k/2}(\delta_{weighted})_{q}^{i} \cdot {w_{q}}}{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{weighted})_{q}^{i} \cdot {w_{q}}}}
+%    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{norm})_{q}^{i} \cdot {w_{q}}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}^{2}}
+    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {(w_{q})^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
 \end{equation}
 
-Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
+\begin{equation}
+    \label{eq:merged_snr}
+    ({SNR}_{merged})_q = \frac{(\delta_{merged})_q}{(\sigma_{merged})_q} = \frac{\sum_{i = q-k/2}^{q+k/2}(\delta_{norm})_{q}^{i}/M \cdot {w_{q}}}{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {w_{q}^2}}}
+\end{equation}
+
+%Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
+
 \begin{figure}[h]
     \centering
 %    \includegraphics[width=0.4\textwidth,height = 0.48\textwidth]{Figure/merged_data.png}
