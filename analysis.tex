@@ -179,7 +179,7 @@ If a signal appears in a certain frequency bin $n^th$, its expected power will b
 
 \subsection{Combine spectra with weighting algorithm} \label{weighting_algorithm}
 
-The purpose of weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  Each spectrum in Fig.\ref{fig:After_Sg} was collected with a different cavity resonance frequency. Therefore, if a signal appears in a certain frequency bin $n^{th}$, due to the difference in resonance frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight of each bin n of spectrum i defined in Eq.\cite{eq:weight}. The weighted power $\delta_{weighted})_k$ and standard deviation $\sigma_{weighted})_k$ of each bin $k$ in the combined spectrum are calculated using Eq.\cite{eq:weighted_power} and Eq.\cite{eq:weighted_sigma}, respectively. The SNR is the ratio of $\delta_{weighted})_k$ and $\sigma_{weighted})_k$ as given in Eq. \cite{eq:weighted_SNR}.
+The purpose of weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  Each spectrum in Fig.\ref{fig:After_Sg} was collected with a different cavity resonance frequency. Therefore, if a signal appears in a certain frequency bin $n^{th}$, due to the difference in resonance frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight of each bin n of spectrum i defined in Eq.\cite{eq:weight}. The weighted power $\delta_{weighted})_k$ and standard deviation $\sigma_{weighted})_k$ of each bin $k$ in the combined spectrum are calculated using Eq.\cite{eq:weighted_power} and Eq.\cite{eq:weighted_sigma}, respectively. The SNR is the ratio of $\delta_{com})_k$ and $\sigma_{com})_k$ as given in Eq. \cite{eq:weighted_SNR}.
 
 %The purpose of weighting algorithm is to add different spectrum vertically, we have different spectrum with different resonance frequency Figure \ref{fig:After_Sg}, so we need a weight for add them up. Eq.\eqref{eq:weight}.
 
@@ -193,15 +193,15 @@ The purpose of weighting algorithm is to add different spectra vertically, parti
 
 \begin{equation}
     \label{eq:weighted_power}
-    (\delta_{weighted})_n = \frac{ \sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{\sum_{i}^{k} {w_{n}}^{i}}
+    (\delta_{com})_n = \frac{ \sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{\sum_{i}^{k} {w_{n}}^{i}}
 \end{equation}
 \begin{equation}
     \label{eq:weighted_sigma}
-    (\sigma_{weighted})_n = \frac{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}{\sum_{i}^{k} {w_{n}}^{i}}
+    (\sigma_{com})_n = \frac{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}{\sum_{i}^{k} {w_{n}}^{i}}
 \end{equation}
 \begin{equation}
     \label{eq:weighted_SNR}
-    ({SNR}_{weighted})_n = \frac{(\delta_{weighted})_n}{(\sigma_{weighted})_n}= \frac{\sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}
+    ({SNR}_{com})_n = \frac{(\delta_{com})_n}{(\sigma_{com})_n}= \frac{\sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}
 \end{equation}
 
 %where ${\delta_n^i}$ and ${\sigma_n^i}$ are the measured power and the corresponding standard deviation of the ${n^{\mathrm{th}}}$ frequency bin of the ${i^{\mathrm{th}}}$ spectrum., From the weighted power in ${n^{th}}$ bin in Eq.\eqref{eq:weighted_power}, and weighted $\sigma$ in Eq.\eqref{eq:weighted_sigma}, we can get our Signal to noise ratio as Eq.\eqref{eq:weighted_SNR}
@@ -210,13 +210,13 @@ The purpose of weighting algorithm is to add different spectra vertically, parti
 
 With the quality factor of $10^6$, the expected axion bandwidth is of 5 kHz at frequency of 5 GHz. Our interested range is 4.7 - 4.8 GHz and the bin width is of 1 kHz. Therefore, in order to maximize the SNR without splitting the signal power in multiple successive bins in the final spectrum, we merged 5 bins with overlapping.
 Therefore, in order to maximize the SNR, we merged 5 consecutive bins with overlapping of the combined spectrum to construct a final spectrum. The purpose of overlapping is to avoid the signal power broken into different neighbouring bins of the merged spectrum.
-The Maxwellian lineshape (Eq. \cite{}) of axion was used to calculate weights for merging process.
+As in combining spectra, the maximum likelihood weights were used to merge bins. And the weights were defined in Eq. \cite{eq:merge_weight} based on the The Maxwellian lineshape for axion (Eq. \cite{}).
 
 %In theory, the expected Axion bandwidth is 5KHz, and our frequency resolution is 1KHz, therefore we need to merge 5 bins. Due to the expected Maxwellian signal line shape, a weight will be applied when merging five neighbouring bins
 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{q} = \frac{L_{q}}{(weighted\ \sigma_{q})^{2}}
+    w_{k} = \frac{L_{q}}{(\sigma_{k}^{com})^{2}}
 \end{equation}
 \begin{equation}
     \label{eq:axion_line_shape}
