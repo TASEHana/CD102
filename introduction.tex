@@ -94,6 +94,7 @@ Search Experiment with Haloscope (TASEH).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The expected axion signal power and signal line shape}
+\label{sec:introsignal}
 
 The signal power extracted from a microwave cavity on resonance is given 
 by:
@@ -127,7 +128,7 @@ parameters of TASEH (see Table~\ref{tab:tasehbenchmark})
 is $P_s\simeq 1.5\times10^{-24}$~W for a KSVZ axion with a 
 mass of 19.5\muevcc. 
 
-In most of the direct dark matter search experiments, several assumptions were 
+In the direct dark matter search experiments, several assumptions were 
 made in order to derive a signal line shape. 
 The density and the velocity distributions of DM are related to each other 
 through the gravitational potential. The DM in the galactic halo is assumed 
@@ -170,14 +171,16 @@ In order to compare the results of TASEH with those of the former experiments,
 the analysis presented in this paper assumes an axion 
 signal line shape by including Eq.~(\ref{eq:simplesignal}) in the weights 
 when merging the measured power from multiple frequency bins 
-(see Section~\ref{sec:ana}). Nevertheless, given the caveats above and a lack of 
+(see Section~\ref{sec:ana}). Still given the caveats above and a lack of 
 strong evidence for any particular choice of velocity distributions, 
 the results without an assumption of signal line shape and the results 
 with a simple Gaussian weight are also presented for comparison. 
 In addition, a signal line width 
 $\Delta\nu_a=\ma\left<v^2\right>/h\simeq$~5~kHz, which is much smaller than 
 the TASEH cavity line-width $\nu_a/Q_L\simeq$~250~kHz, is assumed and 
-five frequency bins are merged to perform the final analysis. 
+five frequency bins are merged to perform the final analysis. For a signal 
+line shape as described in Eq.~(\ref{eq:simplesignal}), a 5-kHz bandwidth 
+includes about 95\% of the distribution.
 
 %Given the caveats above and a lack of strong evidence for any particular 
 %choice of velocity distributions, the central results of the analysis 
@@ -193,6 +196,7 @@ five frequency bins are merged to perform the final analysis.
 
  
 \subsection{The expected noise and the signal-to-noise ratio}
+\label{sec:intronoise}
 Several physics processes can contribute to the total noise and all of them 
 can be seen as Johnson thermal noise at some effective temperature, or the 
 so-called system noise temperature \tsys. The total noise power in a 
@@ -203,13 +207,13 @@ bandwidth $\Delta\nu$ is then:
 where $k_B$ is the Boltzmann constant. 
 The system noise temperature \tsys\ has three major components: 
 \begin{equation}
-  k_B\tsys = h\nu\left(\frac{1}{e^{\left.h\nu\right/k_{B}T_\mathrm{cavity}}-1} + \frac{1}{2} + N_A\right). 
+  k_B\tsys = h\nu\left(\frac{1}{e^{\left.h\nu\right/k_{B}T_\mathrm{cavity}}-1} + \frac{1}{2} \right) + k_B\ta. 
 \label{eq:pn}
 \end{equation}
  The three terms in Eq.~(\ref{eq:pn}) correspond to the blackbody radiation 
 from the cavity at temperature $T_\mathrm{cavity}$, the quantum noise 
 associated with the zero-point fluctuation of the blackbody gas, and the noise 
-added by the receiver $N_A$. The first term in Eq.~(\ref{eq:pn}) implies 
+added by the receiver. The first term in Eq.~(\ref{eq:pn}) implies 
 that the noise spectrum from the cavity has little dependence on the frequency 
 (white spectrum) for the narrow bandwidth considered in the experiment. 
 However, the noise spectrum observed by TASEH 
@@ -217,16 +221,18 @@ was actually Lorentzian due to the temperature difference between the cavity
 and the transmission line in the dilution refrigerator. More details may be 
 found in Section~\ref{sec:taseh} and Appendix~\ref{sec:cavitynoise}. 
 
-Using the operation parameters of TASEH in Table~\ref{tab:tasehbenchmark}, 
+Using the operation parameters of TASEH in Table~\ref{tab:tasehbenchmark} and 
+the results from the calibration of readout electronics, 
 the effective temperatures of these three sources are estimated to be about 
-0.07~K, 0.11~K, and 2.1~K, respectively.  
+0.07~K, 0.12~K, and \noise~K, respectively.  
 Therefore, the value of \tsys\ for TASEH 
-is about \noise~K, which gives a noise power of approximately $1.6\times 10^{-19}$~W 
+is about 2.1--2.4~K, which gives a noise power of approximately 
+$\left(1.5-1.7\right)\times 10^{-19}$~W 
 for a bandwidth of 5~kHz (the assumed axion signal line-width), three 
 orders of magnitude larger than the signal. Nevertheless, what matters in the 
 analysis is the signal significance, or the so-called signal-to-noise ratio 
 (SNR) using the standard terminology of axion experiments, i.e. the ratio of 
-the signal power to the uncertainty in the estimate of 
+the signal power to the uncertainty in the estimation of 
 the noise power:
 \begin{eqnarray}
    \text{SNR} & = & \frac{P_s}{\delta P_n} = \frac{P_s}{P_n}\sqrt{\Delta\nu_a\tau}, \nonumber \\
