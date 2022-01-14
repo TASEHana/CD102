@@ -1,46 +1,126 @@
 \section{Systematic Uncertainties}
-In order to understand the systematic errors, We reviewed the steps of the analysis and listed the possible causes of systematic errors.
+The systematic uncertainties on the \gagg\ limits arise from the 
+following sources:
+\begin{itemize}
+\item Uncertainty on the product 
+$\left.Q_L\beta\middle/\left(1+\beta\right)\right.$ in Eq.~(\ref{eq:ps}): 
+In order to extract the loaded quality factor $Q_L$ and the coupling parameter 
+$\beta$, a fitting of the measured results of the cavity scattering matrix 
+was performed, which results in a relative uncertainty of 0.2\% on this 
+product. 
 
-First is the SG filter, using different window and order will give us slightly different result, so we will try different SG filter and count them as systematic error.
+\item Uncertainty on the noise temperature \ta\ from the RMS of 
+the measurements in the HEMT calibration: 
+$\left. \Delta \ta\middle/\ta\right.= 2.3\%$ 
+(see Section~\ref{sec:hemtcalibration} and Fig.~\ref{fig:hemtcalvsf}).
 
-Second is the gain, we don’t understand much about Hemt gain now, so we use the calibrated gain before the data taking as our systematic error.
+\item Uncertainty on the noise temperature \ta\ from the largest difference 
+between the value determined by the HEMT calibration and that from the axion 
+data: $\left. \Delta \ta\middle/\ta\right.= 4\%$ 
+(see Section~\ref{sec:hemtcalibration} and Fig.~\ref{fig:hemtcalvsf}). 
 
-Third, when doing the weighting algorithm Section. \ref{weighting_algorithm}, $\sigma$ is included in the weight. In theory, the system temperature derived from  $\sigma$ and $\mu$ should be the same, But in Fig\ref{fig:system_temp}, they are not exactly the same, Therefore, a systematic uncertainty is derived by replacing $\sigma$ with $\frac{\mu}{\sqrt{N}}$, where $N$ is the number of spectra that share the same frequency bin.  
+\item Uncertainty from the choice of the SG-filter parameters: i.e.  
+the window width and the order of the polynomial in the SG filter. Before 
+collecting the axion data, a preliminary optimization was performed: a 
+window width of 201 bins and a 4$^\text{th}$ order polynomial were used for 
+the first analysis of the CD102 data (see Section~\ref{sec:ana}). 
+This choice was kept for the central results. 
+Nevertheless, various methods of optimization were also explored. The 
+methods include:
+\begin{itemize}
+ \item Minimize the difference between the two functions returned by the SG 
+filter, with and without injecting a simulated axion signal to the real data.
+ \item Minimize the difference between the function returned by the 
+ SG filter and the input noise function by simulating both the noise 
+spectrum (including the Lorentzian distribution due to the cavity noise) 
+and the axion signal. See Fig.~\ref{fig:sgcompare} for a comparison of 
+ the simulated spectrum, input noise function, and the function returned by 
+ the SG-filter when a 3$^\text{rd}$-order polynomial and a window of 141 
+ bins are chosen; the differences from all the frequency bins are summed 
+ together when performing the optimization.
+ Figure~\ref{fig:sgoptimize} shows the difference 
+as a function of window widths when the order of polynomial is 
+ set to three, four, and six. 
+ \item Compare the mean $\mu_\text{noise}$ and the fluctuation of the 
+measured power $\sigma_\text{noise}$, assuming no signal is present in the 
+data. See Fig.~\ref{fig:noisegauss} for an example distribution 
+of the measured power from yyyyy bins when the cavity resonance frequency 
+is set to xxx~GHz; a Gaussian fit is performed to extract $\mu_\text{noise}$ 
+and $\sigma_\text{noise}$. Given the nature of the 
+thermal noise, the two variables are supposed to be related to 
+each other if proper window width and order are chosen:
+\begin{equation*} 
+\sigma_\text{noise} = \frac{\mu_\text{noise}}{\sqrt{N_\text{spectra}}},
+\end{equation*}
+where $N_\text{spectra}$ is the number of spectra for averaging and 
+is related to the amount of integration time for each frequency step. In 
+general, $N_\text{spectra}\approx xxxx$. 
+\end{itemize}
 
+In addition, one could choose to optimize for each frequency step 
+individually, optimize for a certain frequency step but apply the results to 
+all data, or optimize by adding all the frequency steps together. 
+Figure~\ref{fig:syssgfilter} shows that 
+the deviations from the central results using different optimization 
+approaches are in general within 1\% and the 
+maximum deviation of 1.8\% 
+on the \gagg\ limit is used as a conservative estimate of the systematic 
+uncertainty from the SG filter. 
 
-I will sum Up these limit with following formula.
+\end{itemize}
 
-error band = $\sqrt{(G_{\gamma1}-G_{\gamma0})^2+(G_{\gamma2}-G_{\gamma0})^2+... }$
-\begin{figure}[ht!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg.png}
-    \caption{using different window and order to test te sg filter, With order 3 window 101, we have the largest $\sigma$, It seems that low order and high windows have some problems.}
-    \label{fig:systematic_sg}
+The first source has negligible effect on the limits of \gagg while the 
+latter three sources are studied and added in quadrature to obtain the total 
+systematic uncertainty. 
+
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/}
+  \caption{Upper panel: 
+ The simulated spectrum, including the axion signal and 
+ the noise from the cavity and the receiver chain, 
+ is overlaid with the input noise function and the function returned by 
+ the SG filter. Lower panel: The ratio of the function returned by the SG 
+ filter to the input noise function.}
+  \label{fig:sgcompare}
 \end{figure}
-\begin{figure}[hbt!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_step_1_3_101.png}
-    \caption{step 1 after sg filter, It seems like low order and high filter can't remove the periodic structure well.}
-    \label{fig:systematic_sg_step_1_3_101}
-\end{figure}
-\begin{figure}[hbt!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_Gain.png}
-    \caption{Using the Original and predict Gain gives us similar result.}
-    \label{fig:systematic_sg_Gain}
-\end{figure}
-\begin{figure}[hbt!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_mean.png}
-    \caption{In principle, the system temperature calculate by  $\sigma$ and $\mu$ should be the same, so I replace the }
-    \label{fig:systematic_sg_mean}
-\end{figure}
-\begin{figure}[hbt!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 6cm]{Figure/systematic_sg_final.png}
-    \caption{After sum all the limit to get the  systematic errror band}
-    \label{fig:systematic_sg_mean}
-\end{figure}
 
 
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/}
+  \caption{The difference between the function returned by the SG filter 
+  and the input noise function, when various values of window widths and 
+  a 3$^\text{rd}$, a 4$^\text{th}$, or a 
+  6$^\text{th}$-order polynomial are applied in the SG filter. In this 
+  example, the best choice is a 4$^\text{th}$-order polynomial with 
+  a window width of 241 data points (bins). }
+  \label{fig:sgoptimize}
+\end{figure}
+ 
+
+
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/}
+  \caption{An example of the distribution of the measured power when 
+the cavity resonance frequency is xxxx~GHz. The distribution contains 
+xxxx entries and each entry corresponds to the measured power, averaged
+over yyy spectra, in one frequency bin. The mean and the width returned by 
+a Gaussian fit to the distribution are used to determine the best choice of 
+SG parameters.}
+  \label{fig:noisegauss}
+\end{figure}
+ 
+
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/}
+  \caption{The ratio of the limits on \gagg\ due to the different choices 
+ of window width and order of polynomial in the SG filter, with respect to 
+ the central results (a window width of 201 bins and 4$^\text{th}$-order 
+ polynomial). }
+  \label{fig:syssgfilter}
+\end{figure}
+ 
 
