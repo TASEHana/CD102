@@ -17,20 +17,23 @@ Our goal is to find the axion signal hidden in the white noise. In order to achi
         \item Set limit on ${g_{a\gamma \gamma}}$.
     \end{enumerate}
 
-    The analysis was done by closely following the procedure from Haystac experiment \cite{}. 
+    The analysis was done by closely following the procedure from the Haystac experiment \cite{}. 
 % \end{flushleft}
 
 %\subsection{Tdms}
 \subsection{Fast Fourier transform}
 %For each frequency scan, we collected data for 12.5 hours. The recorded data were stored in TDMS files (Technical Data Management Streaming - binary file format developed by \textbf{National Instruments}). Each TDMS file contains 2 millions data points corresponding to 1000 time dependent subspectra. We performed Fast Fourier Transform (FFT) on each subspectrum to get the power in frequency (Eq.\ref{eq:4.1}).The I and Q in Eq.\ref{eq:4.1} are the raw data in voltage, R (50 Ohms) is the resistor of the signal analyzer, and 2000 is the number of data points. Finally, we averaged every 1000 successive subspectra to obtain the mean power in one second.
-The time-dependent I and Q data were recorded and saved in TDMS (Technical Data Management Streaming) files - binary format developed by \textbf{National Instruments}). Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
+The time-dependent I and Q data were recorded and saved in TDMS (Technical Data Management Streaming) files - binary format developed by \textbf{National Instruments}.
+%Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
+Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent from which power was calculated by using the equation:
 
 \begin{equation}
 \label{eq:4.1}
     \text{Power} = \frac{|\text{FFT}(I+i \cdot Q)|^{2}}{N \cdot 2R}
 \end{equation}
 
-where N is the number of data points ($N_A $ = 2000 in our experiment), and R is the resistor of the signal analyzer (50 $\Omega$).
+where N is the number of data points ($N_A $ = 2000 in our experiment), and R is the resistance of the signal analyzer (50 $\Omega$).
+The FFT was done for every one-second subspectrum data.
 
 %\subsection{Gain}
 %The net gain of our receiver chain includes: down conversion gain, Intermediate Frequency(IF)  attenuator, Radio Frequency(RF) attenuator and HEMT gain. The first three were the parameters set during data taking, the last one was estimated from calibration (Section \ref{sec:}). Fig.\ref{fig:Hemt_gain} shows the gain and noise from the HEMT calibration done before the data run.
@@ -120,26 +123,34 @@ where N is the number of data points ($N_A $ = 2000 in our experiment), and R is
 \subsection{Remove the oscillating structure}
 %Figure \ref{fig:sg_result} is the spectrum in each step, somehow they all have a similar structure, in order to remove this structure, we will use a Savitzky Golay filter in every second to smooth the data Figure \ref{fig:After_Sg}.
 
-In case of absence axion signal, the output data is the noise of the cavity and the amplification chain. If axion presents in the cavity, its power will be buried in the noise because the signal is very weak. Therefore, the structure of the raw output power spectrum, as shown in Fig. \ref{fig:sg_result}, is the product of the noise and the gain of the system. The Savitzky Golay (SG) filter \cite{SGFilter} was applied to remove the structure/background. The SG filter is a digital filter that can smooth data without distorting the signal tendency. The filter was performed by fitting adjacent points of successive sub-sets of data with a nth-order polynomial. The result depends on two parameters: the number of data points used for fitting, so-called the window width, and the order of the polynomial. If the window is too wide, the filter will not remove small structures and if it is too narrow, it may kill the signal. The window and order were first chosen during the data taking based on the structure of data and the ratio between raw data and the filter output. After data taking, the window and order were optimized by injecting axion signal on top of noise data and found that they were consistent with the first choice.
-After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the background - output of the SG filter - and subtract 1. Therefore, if the signal exists, the excess power will be above 0.
-Since we adjusted the resonant frequency of the cavity to scan the large range of signal and reduce the noise at overlapped region, we need to combine all the spectra of all scans to create one big spectrum. Before doing this, the normalized spectrum of each scan was rescaled by the system noise [detailed in Sec \cite{hemtcalibration}] and the signal power with taking the cavity Lorentzian shape into account. The rescaled spectrum, shown in Fig. \cite{}, was computed with formula:
+In case of absence axion signal, the output data is the noise of the cavity and the amplification chain. If axion presents in the cavity, its power will be buried in the noise because the signal is very weak. Therefore, the structure of the raw output power spectrum, as shown in Fig. \ref{fig:sg_result}, is the product of the noise and the gain of the system. The Savitzky Golay (SG) filter \cite{SGFilter}, a digital filter that can smooth data without distorting the signal tendency, was applied to remove the structure or background.
+%The SG filter is a digital filter that can smooth data without distorting the signal tendency.
+The filter was performed on average spectrum of each scan by fitting adjacent points of successive sub-sets of data with a nth-order polynomial. The result depends on two parameters: the number of data points used for fitting, so-called the window width, and the order of the polynomial. If the window is too wide, the filter will not remove small structures and if it is too narrow, it may kill the signal. The window and order were first chosen during the data taking based on the structure of data and the ratio between raw data and the filter output. After data taking, they were optimized by injecting axion signal on top of noise data and found that they were consistent with the first choice.
+The raw average spectrum was divided by the output of the SG filter and subtracted by 1 to get normalized spectrum (Fig. \cite{fig:}).
+Therefore, if the axion signal exists, the excess power will be above 0.
+%After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
+Since we adjusted the resonant frequency of the cavity to scan large range and to reduce the noise at overlapped region, we need to combine all the spectra of all scans to create one big spectrum. Before doing this, the normalized spectrum from each scan was rescaled by the system noise [detailed in Sec \cite{sec:calibration}] and the signal power with taking the cavity Lorentzian shape into account. The rescaled spectrum, shown in Fig. \cite{}, was computed with formula:
 
 \begin{equation}
   \label{eq:respower_eqn}
-  P_{ij}^{res} = \frac{k_{B}T_{S}\Delta\nu P_{ij}^{norm}}{P_{ij}^{signal} h}
+  \delta_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \delta_{ij}^{norm}}{P_{ij}^{s} h}
 \end{equation}
 
 and standard deviation of each bin is:
 \begin{equation}
   \label{eq:ressigma_eqn}
-  \sigma_{ij}^{res} = \frac{k_{B}T_{S}\Delta\nu \sigma_{i}^{norm}}{P_{ij}^{signal} h}
+  \sigma_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \sigma_{i}^{norm}}{P_{ij}^{s} h}
 \end{equation}
 
-where $T_{S}$ is the system noise including amplifier adding noise and cavity thermal noise, $\Delta\nu$ is the bin width of spectrum, $P_{ij}^{signal}$ is the KSVZ axion signal power
-$h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]}$ is Lorentzian shape of the cavity
-and $\sigma_{i}^{norm}$ is the standard deviation of normalized spectrum ith.
+%where $T_{S}$ is the system noise including amplifier adding noise and cavity thermal noise,
+where $\delta_{ij}^{norm}$ and $\sigma_{i}^{norm}$ are the power and the standard deviation of
+bin $j^{th}$ from the normalized spectrum $i^{th}$,
+$\Delta\nu$ is the bin width of spectrum, $P_{ij}^{s}$ is the KSVZ axion signal power,
+and $h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]}$ is Lorentzian shape of the cavity,
+$\Delta\nu_{i}$ is the cavity line width which depends on the resonant frequency and the intrinsic quality factor.
+%and $\sigma_{i}^{norm}$ is the standard deviation of normalized spectrum ith.
 
-If a signal appears in a certain frequency bin $n^th$, its expected power will be enhanced or reduced depending on the bin position due to the cavity's Lorentzian shape. The rescaling will take into account this effect.
+If a signal appears in a certain frequency bin $j^{th}$, its expected power will be enhanced or reduced depending on the bin position due to the cavity's Lorentzian shape. The rescaling will take into account this effect.
 
 
 %First we will choose a window and a order, then move the window and fit the data a with a polynomial with chosen order, it is a kind of generalization  moving average characterized, if the windows is too big, then it will not remove small structures, if it too small, it may kill the signal, you can see that choosing an appropriate window is important, a way to test if the windows are appropriate is to see the system temperature calculated by  $\mu$ and $\sigma$.
@@ -179,45 +190,51 @@ If a signal appears in a certain frequency bin $n^th$, its expected power will b
 
 \subsection{Combine spectra with weighting algorithm} \label{weighting_algorithm}
 
-The purpose of weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  Each spectrum in Fig.\ref{fig:After_Sg} was collected with a different cavity resonance frequency. Therefore, if a signal appears in a certain frequency bin $n^{th}$, due to the difference in resonance frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight of each bin n of spectrum i defined in Eq.\cite{eq:weight}. The weighted power $\delta_{weighted})_k$ and standard deviation $\sigma_{weighted})_k$ of each bin $k$ in the combined spectrum are calculated using Eq.\cite{eq:weighted_power} and Eq.\cite{eq:weighted_sigma}, respectively. The SNR is the ratio of $\delta_{com})_k$ and $\sigma_{com})_k$ as given in Eq. \cite{eq:weighted_SNR}.
+The purpose of weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  Each spectrum in Fig.\ref{fig:After_Sg} was collected with a different cavity resonance frequency. Therefore, if a signal appears in a certain frequency bin $j^{th}$, due to the difference in resonance frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight calculated for each bin j of normalized spectrum i defined in Eq.\cite{eq:weight}.
+The weighted power $\delta^{com}_{n}$ and standard deviation $\sigma^{com}_{n}$ of each bin $n$ in the combined spectrum are calculated using Eq.\cite{eq:weighted_power} and Eq.\cite{eq:weighted_sigma}, respectively. The SNR is the ratio of $\delta^{com}_{n}$ and $\sigma^{com}_{n}$ as given in Eq. \cite{eq:weighted_SNR}.
 
 %The purpose of weighting algorithm is to add different spectrum vertically, we have different spectrum with different resonance frequency Figure \ref{fig:After_Sg}, so we need a weight for add them up. Eq.\eqref{eq:weight}.
 
 \begin{equation}
     \label{eq:weight}
     %    {w_{n}}^{i} = \frac{h \cdot p}{(\sigma_{n}^{i})^{2}}
-    {w_{n}}^{i} = \frac{1}{(\sigma_{n}^{i})^{2}}
+    {w_{j}} = \frac{1}{(\sigma_{ij}^{res})^{2}}
 \end{equation}
 
 %We have a weight Eq.\eqref{eq:weight}, where ${w_{n}}^{i}$ means the weight in the ${n^{\mathrm{th}}}$ bin of the ${i^ {\mathrm{th}}}$ spectrum, and h follows the line shape of the cavity which is a Lorentz` distribution; the value of h will be larger when the frequency bin is closer to the cavity resonance frequency , p is the expected axion power.
 
 \begin{equation}
     \label{eq:weighted_power}
-    (\delta_{com})_n = \frac{ \sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{\sum_{i}^{k} {w_{n}}^{i}}
+    \delta_{n}^{com} = \frac{ \sum_{1}^{k}\delta_{ij}^{res} \cdot {w_{ij}}}{\sum_{1}^{k} {w_{ij}}}
 \end{equation}
 \begin{equation}
     \label{eq:weighted_sigma}
-    (\sigma_{com})_n = \frac{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}{\sum_{i}^{k} {w_{n}}^{i}}
+    \sigma_{n}^{com} = \frac{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}}{\sum_{1}^{k} {w_{ij}}}
 \end{equation}
 \begin{equation}
     \label{eq:weighted_SNR}
-    ({SNR}_{com})_n = \frac{(\delta_{com})_n}{(\sigma_{com})_n}= \frac{\sum_{i}^{k}\delta_{n}^{i} \cdot {w_{n}}^{i}}{ \sqrt{\sum_{i}^{k}(\sigma_{n}^{i} \cdot {w_{n}}^{i})^2}}
+    {SNR}_{n}^{com} = \frac{\delta^{com}_{n}}{(\sigma^{com}_{n}}= \frac{\sum_{1}^{k}\delta_{ij}^{res} \cdot {w_{ij}}^{res}}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}}^{res})^2}}
 \end{equation}
+
+with i running from 1 to k - number of spectra containing bin j.
 
 %where ${\delta_n^i}$ and ${\sigma_n^i}$ are the measured power and the corresponding standard deviation of the ${n^{\mathrm{th}}}$ frequency bin of the ${i^{\mathrm{th}}}$ spectrum., From the weighted power in ${n^{th}}$ bin in Eq.\eqref{eq:weighted_power}, and weighted $\sigma$ in Eq.\eqref{eq:weighted_sigma}, we can get our Signal to noise ratio as Eq.\eqref{eq:weighted_SNR}
 
 \subsection{Merging bins}
 
-With the quality factor of $10^6$, the expected axion bandwidth is of 5 kHz at frequency of 5 GHz. Our interested range is 4.7 - 4.8 GHz and the bin width is of 1 kHz. Therefore, in order to maximize the SNR without splitting the signal power in multiple successive bins in the final spectrum, we merged M = 5 bins with overlapping.
-Therefore, in order to maximize the SNR, we merged 5 consecutive bins with overlapping of the combined spectrum to construct a final spectrum. The purpose of overlapping is to avoid the signal power broken into different neighbouring bins of the merged spectrum. Before defining weights for merging, we multiplied the power and standard deviation of each bin in the combined spectrum by M: $\delta^{com}_n \rightarrow M\delta^{com}_n$ and $\sigma^{com})_n \rightarrow M \sigma^{com})_n$. This rescaling gives the expected mean of the normalized power $\mu^{comb}_k = 1$ if a KSVZ axion signal power leaves a fraction of 1/M of its power in the combined spectrum k.
-Then the maximum likelihood weights, defined in Eq. \cite{eq:merge_weight} based on the The Maxwellian lineshape for axion (Eq. \cite{}) used, were used to build the merged spectrum.
+With the quality factor of $10^6$, the expected axion bandwidth is of 5 kHz at frequency of 5 GHz. In this paper, our interested range is 4.7 - 4.8 GHz and the bin width is of 1 kHz. Therefore, in order to maximize the SNR, we merged M = 5 consecutive bins with overlapping of the combined spectrum to construct a final spectrum.
+The purpose of overlapping is to avoid the signal power broken into different neighbouring bins of the merged spectrum. Before defining weights for merging, we multiplied the power and standard deviation of each bin in the combined spectrum by M: $\delta^{c}_n \rightarrow M\delta^{com}_n$ and $\sigma^{c}_n \rightarrow M \sigma^{com}_n$. This rescaling gives the expected mean of the normalized power $\mu^{com}_k = 1$ if a KSVZ axion signal power leaves a fraction of 1/M of its power in the combined spectrum bin k.
+Then the maximum likelihood weights, defined in Eq. \cite{eq:merge_weight} based on the the Maxwellian lineshape for axion (Eq.~(\ref{eq:simplesignal})), were used to build the merged spectrum.
 
 %In theory, the expected Axion bandwidth is 5KHz, and our frequency resolution is 1KHz, therefore we need to merge 5 bins. Due to the expected Maxwellian signal line shape, a weight will be applied when merging five neighbouring bins
 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{q} = \frac{L_{q}}{(\sigma_{q}^{com}/5)^{2}}
+    %w_{q} = \frac{L_{q}}{(\sigma_{q}^{com}/5)^{2}}
+    w_{q} = \frac{L_{q}}{(\sigma_{q}^{c})^{2}} = \frac{L_{q}}{(M\sigma_{q}^{com})^{2}}
 \end{equation}
+
+where M = 5 is the number of merged bins.
 
 %\begin{equation}
 %    \label{eq:axion_line_shape}
@@ -226,26 +243,29 @@ Then the maximum likelihood weights, defined in Eq. \cite{eq:merge_weight} based
 
 \begin{equation}
     \label{eq:Lq_integtal}
-    L_{q} = \int_{\nu_a +\nu_q + (q+1)\Delta\nu}^{\nu_a +\nu_q + q\Delta\nu} f(\nu) \,d\nu
+    L_{q} = \int_{\nu_a +\nu_q + q\Delta\nu}^{\nu_a +\nu_q + (q+1)\Delta\nu} f(\nu) \,d\nu
 \end{equation}
 
-where $L_q$ is the integral of the lineshape from the lower edge to higher edge of ${q^{th}}$ bin, $\sigma_{q}^{com})^{2}$ is the standard deviation of the combined spectrum as defined in Eq.\cite{eq:weighted_sigma}. The power, standard deviation and SNR of the merged spectrum are:
+where $L_q$ is the integral of the lineshape from the lower edge to higher edge of ${q^{th}}$ bin
+%$\sigma_{q}^{com}^{2}$ is the standard deviation of the combined spectrum as defined in Eq.\cite{eq:weighted_sigma}.
+The power, standard deviation and SNR of the merged spectrum are:
 
 %We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal},
 
 \begin{equation}
     \label{eq:merged_power}
-    (\delta_{merged})_q = k \cdot \frac{ \sum_{i = q-k/2}^{q+k/2}(\delta_{norm})_{q}^{i}/M \cdot {w_{q}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    \delta_{q}^{merged} = k \cdot \frac{ \sum_{i = q-k/2}^{q+k/2}(\delta_{n})_{q}^{i} \cdot {w_{q}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
 \end{equation}
 \begin{equation}
     \label{eq:merged_sigma}
 %    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{norm})_{q}^{i} \cdot {w_{q}}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}^{2}}
-    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {(w_{q})^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    %    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {(w_{q})^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    \sigma_{q}^{merged} = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{n})_{q}^{i})^2 \cdot {(w_{q})^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_snr}
-    ({SNR}_{merged})_q = \frac{(\delta_{merged})_q}{(\sigma_{merged})_q} = \frac{\sum_{i = q-k/2}^{q+k/2}(\delta_{norm})_{q}^{i}/M \cdot {w_{q}}}{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {w_{q}^2}}}
+    {SNR}_{q}^{merged} = \frac{(\delta^{merged})_{q}}{(\sigma^{merged}){q}} = \frac{\sum_{i = q-k/2}^{q+k/2}(\delta_{n})_{q}^{i} \cdot {w_{q}}}{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{n})_{q}^{i})^2 \cdot {w_{q}^2}}}
 \end{equation}
 
 %Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
