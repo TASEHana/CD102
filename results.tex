@@ -1,11 +1,55 @@
-\section{Results}
-In Fig.\ref{fig:SNR_histogram}, we set a threshold at $3.355\sigma$, if the expected signal is 5 $\sigma$ above the noise level, the signal is supposed to have $95\% $ of the chance passing the cut at 3.355 sigma. However, a signal was not observed. Therefore, with $95{\%}$ C.L., the signal cannot be larger than 5 $\sigma$.
+\section{Results} \label{sec:results}
+Figure~\ref{fig:glimit} shows the ratio of the limits on \ggamma\ with respect 
+to the KSVZ benchmark value ($\ggamma=-0.97$) while Fig.~\ref{fig:gagglimit} 
+shows the results of the limits on \gagg. Figure~\ref{fig:gaggall} displays 
+the limits on \gagg\ obtained by TASEH with those from the previous searches. 
+The error bands indicate the systematic uncertainties as discussed in 
+Section~\ref{sec:sys}. No limits were placed for the frequency bins 
+that correspond to external signal sources during the collection of CD102 
+data. The results of TASEH exclude the models with the axion-two-photon
+coupling $\gagg\gtrsim \avelimit\GeVinv$, a factor of ten above the benchmark
+KSVZ model for the mass range $\mlo < \ma < \mhi \muevcc$ (corresponding to 
+the frequency range of $\flo < \nu_a < \fhi$). 
 
-\begin{figure}[hbt!]
-    \centering
-%    \includegraphics[width=0.5\textwidth,height = 7cm]{Figure/limit_5sigma.png}
-    \caption{Set the limit with 5 $\sigma$}
-    \label{fig:limit_5sigma}
+The central results shown in Figs.~\ref{fig:glimit}--\ref{fig:gaggall} were 
+obtained assuming an axion signal line shape that follows 
+Eq.~\ref{eq:simplesignal}. Both the analysis that merges bins without including
+ a weight from the signal line shape and the one 
+that assumes a simple Gaussian weight, with a mean at the center of the five 
+frequency bins and a width $\sigma$ 
+giving half-maximum-weight when the frequency 
+is 2.5~kHz away from the center, i.e. 
+$\sigma=\left.5~\text{kHz}\middle/2\sqrt{2\ln2}\right.$, produce limits that 
+are 5-6\% higher than the central results. 
+
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=8.6cm]{figures/}
+  \caption{The limits on the dimensionless parameter \ggamma\ for the 
+frequency range of \flo--\fhi~GHz. The error band indicates the systematic 
+  uncertainties as discussed in Section~\ref{sec:sys}. }
+  \label{fig:glimit}
+\end{figure}
+
+\begin{figure} [htbp]
+  \centering
+%  \includegraphics[width=8.6cm]{figures/}
+  \caption{The limits on the axion-two-photon coupling \gagg\ for the frequency 
+range of \flo--\fhi~GHz. The error band indicates the systematic 
+  uncertainties as discussed in Section~\ref{sec:sys}. }
+  \label{fig:gagglimit}
+\end{figure}
+
+\begin{figure} [htbp]
+  \centering
+ \includegraphics[width=8.6cm]{figures/RealData_limit_allexp.png}
+  \caption{The limits on the axion-two-photon coupling \gagg\ for the 
+frequency ranges of 0.4--8~GHz, from the CD102 data of TASEH and previous 
+searches performed by the ADMX, CAPP, and HAYSTAC Collaborations. The gray 
+band indicates the allowed region of \gagg\ vs. $m_a$ from various QCD axion 
+models while the blue and red dashed lines are the values predicted by the 
+KSVZ and DFSZ benchmark models, respectively.}
+  \label{fig:gaggall}
 \end{figure}
 
 
