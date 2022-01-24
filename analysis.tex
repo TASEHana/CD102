@@ -1,44 +1,54 @@
 \section{Analysis Procedure} \label{sec:ana}
 % \begin{flushleft}
     \subsection{Analysis overview}
-Our goal is to find the axion signal hidden in the white noise. In order to achieve this, our analysis procedure includes the following steps:
+The goal of TASEH is to find the axion signal hidden in the noise. In 
+order to achieve this, the analysis procedure includes the following steps:
     \begin{enumerate}
         %\item Read raw data (I, Q) from tdms file and do Fast Fourier transform every 1 millisecond of spectrum, then average all over spectra in 1 second to get power spectrum.
-        \item Perform Fast Fourier transform (FFT) time-dependent spectrum to obtain the frequency-dependent spectrum.
+        \item Perform fast Fourier transform (FFT) on the 
+time-dependent spectrum to obtain the frequency-dependent spectrum.
         %\item Divide the measured power by the gains from the receiver chain to retrieve real power from cavity.
         %\item HEMT drift to predict noise and gain from the environmental parameters.
         %\item Use the results of high-electron-mobility-transistor(HEMT) drifting (see Section \ref{hemt_drifting}) to predict adding noise and gain; the input environmental parameters include monitoring temperatures, voltages of power supplies, etc.
         %\item Use Savitzky-Golay filter \cite{SGFilter} to remove the spectrum structure, then subtract the mean power.
-        \item Apply Savitzky-Golay (SG) filter to the oscillating structure of the frequency-dependent spectrum
-        \item Combine all power spectra from different frequency scans with weighting algorithm.
+        \item Apply Savitzky-Golay (SG) filter to remove the 
+Lorentzian structure of the frequency-dependent spectrum.
+        \item Combine all power spectra from different frequency scans with 
+the weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
         \item Merge bins in the combined spectrum to maximize the SNR.
         %\item Set threshold at ${3.355\ \sigma}$.
-        \item Set limit on \gagg.
+        \item Set limit on the axion-two-photon coupling \gagg.
     \end{enumerate}
 
-    The analysis was done by closely following the procedure from the Haystac experiment ~\cite{HAYSTACII}.
+    The analysis was done by closely following the procedure adopted by the 
+HAYSTAC experiment ~\cite{HAYSTACII}.
 % \end{flushleft}
 
 %\subsection{Tdms}
 \subsection{Fast Fourier transform}
 %For each frequency scan, we collected data for 12.5 hours. The recorded data were stored in TDMS files (Technical Data Management Streaming - binary file format developed by \textbf{National Instruments}). Each TDMS file contains 2 millions data points corresponding to 1000 time dependent subspectra. We performed Fast Fourier Transform (FFT) on each subspectrum to get the power in frequency (Eq.\ref{eq:4.1}).The I and Q in Eq.\ref{eq:4.1} are the raw data in voltage, R (50 Ohms) is the resistor of the signal analyzer, and 2000 is the number of data points. Finally, we averaged every 1000 successive subspectra to obtain the mean power in one second.
-The time-dependent I and Q data were recorded and saved in TDMS (Technical Data Management Streaming) files - binary format developed by \textbf{National Instruments}.
+The time-dependent I and Q data were recorded and saved in the TDMS 
+(Technical Data Management Streaming) files - a 
+binary format developed by National Instruments.
 %Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
-Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent from which power was calculated by using the equation:
+The fast Fourier Transform (FFT) was performed to convert the data into 
+frequency-dependent spectrum in which the measured power was calculated 
+using the following equation:
 
 \begin{equation}
 \label{eq:4.1}
-    \text{Power} = \frac{|\text{FFT}(I+i \cdot Q)|^{2}}{N \cdot 2R}
+    \text{Power} = \frac{|\text{FFT}(I+i \cdot Q)|^{2}}{N \cdot 2R},
 \end{equation}
 
-where N is the number of data points ($N_A $ = 2000 in our experiment), and R is the resistance of the signal analyzer (50 $\Omega$).
+where $N$ is the number of data points ($N  = 2000$ in the TASEH 
+CD102 data), and $R$ is the resistance of the signal analyzer (50~$\Omega$).
 The FFT was done for every one-second subspectrum data.
 
 %\subsection{Gain}
 %The net gain of our receiver chain includes: down conversion gain, Intermediate Frequency(IF)  attenuator, Radio Frequency(RF) attenuator and HEMT gain. The first three were the parameters set during data taking, the last one was estimated from calibration (Section \ref{sec:}). Fig.\ref{fig:Hemt_gain} shows the gain and noise from the HEMT calibration done before the data run.
 %\newline
-%After removing all the gains, we got the real power going out from the antenna of the cavity. The variation of the real power in time is shown in Fig. \ref{fig:over_temp}. One possible cause of this effect came from the additional gain variation that was not studied in the initial HEMT calibration before taking data. To investigate this issue, we did HEMT drifting to check the behaviour of the gain over time.
+%After removing all the gains, we got the real power going out from the antenna of the cavity. The variation of the real power in time is shown in Fig. \ref{fig:over_temp}. One possible cause of this effect came from the additional gain variation that was not studied in the initial HEMT calibration before taking data. To investigate this issue, we did HEMT drifting to check the behavior of the gain over time.
 
 %\begin{figure}[h]
 %    \centering
@@ -120,41 +130,79 @@ The FFT was done for every one-second subspectrum data.
 
 
 %\subsection{Savitzky Golay filter}
-\subsection{Remove the oscillating structure}
+\subsection{Remove the Lorentzian structure}
 %Figure \ref{fig:sg_result} is the spectrum in each step, somehow they all have a similar structure, in order to remove this structure, we will use a Savitzky Golay filter in every second to smooth the data Figure \ref{fig:After_Sg}.
 
-In case of absence axion signal, the output data is the noise of the cavity and the amplification chain. If axion presents in the cavity, its power will be buried in the noise because the signal is very weak. Therefore, the structure of the raw output power spectrum, as shown in Fig.~\ref{fig:raw_sg_power}, is the product of the noise and the gain of the system. The Savitzky Golay (SG) filter ~\cite{SGFilter}, a digital filter that can smooth data without distorting the signal tendency, was applied to remove the structure or background.
-The filter was performed on average spectrum of each scan by fitting adjacent points of successive sub-sets of data with a nth-order polynomial. The result depends on two parameters: the number of data points used for fitting, so-called the window width, and the order of the polynomial. If the window is too wide, the filter will not remove small structures and if it is too narrow, it may kill the signal. The window and order were first chosen during the data taking based on the structure of data and the ratio between raw data and the filter output. After data taking, they were optimized by injecting axion signal on top of noise data and found that they were consistent with the first choice.
-The raw average spectrum was divided by the output of the SG filter and subtracted by 1 to get normalized spectrum (Fig.~\ref{fig:raw_sg_power}).
-Therefore, if the axion signal exists, the excess power will be above 0.
+In the absence of the axion signal, the output data spectrum is simply the 
+noise from the cavity and the amplification chain. If the axions are present 
+in the cavity, the signal power will be buried in the noise because the 
+signal is very weak. Therefore, the structure of the raw output power 
+spectrum, as shown in Fig.~\ref{fig:raw_sg_power}, is dominated by 
+the product of the noise and the gain of the system. The Savitzky Golay (SG) 
+filter~\cite{SGFilter}, a digital filter that can smooth data without 
+distorting the signal tendency, was applied to remove the structure of the  
+background. The SG filter was performed on the averaged spectrum of each 
+frequency scan by fitting adjacent points of successive sub-sets of data with 
+an $n^\text{th}$-order polynomial. The result depends on two parameters: 
+the number of 
+data points used for fitting, the so-called window width, and the order of 
+the polynomial. If the window is too wide, the filter will not remove small 
+structures, and if it is too narrow, it may kill the signal. 
+The window and the order were first chosen during the data taking based on 
+the structure of data and the ratio of the raw data to the filter output. 
+After the data taking, they were optimized by injecting an axion signal on top of 
+the noise data and found that they were consistent with the original choice 
+(see Section~\ref{sec:sys}). 
+
+The raw averaged spectrum was divided by the output of the SG filter and 
+subtracted by unity to get the normalized spectrum (Fig.~\ref{fig:raw_sg_power}).
+Therefore, if the axion signal exists, a power excess will be above zero.
 %After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
-Since we adjusted the resonant frequency of the cavity to scan large range and to reduce the noise at overlapped region, we need to combine all the spectra of all scans to create one big spectrum. Before doing this, the normalized spectrum from each scan was rescaled by the system noise [detailed in Sec~\ref{sec:calibration}] and the signal power with taking the cavity Lorentzian shape into account. The rescaled spectrum, shown in Fig.~\ref{res_spectrum}, was computed with formula:
+During the data taking, the resonant frequency of the cavity was  
+adjusted by the tuning bar so to scan a large range of frequencies and to 
+reduce the uncertainty of the noise at the overlapped region. Therefore, the 
+spectra of all the scans need to be combined to create one big spectrum. 
+Before doing this, 
+the normalized spectrum from each scan was rescaled by the system noise 
+(detailed in Sec~\ref{sec:calibration}) and the signal power with the cavity 
+Lorentzian shape taken into account. The rescaled spectrum, shown in 
+Fig.~\ref{fig:raw_sg_power}, was computed with the following formula:
 
 \begin{equation}
   \label{eq:respower_eqn}
-  \delta_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \delta_{ij}^{norm}}{P_{ij}^{s} h}
+  \delta_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \delta_{ij}^{norm}}{P_{ij}^{s} h},
 \end{equation}
 
-and standard deviation of each bin is:
+and the standard deviation of each bin is:
 \begin{equation}
   \label{eq:ressigma_eqn}
-  \sigma_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \sigma_{i}^{norm}}{P_{ij}^{s} h}
+  \sigma_{ij}^{res} = \frac{k_{B}T_{sys}\Delta\nu \sigma_{i}^{norm}}{P_{ij}^{s} h},
 \end{equation}
 
-where $\delta_{ij}^{norm}$ and $\sigma_{i}^{norm}$ are the power and the standard deviation of
-bin $j^{th}$ from the normalized spectrum $i^{th}$,
-$\Delta\nu$ is the bin width of spectrum, $P_{ij}^{s}$ is the KSVZ axion signal power,
-and $h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]}$ is Lorentzian shape of the cavity,
-$\Delta\nu_{i}$ is the cavity line width which depends on the resonant frequency and the intrinsic quality factor.
-
-If a signal appears in a certain frequency bin $j^{th}$, its expected power will be enhanced or reduced depending on the bin position due to the cavity's Lorentzian shape. The rescaling will take into account this effect.
+where $\delta_{ij}^{norm}$ ($\delta_{ij}^{res}$) and $\sigma_{i}^{norm}$ ($\sigma_{ij}^{res}$)
+are the power and the standard deviation of the $j^\text{th}$ frequency bin from the 
+ $i^\text{th}$ normalized (rescaled) spectrum. The $\Delta\nu$ is the bin width of 
+spectrum (1~kHz) and  $P_{ij}^{s}$ is the KSVZ axion signal power. The 
+$h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]^2}$ 
+describes the Lorentzian shape of the cavity, where 
+$\Delta\nu_{i}$ is the cavity line width, which depends on the resonant 
+frequency $\nu_{ci}$ and the loaded quality factor. 
+%
+If a signal appears in a certain frequency bin $j^{th}$, its expected power 
+will be enhanced or reduced depending on the bin position due to the cavity's 
+Lorentzian shape. The rescaling will take into account this effect.
 
 \begin{figure} [htbp]
   \centering
   \includegraphics[width=0.38\textwidth,height = 0.4\textwidth]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.png}
   \includegraphics[width=0.52\textwidth,height = 0.4\textwidth]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
-  \caption{Left: Upper panel: Raw power spectrum (blue) and output of SG filter (red) of one scan. Bottom panel: Rescaled spectrum derived by the ratio of the raw spectrum and the SG fitler in the left and subtract 1.
-  Right: Rescaled power spectrum obtained by multiplying the normalized power with system noise and dividing expected axion signal power taking the Lorentzian shape of cavity into account}
+  \caption{Left: Upper panel: The raw power spectrum (blue) and the output of 
+the SG filter (red) of one scan. Bottom panel: The normalized spectrum,  
+derived by the ratio of the raw spectrum to the SG fitler and subtracting 
+the ratio from the unity.
+  Right: The rescaled power spectrum, obtained by multiplying the normalized 
+power with the system noise and dividing the expected axion signal power 
+with the Lorentzian shape of the cavity taken into account.}
   \label{fig:raw_sg_power}
 \end{figure}
 
@@ -203,13 +251,13 @@ If a signal appears in a certain frequency bin $j^{th}$, its expected power will
 %%    \end{minipage}%
 %\end{figure}
 
-\subsection{Combine spectra with weighting algorithm} \label{weighting_algorithm}
+\subsection{Combine the spectra with the weighting algorithm} 
+\label{sec:weighting_algorithm}
 
-The purpose of weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  %Each spectrum in Fig.\ref{fig:After_Sg}
-Each spectrum was collected with a different cavity resonance frequency. Therefore, if a signal appears in a certain frequency bin $j^{th}$, due to the difference in resonance frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight calculated for each bin j of normalized spectrum i defined in Eq.\cite{eq:weight}.
+The purpose of the weighting algorithm is to add different spectra vertically, particularly for the frequency bins that appear in multiple spectra.  %Each spectrum in Fig.\ref{fig:After_Sg}
+Each spectrum was collected with a different cavity resonant frequency. Therefore, if a signal appears in a certain frequency bin $j^{th}$, due to the difference in resonant frequency and Lorentzian shape, the expected signal power will be different in each spectrum $i$. The weighting algorithm is expected to take this into account with weight calculated for each bin j of normalized spectrum i defined in Eq.\cite{eq:weight}.
 The weighted power $\delta^{com}_{n}$ and standard deviation $\sigma^{com}_{n}$ of each bin $n$ in the combined spectrum are calculated using Eq.~\ref{eq:comb_power} and Eq.~\ref{eq:comb_sigma}, respectively. The SNR is the ratio of $\delta^{com}_{n}$ and $\sigma^{com}_{n}$ as given in Eq.~\ref{eq:comb_snr}.
 
-%The purpose of weighting algorithm is to add different spectrum vertically, we have different spectrum with different resonance frequency Figure \ref{fig:After_Sg}, so we need a weight for add them up. Eq.\eqref{eq:weight}.
 
 \begin{equation}
     \label{eq:weight}

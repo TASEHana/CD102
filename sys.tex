@@ -20,8 +20,8 @@ data: $\left. \Delta \ta\middle/\ta\right.= 4\%$
 (see Section~\ref{sec:calibration} and Fig.~\ref{fig:hemtcalvsf}). 
 
 \item Uncertainty from the choice of the SG-filter parameters: i.e.  
-the window width and the order of the polynomial in the SG filter. Before 
-collecting the axion data, a preliminary optimization was performed: a 
+the window width and the order of the polynomial in the SG filter. At the 
+beginning of the data taking, a preliminary optimization was performed: a 
 window width of 201 bins and a 4$^\text{th}$ order polynomial were used for 
 the first analysis of the CD102 data (see Section~\ref{sec:ana}). 
 This choice was kept for the central results. 
@@ -49,9 +49,9 @@ as a function of window widths when the order of polynomial is
  \item Compare the mean $\mu_\text{noise}$ and the width $\sigma_\text{noise}$ 
 of the measured power, assuming no signal is present in the 
 data. See Fig.~\ref{fig:noisegauss} for an example distribution 
-of the measured power from 1600 bins when the cavity resonance frequency 
-is set to xxx~GHz; a Gaussian fit is performed to extract $\mu_\text{noise}$ 
-and $\sigma_\text{noise}$. Given the nature of the 
+of the measured power from 1600 bins when the cavity resonant frequency 
+is set to 4.798147293~GHz; a Gaussian fit is performed to extract 
+$\mu_\text{noise}$ and $\sigma_\text{noise}$. Given the nature of the 
 thermal noise, the two variables are supposed to be related to 
 each other if proper window width and order are chosen:
 \begin{equation*} 
@@ -59,7 +59,7 @@ each other if proper window width and order are chosen:
 \end{equation*}
 where $N_\text{spectra}$ is the number of spectra for averaging and 
 is related to the amount of integration time for each frequency step. In 
-general, $N_\text{spectra}\approx xxxx$. 
+general, $N_\text{spectra}\approx 1920000$. 
 \end{itemize}
 
 In addition, one could choose to optimize for each frequency step 
@@ -113,9 +113,9 @@ Overall the total relative systematic uncertainty is $\approx xxxx$\%.
   \includegraphics[width=8.6cm]{figures/sysSG_temphistogram.png}
   \caption{An example of the distribution of the measured power, after 
 removing the receiver gain and applying the SG filter, when 
-the cavity resonance frequency is xxxx~GHz. The distribution contains 
+the cavity resonant frequency is 4.798147293~GHz. The distribution contains 
 1600 entries and each entry corresponds to the measured power, averaged
-over yyy spectra, in one frequency bin. The mean and the width returned by 
+over 1920000 spectra, in one frequency bin. The mean and the width returned by 
 a Gaussian fit to the distribution are used to determine the best choice of 
 SG parameters. The mean $\mu_\text{noise}=3.2\times10^{-20}$~W in 
 a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
@@ -125,7 +125,7 @@ a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
 
 \begin{figure} [htbp]
   \centering
-  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/Ratio_gayy_Limits_Comparison_different_SGFilter_AxionRun.png}
+  \includegraphics[width=8.6cm]{figures/sys_compareSG_4_201.png}
   \caption{The ratio of the limits on \gagg\ due to the different choices 
  of window width and order of polynomial in the SG filter, with respect to 
  the central results (a window width of 201 bins and 4$^\text{th}$-order 
