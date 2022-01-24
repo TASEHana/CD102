@@ -14,7 +14,7 @@ Our goal is to find the axion signal hidden in the white noise. In order to achi
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
         \item Merge bins in the combined spectrum to maximize the SNR.
         %\item Set threshold at ${3.355\ \sigma}$.
-        \item Set limit on ${g_{a\gamma \gamma}}$.
+        \item Set limit on \gagg.
     \end{enumerate}
 
     The analysis was done by closely following the procedure from the Haystac experiment ~\cite{HAYSTACII}.
@@ -310,10 +310,17 @@ The power, standard deviation and SNR of the merged spectrum are:
 
 \begin{figure}[hbt!]
     \centering
-    %\includegraphics[width=0.25\textwidth,height=0.4\textwidth]{Figure/SNR_Combined.png}
     \includegraphics[width=0.8\textwidth,height=0.4\textwidth]{figures/SNR_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
     \caption{Signal-to-noise ratio (SNR) calculated using Eq.\eqref{eq:merged_snr} for merged spectrum. No candidate exceed the threshold of $3.355\sigma$ (solid-black horizontal line) }
     \label{fig:SNR_merged}
 \end{figure}
 
 
+After the merging, if there is any potential signal with SNR larger than 3.355 $\sigma$,
+the rescan will be proceeded to check it is real signal or statistical fluctuation.
+Our procedure was rescan after covering every 10 MHz range and it was done by adjusting
+the tuning rod of the cavity to match the resonant frequency to the candidate.
+Most of the candidates were from the fluctuations because they were gone after few rescans.
+Some of them reached SNR = 3.355 $\sigma$ after rescanning, a portable antenna outside the DR was used
+to probe if they came from external sources. During the data taking, several external signals from the instruments
+in the laboratory were detected. More details can be found in the instrumentation paper ref~\cite{}.
