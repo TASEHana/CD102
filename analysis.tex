@@ -18,7 +18,7 @@ the weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
         \item Merge bins in the combined spectrum to maximize the SNR. 
 %        %\item Set threshold at ${3.355\ \sigma}$.
-       \item Rescan the frequency regions with candidates and set limit on 
+       \item Rescan the frequency regions with candidates and set limits on 
       the axion-two-photon coupling \gagg\ if no candidates were found.
     \end{enumerate}
 
@@ -328,6 +328,7 @@ Eq.\eqref{eq:comb_snr} of the combined spectrum. }
 %where ${\delta_n^i}$ and ${\sigma_n^i}$ are the measured power and the corresponding standard deviation of the ${n^{\mathrm{th}}}$ frequency bin of the ${i^{\mathrm{th}}}$ spectrum., From the weighted power in ${n^{th}}$ bin in Eq.\eqref{eq:weighted_power}, and weighted $\sigma$ in Eq.\eqref{eq:weighted_sigma}, we can get our Signal to noise ratio as Eq.\eqref{eq:weighted_SNR}
 
 \subsection{Merge bins}
+\label{sec:merge}
 
 The expected axion bandwidth is about 5~kHz at the frequency of 5~GHz. In 
 this paper, the interested frequency range is \flo -- \fhi~GHz and the bin 
@@ -396,8 +397,9 @@ The power, the standard deviation and the SNR of the merged spectrum are:
 \subsection{Rescan and set limits on \gagg} 
 Before the collection of the CD102 data, a 5$\sigma$ SNR target was chosen, 
 which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% confidence.
- After the merging, if there is any potential signal with an SNR larger than 
-3.355$\sigma$, a rescan will be proceeded to check if it is a real signal or 
+ After the merging as described in Section~\ref{sec:merge}, if there were 
+any potential signal with an SNR larger than 
+3.355$\sigma$, a rescan would be proceeded to check if it were a real signal or 
 a statistical fluctuation. 
 The procedure of the CD102 data taking was to perform a rescan after 
 covering every 10~MHz; the rescan was done by adjusting the tuning rod of the 
