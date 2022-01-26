@@ -351,8 +351,7 @@ were used to build the merged spectrum.
 
 \begin{equation}
     \label{eq:merge_weight}
-    %w_{q} = \frac{L_{q}}{(\sigma_{q}^{com}/5)^{2}}
-    w_{q} = \frac{L_{q}}{(\sigma_{q}^{c})^{2}} = \frac{L_{q}}{(M\sigma_{q}^\text{com})^{2}},
+    w_{n} = \frac{L_{n}}{(\sigma_{n}^{c})^{2}} = \frac{L_{n}}{(M\sigma_{n}^\text{com})^{2}},
 \end{equation}
 
 where $M = 5$ is the number of merged bins.
@@ -364,31 +363,35 @@ where $M = 5$ is the number of merged bins.
 
 \begin{equation}
     \label{eq:Lq_integtal}
-    L_{q} = \int_{\nu_a +\nu_q + q\Delta\nu}^{\nu_a +\nu_q + (q+1)\Delta\nu} f(\nu) \,d\nu,
+    L_{n} = M \int_{\nu_a +\delta\nu_m + n\Delta\nu}^{\nu_a +\delta\nu_m + (n+1)\Delta\nu} f(\nu) \,d\nu,
 \end{equation}
 
-where $L_q$ is the integral of the line shape from the lower edge to higher 
-edge of ${q^{th}}$ bin. 
-%$\sigma_{q}^{com}^{2}$ is the standard deviation of the combined spectrum as defined in Eq.\cite{eq:weighted_sigma}.
+
+where $n = 1,..,M$, $\nu_a$ is the axion frequency, $\delta\nu_m$ is the misalignment between $\nu_a$ and the lower bin boundaries
+in the combined spectrum and $\Delta\nu =$ 1 kHz is the bandwidth.
+
+%where $L_q$ is the integral of the line shape from the lower edge to higher 
+%edge of ${q^{th}}$ bin. 
 The power, the standard deviation and the SNR of the merged spectrum are:
 
 %We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal},
 
 \begin{equation}
     \label{eq:merged_power}
-    \delta_{q}^\text{merged} = k \cdot \frac{ \sum_{i = q-k/2}^{q+k/2}\delta_{q}^{i} \cdot {w_{q}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    \delta_{g}^\text{merged} = \frac{ \sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{n}}}{\sum_{n = 1}^{M} {w_{n}}}
 \end{equation}
+
 \begin{equation}
     \label{eq:merged_sigma}
-%    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{norm})_{q}^{i} \cdot {w_{q}}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}^{2}}
-    %    (\sigma_{merged})_q = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} ((\sigma_{norm})_{q}^{i}/M)^2 \cdot {(w_{q})^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
-    \sigma_{q}^\text{merged} = k \cdot \frac{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{q}^{i})^2 \cdot {w_{q}^2}}}{\sum_{i = q-k/2}^{q+k/2} {w_{q}}}
+    \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum_{n = 1}^{M} (\sigma_{n}^{c})^2 \cdot {w_{n}^2}}}{\sum_{n = 1}^{M} {w_{n}}}
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_snr}
-    \text{SNR}_{q}^\text{merged} = \frac{\delta^\text{merged}_{q}}{\sigma^\text{merged}_{q}} = \frac{\sum_{i = q-k/2}^{q+k/2}\delta_{q}^{i} \cdot {w_{q}}}{ \sqrt{\sum_{i = q-k/2}^{q+k/2} (\sigma_{q}^{i})^2 \cdot {w_{q}^2}}}
+    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum_{n = 1}^{M}\delta_{n}^{c} \cdot {w_{n}}}{ \sqrt{\sum_{n = 1}^{M} (\sigma_{n}^{c})^2 \cdot {w_{n}^2}}}
 \end{equation}
+
+where $g = 1,..,N-M+1$ is the number of bins in the final spectrum.
 
 
 %Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
@@ -406,7 +409,7 @@ covering every 10~MHz; the rescan was done by adjusting the tuning rod of the
 cavity so to match the resonant frequency to the frequency of the candidate. 
 Most of the candidates were from the fluctuations because they were gone 
 after a few rescans. 
-Some of them reached SNR = 3.355$\sigma$ after rescanning; a portable 
+Some of them reached SNR > 4$\sigma$ after rescanning; a portable 
 antenna outside the DR was used to probe if they came from external sources. 
 During the data taking, external signals at two frequencis from the instruments
 in the laboratory were detected. More details can be found in the 
