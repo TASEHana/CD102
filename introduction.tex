@@ -20,7 +20,7 @@ is broken after inflation, current calculations suggest a mass range of
 1–-100~\muevcc\ for axions so that the cosmic axion density does not exceed 
 the 
 observed cold DM density~\cite{QCDCalI,QCDCalII,QCDCalIII,QCDCalIV,QCDCalV,QCDCalVI,QCDCalVII,QCDCalVIII,QCDCalIX,QCDCalX,QCDCalXI,QCDCalXII,QCDCalXIII}. 
-Refs~\cite{axionDMI,axionDMII,axionDMIII} also suggested that axions form a 
+Refs~\cite{axionDMI,axionDMII,axionDMIII} also suggest that axions form a 
 Bose-Einstein condensate; this property explains the occurrence of 
 caustic rings in galactic halos. Therefore, axions are compelling because 
 they may explain at the same 
@@ -42,16 +42,16 @@ magnitude.
 Axions could be detected and studied via their two-photon interaction, the
 so-called ``inverse Primakoff effect''. For QCD axions, i.e. the axions 
 proposed to solve the strong CP problem, the axion-two-photon coupling 
-constant \gagg\ is related to the mass of the axion \ma: 
+constant \bgagg\ is related to the mass of the axion \ma: 
 \begin{equation}
- \gagg = \left(\frac{\ggamma\alpha}{\pi \Lambda^2}\right)\ma, 
+ \bgagg = \left(\frac{\bggamma\alpha}{\pi \Lambda^2}\right)\ma, 
 \label{eq:grelation}
 \end{equation}
-where \ggamma\ is a dimensionless model-dependent parameter, $\alpha$ is the 
+where \bggamma\ is a dimensionless model-dependent parameter, $\alpha$ is the 
 fine-structure constant, $\Lambda=78~\MeV$ is a scale parameter that can 
 be derived from the mass and the decay constant of the pion, and the ratio of 
 the up to down quark masses. 
-The numerical values of \ggamma\ are -0.97 and 0.36 
+The numerical values of \bggamma\ are -0.97 and 0.36 
 in the Kim-Shifman-Vainshtein-Zakharov (KSVZ)~\cite{KSVZI,KSVZII} and 
 the Dine-Fischler-Srednicki-Zhitnitsky (DFSZ)~\cite{DFSZI,DFSZII} benchmark 
 models, respectively. 
@@ -79,9 +79,9 @@ readout with a low-noise amplifier. The axion mass is unknown, therefore,
 the cavity resonator must allow the possibility to be tuned through a range
 of possible axion masses. Over the years, 
 the Axion Dark Matter eXperiment (ADMX) had developed and improved the 
-cavity design and readout electronics; they excluded KSVZ 
+cavity design and readout electronics; they excluded the KSVZ 
 benchmark model within the mass range of %1.9--3.69~$\mu$eV$/c^2$. 
-1.9--4.2\muevcc\ and DFSZ benchmark model for the mass ranges 
+1.9--4.2\muevcc\ and the DFSZ benchmark model for the mass ranges 
 of 2.66--3.31 and 3.9--4.1\muevcc, 
 respectively~\cite{ADMXI,ADMXII,ADMXIII,ADMXIV,ADMXV,ADMXVI,ADMXVII}. 
 The Haloscope at Yale Sensitive to Axion Cold dark matter 
@@ -91,9 +91,25 @@ and QUest for AXions-$a\gamma$ (QUAX-$a\gamma$)~\cite{QUAX} aim for
 axions at higher masses and have pushed the limits on \gagg\ towards the 
 KSVZ value for the mass ranges of 16.96--17.12 
 and 17.14--17.28\muevcc, 10.7126--10.7186\muevcc, and at 43\muevcc, 
-respectively. This paper presents the first results and the analysis 
+respectively. 
+
+This paper presents the first results and the analysis 
 details of a search for axions for the mass range of \mlo--\mhi\muevcc, 
-from the Taiwan Axion Search Experiment with Haloscope (TASEH).  
+from the Taiwan Axion Search Experiment with Haloscope (TASEH). 
+The expected axion signal power and signal line shape, the noise power, 
+and the signal-to-noise ratio are described in 
+Sections~\ref{sec:introsignal}--\ref{sec:intronoise}. Section 
+~\ref{sec:calibration} gives a brief 
+description of the calibration for the whole amplification chain 
+while Section~\ref{sec:ana} details the analysis procedure.  
+Section~\ref{sec:faxion} presents the analysis of the 
+synthetic axion 
+data and Section~\ref{sec:sys} discusses the systematic 
+uncertainties that may affect the limits on the \gagg. 
+The final results and the conclusion are presented in 
+Section~\ref{sec:results} and Section~\ref{sec:conclusion}, 
+respectively. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The expected axion signal power and signal line shape}
@@ -102,7 +118,7 @@ from the Taiwan Axion Search Experiment with Haloscope (TASEH).
 The signal power extracted from a microwave cavity on resonance is given 
 by:
 \begin{equation}
-P_s = \left(\ggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
+P_s = \left(\bggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
 \left(\omega_c\frac{1}{\mu_0}B_0^2VC_{mnl}Q_L\frac{\beta}{1+\beta}\right),
 \label{eq:ps}
 \end{equation}
@@ -116,13 +132,13 @@ cavity
 of the cavity and $\beta$ determines the amount of coupling of the signal to 
 the receiver. The form factor $C_{mnl}$ is the normalized 
 overlap of the electric field 
-$\vec{\bold{E}}$, for a particular cavity resonant mode, with the external magnetic 
-field $\vec{\bold{B}}$:
+$\vec{\bm{E}}$, for a particular cavity resonant mode, with the external magnetic 
+field $\vec{\bm{B}}$:
 \begin{equation}
-  C_{mnl} = \frac{\left[\int\left( \vec{\bold{B}}\cdot\vec{\bold{E}}_{mnl}\right) d^3\bold{x}\right]^2}{B_0^2V\int E_{mnl}^2 d^3\bold{x}}.
+  C_{mnl} = \frac{\left[\int\left( \vec{\bm{B}}\cdot\vec{\bm{E}}_{mnl}\right) d^3\bm{x}\right]^2}{B_0^2V\int E_{mnl}^2 d^3\bm{x}}.
 \label{eq:formfactor} 
 \end{equation} 
-Here, the magnetic field $\vec{\bold{B}}$ points mostly along the axial 
+Here, the magnetic field $\vec{\bm{B}}$ points mostly along the axial 
 direction ($z$-axis) of the cavity. 
 The field strength has a small variation along the radial and axial directions and 
 $B_0$ is the averaged value over the whole cavity volume. 
@@ -176,8 +192,8 @@ In order to compare the results of TASEH with those of the former experiments,
 the analysis presented in this paper assumes an axion 
 signal line shape by including Eq.~\eqref{eq:simplesignal} in the weights 
 when merging the measured power from multiple frequency bins 
-(see Section~\ref{sec:ana}). Still given the caveats above and a lack of 
-strong evidence for any particular choice of velocity distributions, 
+(see Section~\ref{sec:merge}). Still given the caveats above and a lack of 
+strong evidence for any particular choice of the velocity distribution, 
 the results without an assumption of signal line shape and the results 
 with a simple Gaussian weight are also presented for comparison. 
 In addition, a signal line width 
@@ -219,8 +235,8 @@ The system noise temperature \tsys\ has three major components:
 from the cavity at temperature $T_\mathrm{cavity}$, (ii) the quantum noise 
 associated with the zero-point fluctuation of the blackbody gas, and (iii) the 
 noise added by the receiver, which is expressed in terms of an effective 
-temperature \ta. The first term in Eq.~\eqref{eq:pn} implies 
-that the noise spectrum from the cavity has little dependence on the frequency 
+temperature \ta. Equation~\eqref{eq:pn} implies 
+that the noise spectrum has little dependence on the frequency 
 (white spectrum) for the narrow bandwidth considered in the experiment. 
 However, the noise spectrum observed by TASEH 
 was actually Lorentzian due to a temperature difference between the cavity 
@@ -246,8 +262,13 @@ the noise power:
  \label{eq:SNR}
 \end{eqnarray}  
 where $\tau$ is the amount of data integration time. Equation~\eqref{eq:SNR} 
-can be derived from Dicke's Radiometer Equation, assuming that the amplitude 
-distribution of the noise voltage within a bandwidth $\Delta\nu_a$ is Gaussian.
+can be derived from Dicke's Radiometer Equation~\cite{Dicke}, assuming that 
+the amplitude distribution of the noise voltage within a bandwidth 
+$\Delta\nu_a$ is Gaussian. Combining Eq.~\eqref{eq:ps} and Eq.~\eqref{eq:SNR},
+one could see that the SNR is maximized by an experimental setup with 
+a strong magnetic field, a large cavity volume, an efficient cavity 
+resonant mode, a receiver with low system noise temperature, and a 
+long integration time. 
 
 
 

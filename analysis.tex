@@ -11,8 +11,7 @@ time-dependent spectrum to obtain the frequency-dependent spectrum.
         %\item HEMT drift to predict noise and gain from the environmental parameters.
         %\item Use the results of high-electron-mobility-transistor(HEMT) drifting (see Section \ref{hemt_drifting}) to predict adding noise and gain; the input environmental parameters include monitoring temperatures, voltages of power supplies, etc.
         %\item Use Savitzky-Golay filter \cite{SGFilter} to remove the spectrum structure, then subtract the mean power.
-        \item Apply the Savitzky-Golay (SG) filter to remove the 
-Lorentzian structure of the frequency-dependent spectrum.
+        \item Apply the Savitzky-Golay (SG) filter to remove the structure of the background in the frequency-dependent spectrum.
         \item Combine all power spectra from different frequency scans with 
 the weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
@@ -45,108 +44,22 @@ using the following equation:
 where $N$ is the number of data points ($N  = 2000$ in the TASEH 
 CD102 data), and $R$ is the resistance of the signal analyzer (50~$\Omega$).
 The FFT was done for every one-millisecond subspectrum data. The integration 
-time for each frequency scan was about 32-40 minutes, which resulted 
-in 1920000 to 2400000 subspectra; an average over these subspectra gives 
+time for each frequency scan was about 32-42 minutes, which resulted 
+in 1920000 to 2520000 subspectra; an average over these subspectra gives 
 the averaged frequency-dependent spectrum for each scan. 
 The frequency resolution of each spectrum is 1~kHz. 
 
-%\subsection{Gain}
-%The net gain of our receiver chain includes: down conversion gain, Intermediate Frequency(IF)  attenuator, Radio Frequency(RF) attenuator and HEMT gain. The first three were the parameters set during data taking, the last one was estimated from calibration (Section \ref{sec:}). Fig.\ref{fig:Hemt_gain} shows the gain and noise from the HEMT calibration done before the data run.
-%\newline
-%After removing all the gains, we got the real power going out from the antenna of the cavity. The variation of the real power in time is shown in Fig. \ref{fig:over_temp}. One possible cause of this effect came from the additional gain variation that was not studied in the initial HEMT calibration before taking data. To investigate this issue, we did HEMT drifting to check the behavior of the gain over time.
-
-%\begin{figure}[h]
-%    \centering
-%%    \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{Figure/CD099_HEMT.jpg}
-%    \caption{ Gain and noise of HEMT before running data}
-%    \label{fig:Hemt_gain}
-%\end{figure}
-%\begin{figure}[h]
-%\centering
-% %   \includegraphics[width=0.4\textwidth,height=4cm]{Figure/overall_temp.png}
-%    \caption{Power over the time from step 1 to step 16}
-%    \label{fig:over_temp}
-%\end{figure}
-%} // comment the paragraph of gain
-%%\newpage
-
-
-%\begin{figure}
-%     \begin{subfigure}[b]{.24\textwidth}
-%       \centering
-%        \includegraphics[width=\linewidth,height=3cm]{Figure/before_sg.png}
-%        \caption{Before SG filter}
-%        \label{fig:before_sg}
-%    \end{subfigure}%
-%    \hfill
-%    \begin{subfigure}[b]{.24\textwidth}
-%        \centering
-%        \includegraphics[width=\linewidth,height=3cm]{Figure/sg_result.png}
-%        \caption{SG filter}
-%        % \caption{Raw power of 1s data (blue line) and the output Savitzky-Golay filter (red line)}
-%        \label{fig:sg_result}
-%    \end{subfigure}%
-%    \vskip\baselineskip
-%    \begin{subfigure}[b]{.24\textwidth}
-%        \centering
-%        \includegraphics[width=\linewidth,height=3cm]{Figure/After_Sg.png}
-%        \caption{After SG filter}
-%        \label{fig:After_Sg}
-%    \end{subfigure}%
-%    \hfill
-%    \begin{subfigure}[b]{.24\textwidth}
-%        \centering
-%        \includegraphics[width=\linewidth,height=3cm]{Figure/system_temp.png}
-%        \caption{System temperature}
-%        \label{fig:system_temp}
-%    \end{subfigure}%
-%    \caption{\textbf{(a)} The power spectra after average 12.5 hours of data. \textbf{(b)} Raw power of 1s data (blue line) and the output Savitzky-Golay filter (red line). \textbf{(c)} After dividing the sg filter's result in every step \textbf{(d)} The system temperature derived from $\mu$ and $\sigma$. }
-    % \label{fig:fig}
-%\end{figure}
-
-% \begin{center}
-% \begin{figure*}[!tbp]
-% \centering
-%     \begin{minipage}[t]{.24\textwidth}
-%     \centering
-%     \includegraphics[width=1\textwidth,
-%     height = 0.75\textwidth]{Figure/before_sg.png}
-%     \caption{Before SG filter}
-%     \label{fig:before_sg}
-%     \end{minipage}%
-%     \hfill
-%     \begin{minipage}[t]{.24\textwidth}
-%     \centering
-%     \includegraphics[width=1\textwidth,
-%     height = 0.75\textwidth]{Figure/After_Sg.png}
-%     \caption{After SG filter}
-%     \label{fig:After_Sg}
-%     \end{minipage}%
-%     \hfill
-%     \begin{minipage}[t]{.25\textwidth}
-%     \centering
-%     \includegraphics[width=1\textwidth,
-%     height = 0.75\textwidth]{Figure/system_temp.png}
-%     \caption{The system temperature calculate by $\mu$ and $\sigma$}
-%     \label{fig:system_temp}
-%     \end{minipage}%
-% \end{figure*}
-% \end{center}
-
-
 %\subsection{Savitzky Golay filter}
-\subsection{Remove the Lorentzian structure}
+\subsection{Remove the structure of the background}
 %Figure \ref{fig:sg_result} is the spectrum in each step, somehow they all have a similar structure, in order to remove this structure, we will use a Savitzky Golay filter in every second to smooth the data Figure \ref{fig:After_Sg}.
 
 In the absence of the axion signal, the output data spectrum is simply the 
 noise from the cavity and the amplification chain. If axions are present 
 in the cavity, the signal will be buried in the noise because the 
-signal power is very weak. Therefore, the Lorentzian structure of the raw 
+signal power is very weak. Therefore, the structure of the raw 
 output power spectrum, as shown in Fig.~\ref{fig:raw_sg_power}, is dominated 
-by the noise of the system. 
-Appendix~\ref{sec:cavitynoise} provides the derivation of the Lorentzian 
-structure from the cavity noise due to a temperature difference 
-between the DR environment and the cavity. The Savitzky Golay (SG) 
+by the noise of the system and an explanation for the structure can be found 
+in Appendix~\ref{sec:cavitynoise}. The Savitzky Golay (SG) 
 filter~\cite{SGFilter}, a digital filter that can smooth data without 
 distorting the signal tendency, was applied to remove the structure of the  
 background. The SG filter was performed on the averaged spectrum of each 
@@ -158,7 +71,8 @@ the polynomial. If the window is too wide, the filter will not remove small
 structures, and if it is too narrow, it may kill the signal. 
 The window and the order were first chosen during the data taking based on 
 the structure of data and the ratio of the raw data to the filter output. 
-After the data taking, they were optimized by injecting an axion signal on top of 
+After the data taking, they were optimized by injecting an axion signal on 
+top of 
 the noise data and found that they were consistent with the original choice 
 (see Section~\ref{sec:sys}). 
 
@@ -174,9 +88,12 @@ spectra of all the scans need to be combined to create one big spectrum.
 Before doing this, 
 the normalized spectrum from each scan was rescaled by the system noise 
 (detailed in Sec~\ref{sec:intronoise} and Sec~\ref{sec:calibration}) and the 
-signal power with the Lorentzian cavity response taken into account. The 
-rescaled spectrum, shown in 
-Fig.~\ref{fig:raw_sg_power}, was computed with the following formula:
+signal power with the Lorentzian cavity response taken into account. 
+The system-noise temperature \tsys\ was calculated following Eq.~\eqref{eq:pn},
+ where the frequency dependence of the added-noise temperature \ta\ was obtained 
+from the fitting function in Fig.~\ref{fig:hemtcalvsf}. The rescaled spectrum, 
+shown in 
+Fig.~\ref{fig:rescaled_power}, was computed with the following formula:
 
 \begin{equation}
   \label{eq:respower_eqn}
@@ -190,40 +107,43 @@ and the standard deviation of each bin is:
 \end{equation}
 
 where $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
-$\sigma_{i}^\text{norm}$ ($\sigma_{ij}^\text{res}$) are the power and the 
+$\sigma_{i}^\text{norm}$ ($\sigma_{ij}^\text{res}$) are the 
+normalized (rescaled) power and the 
 standard deviation of the $j^\text{th}$ frequency bin from the 
-normalized (rescaled) spectrum of the $i^\text{th}$ frequency scan. 
+$i^\text{th}$ resonant-frequency scan. 
 The $\Delta\nu$ is the bin 
 width of spectrum (1~kHz) and  $P_{ij}^{s}$ is the KSVZ axion signal power. 
 The $h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]^2}$ 
 describes the Lorentzian response of the cavity, where 
-$\Delta\nu_{i}$ is the cavity line width, which depends on the resonant 
+$\Delta\nu_{i}$ is the cavity line width and depends on the resonant 
 frequency $\nu_{ci}$ and the loaded quality factor. 
 %
 If a signal appears in a certain frequency bin $j$, its expected power 
 will vary depending on the bin position due to the cavity's 
-Lorentzian response. The rescaling will take into account this effect.
+Lorentzian response. The rescaling will take into account this effect. 
+The procedure of the normalization and the rescaling also ensures that a 
+KSVZ axion signal will have a power $\delta_{ij}^\text{res}$ 
+that is approximately equal to unity. 
 
 \begin{figure} [htbp]
   \centering
-  \includegraphics[width=0.38\textwidth,height = 0.4\textwidth]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.png}
-  \includegraphics[width=0.52\textwidth,height = 0.4\textwidth]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
-  \caption{Left: Upper panel: The raw power spectrum (blue) and the output of 
-the SG filter (red) of one scan. Bottom panel: The normalized spectrum,  
-derived by taking the ratio of the raw spectrum to the SG filter and 
-subtracting unity from the ratio. 
-  Right: The rescaled power spectrum, obtained by multiplying the normalized 
-power with the ratio of the system noise to the expected axion signal power, 
-with the Lorentzian response of the cavity taken into account.}
+  \includegraphics[width=8.6cm]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.png}
+  \caption{Upper panel: The raw power spectrum (red points) and the output of 
+the SG filter (blue curve) of one scan. Bottom panel: The normalized 
+spectrum,  derived by taking the ratio of the raw spectrum to the SG filter 
+and subtracting unity from the ratio. }
   \label{fig:raw_sg_power}
 \end{figure}
 
-%\begin{figure} [htbp]
-%  \centering
-%  \includegraphics[width=0.4\textwidth,height = 0.4\textwidth]{figures/RescaledPower_vs_Freq_Step_0100.png}
-%  \caption{Rescaled power spectrum obtained by multiplying the normalized power with system noise and dividing expected axion signal power% taking the Lorentzian shape of cavity into account}
-%  \label{fig:res_spectrum}
-%\end{figure}
+\begin{figure} [htbp]
+  \centering
+  \includegraphics[width=8.6cm]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
+  \caption{
+  The rescaled power spectrum, obtained by multiplying the normalized 
+power with the ratio of the system noise to the expected axion signal power, 
+with the Lorentzian response of the cavity taken into account.}
+  \label{fig:rescaled_power}
+\end{figure}
 
 
 
@@ -270,7 +190,8 @@ The purpose of the weighting algorithm is to add different spectra vertically,
  particularly for the frequency bins that appear in multiple spectra.  
 Each spectrum was collected with a different cavity resonant frequency. 
 Therefore, if a signal appears in a certain frequency bin $j$, due to the
- difference in resonant frequency and Lorentzian response, the expected signal
+ difference in the resonant frequency and the Lorentzian response, the 
+expected signal
  power will be different in each spectrum $i$. The weighting algorithm is 
 expected to take this into account with a weight calculated for each bin $j$ of
  the normalized and rescaled spectrum $i$, as defined in Eq.~\eqref{eq:weight}.
@@ -308,11 +229,11 @@ number of spectra that share the same frequency bin $j$.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.4\textwidth,height = 0.3\textwidth]{figures/Power_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
-    \includegraphics[width=0.4\textwidth,height = 0.3\textwidth]{figures/Sigma_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
+    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
+    \includegraphics[width=8.6cm]{figures/Sigma_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
     \caption{The combined power $\delta$ following Eq.~\eqref{eq:comb_power} 
-(left) and the standard deviation $\sigma$ derived from 
-Eq.~\eqref{eq:comb_sigma} (right).}
+(upper) and the standard deviation $\sigma$ derived from 
+Eq.~\eqref{eq:comb_sigma} (lower).}
     \label{fig:power_sigma_comb}
 \end{figure}
 
@@ -354,7 +275,7 @@ were used to build the merged spectrum.
     w_{n} = \frac{L_{n}}{(\sigma_{n}^{c})^{2}} = \frac{L_{n}}{(M\sigma_{n}^\text{com})^{2}},
 \end{equation}
 
-where $M = 5$ is the number of merged bins.
+where $M = 5$ is the number of merged bins, and 
 
 %\begin{equation}
 %    \label{eq:axion_line_shape}
@@ -402,21 +323,26 @@ Before the collection of the CD102 data, a 5$\sigma$ SNR target was chosen,
 which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% confidence.
  After the merging as described in Section~\ref{sec:merge}, if there were 
 any potential signal with an SNR larger than 
-3.355$\sigma$, a rescan would be proceeded to check if it were a real signal or 
-a statistical fluctuation. 
+3.355$\sigma$, a rescan would be proceeded to check if it were a real signal 
+or a statistical fluctuation. 
 The procedure of the CD102 data taking was to perform a rescan after 
 covering every 10~MHz; the rescan was done by adjusting the tuning rod of the 
 cavity so to match the resonant frequency to the frequency of the candidate. 
-Most of the candidates were from the fluctuations because they were gone 
+In total, 22 candidates with an SNR greater than 3.355$\sigma$ were found. 
+Among them, 17 candidates were from the fluctuations because they were gone 
 after a few rescans. 
-Some of them reached SNR > 4$\sigma$ after rescanning; a portable 
-antenna outside the DR was used to probe if they came from external sources. 
-During the data taking, external signals at two frequencis from the instruments
-in the laboratory were detected. More details can be found in the 
+The remaining five candidates reached an SNR greater than $4\sigma$ after 
+rescanning; a 
+portable antenna outside the DR was used to probe if they came from external 
+sources. 
+The external signals in the frequency ranges of 4.710170 -- 4.710190~GHz and 
+4.747301 -- 4.747380~GHz from the instruments in the laboratory were detected, 
+therefore, no limits were placed for these two ranges.  
+More details can be found in the 
 TASEH instrumentation paper~\cite{TASEHInstrumentation}. 
 Figure~\ref{fig:power_sigma_merged} and Fig.~\ref{fig:SNR_merged} show the 
 power, the standard deviation, and the SNR of the merged spectrum after 
-performing the rescan, respectively. 
+including data from both the original scans and the rescans, respectively. 
 
 Since no candidates were found after the rescan, an upper limit on 
 the signal power $P_s$ was derived by setting $P_s$ equal to 
@@ -429,18 +355,19 @@ uncertainties.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[width=0.4\textwidth,height = 0.3\textwidth]{figures/Power_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \includegraphics[width=0.4\textwidth,height = 0.3\textwidth]{figures/Sigma_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+    \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+    \includegraphics[width=8.6cm]{figures/Sigma_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
     \caption{The merged power $\delta$ following Eq.~\eqref{eq:merged_power} 
-(left) and the standard deviation $\sigma$ derived from Eq.~\eqref{eq:merged_sigma} (right).}
+(upper) and the standard deviation $\sigma$ derived from Eq.~\eqref{eq:merged_sigma} (lower). The results shown were obtained using data from both the 
+original scans and the rescans.}
     \label{fig:power_sigma_merged}
 \end{figure}
 
 \begin{figure}[hbt!]
     \centering
     \includegraphics[width=8.6cm]{figures/SNR_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \caption{The signal-to-noise ratio (SNR) calculated using Eq.~\eqref{eq:merged_snr} for the merged spectrum including rescans. 
-No candidate exceed the threshold of 
+    \caption{The signal-to-noise ratio (SNR) calculated using Eq.~\eqref{eq:merged_snr} for the merged spectrum including data from both the original 
+scans and the rescans. No candidate exceeds the threshold of 
 $3.355\sigma$ (solid-black horizontal line). }
     \label{fig:SNR_merged}
 \end{figure}

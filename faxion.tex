@@ -1,4 +1,4 @@
-\section{Analysis of the Synthetic Axion Data}
+\section{Analysis of the Synthetic Axion Data}\label{sec:faxion}
 After TASEH finished collecting the CD102 data on November 15, 2021, 
 the synthetic axion signals were injected into the cavity and read out via the 
 same transmission line and amplification chain. The procedure 
@@ -10,28 +10,29 @@ calibration of the search sensitivity. Instead,
 a test with synthetic axion signals could be used to verify the procedures of 
 data acquisition and physics analysis. The 
 signal-to-noise ratio (SNR) of the frequency bin with maximum power from the 
-synthetic axion signals, at 4.708972~GHz, was set to $\approx 3.35\sigma$, 
+synthetic axion signals, at 4.708970~GHz, was set to $\approx 3.35\sigma$, 
 corresponding to a power of $\approx 6.03 \times 10^{-13}$~W in a 1-kHz 
 frequency bin.  
 
-Figures~\ref{fig:faxionstep}--\ref{fig:faxioncombine} present respectively the 
-raw power spectra in 24 frequency scans and the spectrum with the corresponding 
-SNR after combining the 24 spectra vertically. Before combining 
-the 24 spectra vertically, the SNR of the maximum-power bin from the spectrum 
-with a cavity resonant frequency of 4.708918~GHz was measured to be 
+The same analysis procedure as described in Section~\ref{sec:ana} was applied 
+to the data with synthetic axion signals. 
+Figure~\ref{fig:faxionstep} presents the individual raw power spectra in 
+24 frequency scans. Before combining 
+the 24 spectra vertically, the SNR of the maximum-power bin was measured to be 
 3.577$\sigma$; the SNR was slightly higher than 3.35$\sigma$ due to a 
 5\% difference in the noise fluctuation between the measurements from 
 the calibration and the measurements taken 
 right before injecting axion-like signals. After the vertical combination 
 of power spectra and the merging of five frequency bins, the SNR increased to 
 4.74$\sigma$ and 6.12$\sigma$, respectively. In addition to the 
-injected synthetic axion signal, a candidate at xxxx GHz was found after 
+injected synthetic axion signal, a candidate at 4.708288~GHz was found after 
 combining the spectra. Since it was not possible to perform a rescan later, 
-the real axion data from the two scans that had resonant frequencies close to the 
-candidate frequency were added so to mimic the rescan; the candidate 
+the real axion data from the two scans that had resonant frequencies close to 
+the candidate frequency were added so to mimic the rescan; the candidate 
  disappeared afterwards and was a statistical fluctuation.  
-Figure~\ref{fig:faxionmerge} presents the power spectrum after merging five 
-neighboring bins as described in Section~\ref{sec:merge}, 
+Figures~\ref{fig:faxioncombine}--~\ref{fig:faxionmerge} present 
+the spectra with the corresponding SNR, respectively, after combining the 24 
+spectra vertically and after merging five neighboring bins, 
 including both the 24 scans of the synthetic axion data and the two scans 
 of the real axion data. 
 The analysis results of the synthetic axion signals proved that an power 
@@ -51,10 +52,10 @@ with respect to each other with an arbitrary offset in the vertical scale.}
 
 \begin{figure}[htbp]                                                                                                  
     \centering                                                                                                                       
-    \includegraphics[width=0.48\textwidth]{figures/Power_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
-    \includegraphics[width=0.48\textwidth]{figures/SNR_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
-    \caption{The normalized power (left) and the 
-signal-to-noise ratio (right) after combining the spectra with overlapping 
+    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
+    \includegraphics[width=8.6cm]{figures/SNR_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
+    \caption{The normalized power (upper) and the 
+signal-to-noise ratio (lower) after combining the spectra with overlapping 
 frequencies vertically. The procedure and the weights for combination 
 are summarized in Section~\ref{sec:ana}.}                
 \label{fig:faxioncombine}                                                                                                            
@@ -63,9 +64,9 @@ are summarized in Section~\ref{sec:ana}.}
 
 \begin{figure}[htbp]                                                                                                  
     \centering                                                                                                                       
-    \includegraphics[width=0.48\textwidth]{figures/Power_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \includegraphics[width=0.48\textwidth]{figures/SNR_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \caption{The power (left) and the signal-to-noise ratio (right) after merging the power measured in five 
+    \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+    \includegraphics[width=8.6cm]{figures/SNR_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+    \caption{The power (upper) and the signal-to-noise ratio (lower) after merging the power measured in five 
 neighboring frequency bins. The procedure and the weights for merging 
 are summarized in Section~\ref{sec:ana}.}                
 \label{fig:faxionmerge}    

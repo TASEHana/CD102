@@ -36,8 +36,8 @@ the sum of the real data and a simulated axion signal.
  \item Minimize the difference between the function returned by the 
  SG filter and the input noise function (including the Lorentzian distribution 
 due to the cavity noise), when the SG filter is applied to
-a simulated spectrum that contains the axion signal and the spectrum 
-generated based on the input noise function. See Fig.~\ref{fig:sgcompare} 
+a spectrum that includes the simulation of the axion signal and 
+the simulation based on the input noise function. See Fig.~\ref{fig:sgcompare} 
 for a comparison of  the simulated spectrum, input noise function, and the 
 function returned by 
  the SG filter when a 3$^\text{rd}$-order polynomial and a window of 141 
@@ -50,7 +50,7 @@ as a function of window widths when the order of polynomial is
 of the measured power, assuming no signal is present in the 
 data. See Fig.~\ref{fig:noisegauss} for an example distribution 
 of the measured power from 1600 bins when the cavity resonant frequency 
-is set to 4.798147293~GHz; a Gaussian fit is performed to extract 
+is set to 4.798147~GHz; a Gaussian fit is performed to extract 
 $\mu_\text{noise}$ and $\sigma_\text{noise}$. Given the nature of the 
 thermal noise, the two variables are supposed to be related to 
 each other if proper window width and order are chosen:
@@ -59,7 +59,7 @@ each other if proper window width and order are chosen:
 \end{equation*}
 where $N_\text{spectra}$ is the number of spectra for averaging and 
 is related to the amount of integration time for each frequency step. In 
-general, $N_\text{spectra}\approx 1920000$. 
+general, $N_\text{spectra}=1920000-2520000$. 
 \end{itemize}
 
 In addition, one could choose to optimize for each frequency step 
@@ -78,7 +78,7 @@ The first source has negligible effect on the limits of \gagg\ while the
 latter three sources are studied and added in quadrature to obtain the total 
 systematic uncertainty. The systematic uncertainties on the \gagg\ limits 
 are displayed together with the central results in Section~\ref{sec:results}. 
-Overall the total relative systematic uncertainty is $\approx xxxx$\%.
+Overall the total relative systematic uncertainty is $\approx 3.4\%$.
 
 \begin{figure} [htbp]
   \centering
@@ -113,7 +113,7 @@ Overall the total relative systematic uncertainty is $\approx xxxx$\%.
   \includegraphics[width=8.6cm]{figures/sysSG_temphistogram.png}
   \caption{An example of the distribution of the measured power, after 
 removing the receiver gain and applying the SG filter, when 
-the cavity resonant frequency is 4.798147293~GHz. The distribution contains 
+the cavity resonant frequency is 4.798147~GHz. The distribution contains 
 1600 entries and each entry corresponds to the measured power, averaged
 over 1920000 spectra, in one frequency bin. The mean and the width returned by 
 a Gaussian fit to the distribution are used to determine the best choice of 
@@ -128,8 +128,12 @@ a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
   \includegraphics[width=8.6cm]{figures/sys_compareSG_4_201.png}
   \caption{The ratio of the limits on \gagg\ due to the different choices 
  of window width and order of polynomial in the SG filter, with respect to 
- the central results (a window width of 201 bins and 4$^\text{th}$-order 
- polynomial). }
+ the central results (a window width of 201 bins and the 4$^\text{th}$-order 
+ polynomial). The window width of 241 bins and the 4$^\text{th}$-order 
+ polynomial was obtained from the optimization after injecting an axion 
+signal on top of a simulated noise spectrum. The window width of 189 bins and 
+the 3$^\text{rd}$-order polynomial was obtained from the optimization 
+ after comparing the mean and the width of measured power distribution.}
   \label{fig:syssgfilter}
 \end{figure}
  
