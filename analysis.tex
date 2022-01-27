@@ -284,7 +284,7 @@ where $M = 5$ is the number of merged bins, and
 
 \begin{equation}
     \label{eq:Lq_integtal}
-    L_{n} = M \int_{\nu_a +\delta\nu_m + n\Delta\nu}^{\nu_a +\delta\nu_m + (n+1)\Delta\nu} f(\nu) \,d\nu,
+    L_{n} = M \int_{\nu_a +\delta\nu_m + (n-1)\Delta\nu}^{\nu_a +\delta\nu_m + n\Delta\nu} f(\nu) \,d\nu,
 \end{equation}
 
 
@@ -299,20 +299,20 @@ The power, the standard deviation and the SNR of the merged spectrum are:
 
 \begin{equation}
     \label{eq:merged_power}
-    \delta_{g}^\text{merged} = \frac{ \sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{n}}}{\sum_{n = 1}^{M} {w_{n}}}
+    \delta_{g}^\text{merged} = \frac{ \sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}}{\sum_{n = 1}^{M} {w_{g+n-1}}}
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_sigma}
-    \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum_{n = 1}^{M} (\sigma_{n}^{c})^2 \cdot {w_{n}^2}}}{\sum_{n = 1}^{M} {w_{n}}}
+    \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum_{n = 1}^{M} (\sigma_{g+n-1}^{c})^2 \cdot {w_{g+n-1}^2}}}{\sum_{n = 1}^{M} {w_{g+n-1}}}
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_snr}
-    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum_{n = 1}^{M}\delta_{n}^{c} \cdot {w_{n}}}{ \sqrt{\sum_{n = 1}^{M} (\sigma_{n}^{c})^2 \cdot {w_{n}^2}}}
+    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}}{ \sqrt{\sum_{n = 1}^{M} (\sigma_{g+n-1}^{c})^2 \cdot {w_{g+n-1}^2}}}
 \end{equation}
 
-where $g = 1,..,N-M+1$ is the number of bins in the final spectrum.
+where $g = 1,..,N-M+1$ is the number of bins in the final spectrum and N is the number of bins in the combined spectrum.
 
 
 %Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
