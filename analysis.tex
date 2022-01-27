@@ -11,7 +11,8 @@ time-dependent spectrum to obtain the frequency-dependent spectrum.
         %\item HEMT drift to predict noise and gain from the environmental parameters.
         %\item Use the results of high-electron-mobility-transistor(HEMT) drifting (see Section \ref{hemt_drifting}) to predict adding noise and gain; the input environmental parameters include monitoring temperatures, voltages of power supplies, etc.
         %\item Use Savitzky-Golay filter \cite{SGFilter} to remove the spectrum structure, then subtract the mean power.
-        \item Apply the Savitzky-Golay (SG) filter to remove the structure of the background in the frequency-dependent spectrum.
+        \item Apply the Savitzky-Golay (SG) filter to remove the structure 
+of the background in the frequency-dependent spectrum.
         \item Combine all power spectra from different frequency scans with 
 the weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
@@ -21,7 +22,7 @@ the weighting algorithm.
       the axion-two-photon coupling \gagg\ if no candidates were found.
     \end{enumerate}
 
-    The analysis was done by following the procedure similar to that 
+    The analysis is done by following the procedure similar to that 
 adopted by the HAYSTAC experiment ~\cite{HAYSTACII}.
 % \end{flushleft}
 
@@ -32,22 +33,23 @@ data were recorded and saved in the TDMS
 (Technical Data Management Streaming) files - a 
 binary format developed by National Instruments.
 %Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
-The fast Fourier Transform (FFT) was performed to convert the data into 
-frequency-dependent spectrum in which the measured power was calculated 
+The fast Fourier Transform (FFT) is performed to convert the data into 
+frequency-dependent spectrum in which the measured power is calculated 
 using the following equation:
 
 \begin{equation}
 \label{eq:4.1}
     \text{Power} = \frac{|\text{FFT}(I+i \cdot Q)|^{2}}{N \cdot 2R},
 \end{equation}
-
 where $N$ is the number of data points ($N  = 2000$ in the TASEH 
 CD102 data), and $R$ is the resistance of the signal analyzer (50~$\Omega$).
-The FFT was done for every one-millisecond subspectrum data. The integration 
+The FFT is done for every one-millisecond subspectrum data. The integration 
 time for each frequency scan was about 32-42 minutes, which resulted 
 in 1920000 to 2520000 subspectra; an average over these subspectra gives 
 the averaged frequency-dependent spectrum for each scan. 
-The frequency resolution of each spectrum is 1~kHz. 
+The frequency span in the spectrum from each resonant-frequency scan is 
+1.6~MHz while the 
+resolution is 1~kHz, giving 1600 frequency bins in each spectrum.  
 
 %\subsection{Savitzky Golay filter}
 \subsection{Remove the structure of the background}
@@ -61,8 +63,8 @@ output power spectrum, as shown in Fig.~\ref{fig:raw_sg_power}, is dominated
 by the noise of the system and an explanation for the structure can be found 
 in Appendix~\ref{sec:cavitynoise}. The Savitzky Golay (SG) 
 filter~\cite{SGFilter}, a digital filter that can smooth data without 
-distorting the signal tendency, was applied to remove the structure of the  
-background. The SG filter was performed on the averaged spectrum of each 
+distorting the signal tendency, is applied to remove the structure of the  
+background. The SG filter is performed on the averaged spectrum of each 
 frequency scan by fitting adjacent points of successive sub-sets of data with 
 an $n^\text{th}$-order polynomial. The result depends on two parameters: 
 the number of 
@@ -76,7 +78,7 @@ top of
 the noise data and found that they were consistent with the original choice 
 (see Section~\ref{sec:sys}). 
 
-The raw averaged spectrum was divided by the output of the SG filter, then  
+The raw averaged spectrum is divided by the output of the SG filter, then  
 unity is subtracted from the ratio to get the normalized spectrum 
 (Fig.~\ref{fig:raw_sg_power}).
 Therefore, if the axion signal exists, a power excess will be above zero.
@@ -86,14 +88,14 @@ adjusted by the tuning bar so to scan a large range of frequencies and to
 reduce the uncertainty of the noise at the overlapped region. Therefore, the 
 spectra of all the scans need to be combined to create one big spectrum. 
 Before doing this, 
-the normalized spectrum from each scan was rescaled by the system noise 
+the normalized spectrum from each scan is rescaled by the system noise 
 (detailed in Sec~\ref{sec:intronoise} and Sec~\ref{sec:calibration}) and the 
 signal power with the Lorentzian cavity response taken into account. 
-The system-noise temperature \tsys\ was calculated following Eq.~\eqref{eq:pn},
- where the frequency dependence of the added-noise temperature \ta\ was obtained 
-from the fitting function in Fig.~\ref{fig:hemtcalvsf}. The rescaled spectrum, 
-shown in 
-Fig.~\ref{fig:rescaled_power}, was computed with the following formula:
+The system-noise temperature \tsys\ is calculated following Eq.~\eqref{eq:pn},
+ where the frequency dependence of the added-noise temperature \ta\ is 
+obtained from the fitting function in Fig.~\ref{fig:hemtcalvsf}. The rescaled 
+spectrum, shown in 
+Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
 
 \begin{equation}
   \label{eq:respower_eqn}
@@ -105,7 +107,6 @@ and the standard deviation of each bin is:
   \label{eq:ressigma_eqn}
   \sigma_{ij}^\text{res} = \frac{k_{B}\tsys\Delta\nu }{P_{ij}^{s} h}\sigma_{i}^\text{norm},
 \end{equation}
-
 where $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
 $\sigma_{i}^\text{norm}$ ($\sigma_{ij}^\text{res}$) are the 
 normalized (rescaled) power and the 
@@ -213,7 +214,7 @@ the standard deviation, and the SNR of the combined spectrum, respectively.
 
 \begin{equation}
     \label{eq:comb_power}
-    \delta_{n}^\text{com} = \frac{ \sum_{1}^{k}\delta_{ij}^\text{res} \cdot {w_{ij}}}{\sum_{1}^{k} {w_{ij}}},
+    \delta_{n}^\text{com} = \frac{ \sum_{1}^{k}\left(\delta_{ij}^\text{res} \cdot {w_{ij}}\right)}{\sum_{1}^{k} {w_{ij}}},
 \end{equation}
 \begin{equation}
     \label{eq:comb_sigma}
@@ -221,9 +222,8 @@ the standard deviation, and the SNR of the combined spectrum, respectively.
 \end{equation}
 \begin{equation}
     \label{eq:comb_snr}
-    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\delta_{ij}^{res} \cdot {w_{ij}}}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
+    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\left(\delta_{ij}^{res} \cdot {w_{ij}}\right)}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
 \end{equation}
-
 with $i$ running from 1 to $k$ where $k$ is the 
 number of spectra that share the same frequency bin $j$.
 
@@ -254,7 +254,7 @@ Eq.\eqref{eq:comb_snr} of the combined spectrum. }
 The expected axion bandwidth is about 5~kHz at the frequency of 5~GHz. In 
 this paper, the interested frequency range is \flo -- \fhi~GHz and the bin 
 width is 1~kHz. Therefore, in order to maximize the SNR, five consecutive 
-bins with overlapping of the combined spectrum were merged to construct a 
+bins with overlapping of the combined spectrum are merged to construct a 
 final spectrum.
 The purpose of overlapping is to avoid the signal power broken into different 
 neighboring bins of the merged spectrum. Before defining the weights for 
@@ -265,8 +265,9 @@ $\sigma^{c}_n \rightarrow M \sigma^\text{com}_n$. This rescaling gives the
 expected mean of the normalized power $\mu^\text{com}_k = 1$ if a KSVZ axion 
 signal power leaves a fraction 1/$M$ of its power in the $k^\text{th}$ 
 bin of the combined spectrum.
-Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
-were used to build the merged spectrum. 
+Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
+based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
+are used to build the merged spectrum. 
 
 
 
@@ -274,7 +275,6 @@ were used to build the merged spectrum.
     \label{eq:merge_weight}
     w_{n} = \frac{L_{n}}{(\sigma_{n}^{c})^{2}} = \frac{L_{n}}{(M\sigma_{n}^\text{com})^{2}},
 \end{equation}
-
 where $M = 5$ is the number of merged bins, and 
 
 %\begin{equation}
@@ -286,10 +286,10 @@ where $M = 5$ is the number of merged bins, and
     \label{eq:Lq_integtal}
     L_{n} = M \int_{\nu_a +\delta\nu_m + (n-1)\Delta\nu}^{\nu_a +\delta\nu_m + n\Delta\nu} f(\nu) \,d\nu,
 \end{equation}
-
-
-where $n = 1,..,M$, $\nu_a$ is the axion frequency, $\delta\nu_m$ is the misalignment between $\nu_a$ and the lower bin boundaries
-in the combined spectrum and $\Delta\nu =$ 1 kHz is the bandwidth.
+where $n = 1,..,M$, $\nu_a=\left.\ma c^2\middle/h\right.$ is the axion frequency, 
+$\delta\nu_m$ is the misalignment between $\nu_a$ and the lower bin 
+boundaries in the combined spectrum and $\Delta\nu =1$~kHz is the frequency bin width. 
+The function $f(\nu)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
 
 %where $L_q$ is the integral of the line shape from the lower edge to higher 
 %edge of ${q^{th}}$ bin. 
@@ -299,20 +299,20 @@ The power, the standard deviation and the SNR of the merged spectrum are:
 
 \begin{equation}
     \label{eq:merged_power}
-    \delta_{g}^\text{merged} = \frac{ \sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}}{\sum_{n = 1}^{M} {w_{g+n-1}}}
+    \delta_{g}^\text{merged} = \frac{ \sum_{n = 1}^{M}\left(\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}\right)}{\sum_{n = 1}^{M} {w_{g+n-1}}},
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_sigma}
-    \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum_{n = 1}^{M} (\sigma_{g+n-1}^{c})^2 \cdot {w_{g+n-1}^2}}}{\sum_{n = 1}^{M} {w_{g+n-1}}}
+    \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum_{n = 1}^{M} \left(\sigma_{g+n-1}^{c} \cdot {w_{g+n-1}}\right)^2}}{\sum_{n = 1}^{M} {w_{g+n-1}}},
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_snr}
-    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum_{n = 1}^{M}\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}}{ \sqrt{\sum_{n = 1}^{M} (\sigma_{g+n-1}^{c})^2 \cdot {w_{g+n-1}^2}}}
+    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum_{n = 1}^{M}\left(\delta_{g+n-1}^{c} \cdot {w_{g+n-1}}\right)}{ \sqrt{\sum_{n = 1}^{M} \left(\sigma_{g+n-1}^{c} \cdot {w_{g+n-1}}\right)^2}},
 \end{equation}
-
-where $g = 1,..,N-M+1$ is the number of bins in the final spectrum and N is the number of bins in the combined spectrum.
+where $g = 1,..,N-M+1$ is the index for the frequency bins in the final spectrum.  
+The total number of bins in the combined (final merged) spectrum is $N$ ($N-M+1$). 
 
 
 %Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
@@ -337,7 +337,7 @@ portable antenna outside the DR was used to probe if they came from external
 sources. 
 The external signals in the frequency ranges of 4.710170 -- 4.710190~GHz and 
 4.747301 -- 4.747380~GHz from the instruments in the laboratory were detected, 
-therefore, no limits were placed for these two ranges.  
+therefore, no limits are placed for these two ranges.  
 More details can be found in the 
 TASEH instrumentation paper~\cite{TASEHInstrumentation}. 
 Figure~\ref{fig:power_sigma_merged} and Fig.~\ref{fig:SNR_merged} show the 
@@ -345,7 +345,7 @@ power, the standard deviation, and the SNR of the merged spectrum after
 including data from both the original scans and the rescans, respectively. 
 
 Since no candidates were found after the rescan, an upper limit on 
-the signal power $P_s$ was derived by setting $P_s$ equal to 
+the signal power $P_s$ is derived by setting $P_s$ equal to 
 $5\sigma_{q}^\text{merged}$ for a certain frequency bin $q$ in the merged 
 spectrum.  Then, the 95\% C.L. limits on the dimensionless parameter 
 \ggamma\ and the axion-two-photon coupling \gagg\ could be derived 

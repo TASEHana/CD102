@@ -45,8 +45,10 @@ preprint, %% for single-column, double-spacing
 \usepackage{bm}% bold math
 \usepackage{hyperref}% add hypertext capabilities
 \usepackage[mathlines]{lineno}% Enable numbering of text and display math
-\linenumbers\relax % Commence numbering lines
+%\usepackage{comment}
 
+\linenumbers %for preprint
+\relax % Commence numbering lines
 %\usepackage[showframe,%Uncomment any one of the following lines to test 
 %%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
 %%text={7in,10in},centering,
@@ -64,7 +66,8 @@ preprint, %% for single-column, double-spacing
 %\def\muev{\ensuremath{\mu~\mathrm{eV}}
 \newcommand{\tsys}{\ensuremath{\text{T}_\text{sys}}}
 \newcommand{\ta}{\ensuremath{\text{T}_\text{A}}}
-\newcommand{\muevcc}{\ensuremath{\,\mu\text{e\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^2}}
+%\newcommand{\muevcc}{\ensuremath{\,\mu\text{e\hspace{-.08em}V\hspace{-0.16em}/\hspace{-0.08em}}c^2}}
+\newcommand{\muevcc}{\ensuremath{\,\mu\text{e\hspace{-.08em}V}}}
 \newcommand{\MeV}{\ensuremath{\,\text{Me\hspace{-.08em}V}}}
 \newcommand{\GeV}{\ensuremath{\,\text{Ge\hspace{-.08em}V}}}
 \newcommand{\GeVinv}{\ensuremath{\,\text{Ge\hspace{-.08em}V}^{-1}}}
@@ -128,7 +131,7 @@ constraints on the $\gagg$ are placed in this mass region.
                               %display desired
 \maketitle
 
-\tableofcontents
+\tableofcontents %for preprint
 \input{introduction.tex}
 \input{taseh.tex}
 \input{hemtcalibration.tex}

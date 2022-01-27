@@ -49,8 +49,9 @@ as a function of window widths when the order of polynomial is
  \item Compare the mean $\mu_\text{noise}$ and the width $\sigma_\text{noise}$ 
 of the measured power, assuming no signal is present in the 
 data. See Fig.~\ref{fig:noisegauss} for an example distribution 
-of the measured power from 1600 bins when the cavity resonant frequency 
-is set to 4.798147~GHz; a Gaussian fit is performed to extract 
+of the measured power from the averaged spectrum of a 
+single scan, when the cavity resonant frequency 
+is 4.798147~GHz; a Gaussian fit is performed to extract 
 $\mu_\text{noise}$ and $\sigma_\text{noise}$. Given the nature of the 
 thermal noise, the two variables are supposed to be related to 
 each other if proper window width and order are chosen:
@@ -74,7 +75,8 @@ uncertainty from the SG filter.
 
 \end{itemize}
 
-The first source has negligible effect on the limits of \gagg\ while the 
+The first source of the systematic uncertainty 
+has negligible effect on the limits of \gagg\ while the 
 latter three sources are studied and added in quadrature to obtain the total 
 systematic uncertainty. The systematic uncertainties on the \gagg\ limits 
 are displayed together with the central results in Section~\ref{sec:results}. 
@@ -101,7 +103,7 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
   and the input noise function, when various values of window widths and 
   a 3$^\text{rd}$, a 4$^\text{th}$, or a 
   6$^\text{th}$-order polynomial are applied in the SG filter. In this 
-  example, the best choice is a 4$^\text{th}$-order polynomial with 
+  figure, the best choice is a 4$^\text{th}$-order polynomial with 
   a window width of 241 data points (bins). }
   \label{fig:sgoptimize}
 \end{figure}
@@ -114,8 +116,9 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
   \caption{An example of the distribution of the measured power, after 
 removing the receiver gain and applying the SG filter, when 
 the cavity resonant frequency is 4.798147~GHz. The distribution contains 
-1600 entries and each entry corresponds to the measured power, averaged
-over 1920000 spectra, in one frequency bin. The mean and the width returned by 
+1600 entries and each entry corresponds to the measured power 
+in one frequency bin, averaged
+over 1920000 subspectra. The mean and the width returned by 
 a Gaussian fit to the distribution are used to determine the best choice of 
 SG parameters. The mean $\mu_\text{noise}=3.2\times10^{-20}$~W in 
 a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
@@ -126,14 +129,15 @@ a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
 \begin{figure} [htbp]
   \centering
   \includegraphics[width=8.6cm]{figures/sys_compareSG_4_201.png}
-  \caption{The ratio of the limits on \gagg\ due to the different choices 
- of window width and order of polynomial in the SG filter, with respect to 
+  \caption{The ratios of the limits on \gagg\ due to the different choices 
+ of the window width and the order of polynomial in the SG filter, with 
+respect to 
  the central results (a window width of 201 bins and the 4$^\text{th}$-order 
  polynomial). The window width of 241 bins and the 4$^\text{th}$-order 
- polynomial was obtained from the optimization after injecting an axion 
+ polynomial were obtained from the optimization after injecting an axion 
 signal on top of a simulated noise spectrum. The window width of 189 bins and 
-the 3$^\text{rd}$-order polynomial was obtained from the optimization 
- after comparing the mean and the width of measured power distribution.}
+the 3$^\text{rd}$-order polynomial were obtained from the optimization 
+ after comparing the means and the widths of the measured power distributions.}
   \label{fig:syssgfilter}
 \end{figure}
  
