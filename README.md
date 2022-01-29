@@ -6,37 +6,12 @@ cd CD102_paper
 ```
 # How to compile
 
-## Download the zipped revtex4 file
+## Download the zipped revtex4 file and copy styles
 ```
-wget https://cdn.journals.aps.org/test/0e380411-3c3b-492a-8e56-2101d1d4822f/revtex-tds-2020-10-22.zip
-unzip revtex-tds-2020-10-22.zip
+./copyStyle
 ``` 
 
-## Put the tex style files in the same directory as your tex files
-```
-cp -p revtex-tds/tex/latex/revtex/* .
-```
-
-## Put the bib style files in the same directory as your tex files
-```
-cp -p revtex-tds/bibtex/bst/revtex/* .
-```
-
-## Remove the zipped file and unnecessary files
-```
-rm revtex-tds-2020-10-22.zip
-rm -rf revtex-tds
-```
-
-## Compile
-```
-pdflatex main.tex
-bibtex main
-pdflatex main.tex
-pdflatex main.tex
-```
-
-## Or compile with the following script
+## compile with the following script
 ```
 ./makePDF main
 ```
