@@ -95,21 +95,21 @@ reduce the uncertainty of the averaged noise power at the overlapped region.
 Therefore, the 
 spectra of all the scans need to be combined to create one big spectrum. 
 Before doing this, 
-the normalized spectrum from each scan is rescaled by $R_\text{scale}$, 
+the normalized spectrum from each scan is rescaled by $R_{ij}$, 
 and the rescaled spectrum, shown in 
 Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
 \begin{equation}
   \label{eq:respower_eqn}
-  \delta_{ij}^\text{res} = R_\text{scale}\delta_{ij}^\text{norm},
+  \delta_{ij}^\text{res} = R_{ij}\delta_{ij}^\text{norm},
 \end{equation}
 and the standard deviation of each bin is:
 \begin{equation}
   \label{eq:ressigma_eqn}
-  \sigma_{ij}^\text{res} = R_\text{scale}\sigma_{i}^\text{norm},
+  \sigma_{ij}^\text{res} = R_{ij}\sigma_{i}^\text{norm},
 \end{equation}
 where 
  \begin{equation}
- R_\text{scale} = \frac{k_{B}\tsys \Delta f_\text{bin} }{P_{ij}^\text{KSVZ} h_{ij}}.
+ R_{ij} = \frac{k_{B}\tsys \Delta f_\text{bin} }{P_{ij}^\text{KSVZ} h_{ij}}.
  \label{eq:Rratio}
  \end{equation}
 The $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
@@ -117,7 +117,7 @@ $\sigma_{i}^\text{norm}$ ($\sigma_{ij}^\text{res}$) are the
 normalized (rescaled) power and the 
 standard deviation of the $j^\text{th}$ frequency bin from the 
 $i^\text{th}$ resonant-frequency scan. 
-The factor $R_\text{scale}$ is the ratio of 
+The factor $R_{ij}$ is the ratio of 
 the system noise power to the expected signal power of the KSVZ axion 
 $P_{ij}^\text{KSVZ}$, with the Lorentzian cavity response $h_{ij}$ 
 taken into account. 
