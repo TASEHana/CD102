@@ -2,8 +2,7 @@
 \section{Introduction} \label{sec:intro}
 The axion is a hypothetical particle predicted as a consequence of a  
 solution to the strong CP problem~\cite{strongCPI,strongCPII,strongCPIII}, 
-i.e. why the product of the charge 
-conjugation (C) and parity (P) symmetries is preserved in the strong 
+i.e. why the CP symmetry is conserved in the strong 
 interactions when there is an explicit CP-violating term in the QCD 
 Lagrangian. In other words, why is the electric dipole moment 
 of the neutron so tiny:  
@@ -68,16 +67,18 @@ $\approx \muevcc$, as first put forward by
 Sikivie~\cite{SikivieI,SikivieII},  
 are haloscopes consisting of a microwave cavity immersed in a strong static 
 magnetic field and operated at a cryogenic temperature. 
-In the presence of an external magnetic field, the ambient 
-oscillating axion field induces an electromagnetic field that oscillates with 
-a microwave frequency $\nu$ set by the total energy of the axion: 
-$h\nu=E_a=\ma c^2 + \frac{1}{2}\ma v^2$. The induced electromagnetic field  
-%and the microwave cavity act as coupled oscillators and resonate when the 
-resonantly drives 
-%frequencies of the electromagnetic modes in the cavity match $\nu$; 
-the electromagnetic modes in the cavity with a resonant frequency $\nu$; 
-the signal 
-power is further delivered %in the form of microwave photons and 
+%In the presence of an external magnetic field, the ambient 
+%oscillating axion field induces an electromagnetic field that oscillates with 
+%a microwave frequency $f$ set by the total energy of the axion: 
+%$hf=E_a=\ma c^2 + \frac{1}{2}\ma v^2$. The induced electromagnetic field  
+%resonantly drives 
+%the electromagnetic modes in the cavity with a resonant frequency $f$; 
+In the presence of an external magnetic field, the ambient oscillating axion 
+field drives the cavity and they resonate when the frequencies of the 
+electromagnetic 
+modes in the cavity match the microwave frequency $f$, where $f$ is set by 
+the total energy of the axion: $hf=E_a=\ma c^2 + \frac{1}{2}\ma v^2$; the 
+signal power is further delivered %in the form of microwave photons and 
 %readout with a low-noise amplifier. 
 to the readout probe followed by a low-noise linear amplifier. 
 The axion mass is unknown, therefore, 
@@ -174,14 +175,14 @@ to be spherically symmetric and close to be isothermal, which results in a
 velocity distribution similar to the Maxwell-Boltzmann distribution. The 
 distribution of the measured signal frequency can be further derived from the 
 velocity distribution after a change of variables and set 
-\(h\nu_a = \ma c^2\). Previous experimental results typically adopt the 
-following function for frequency $\nu\ge\nu_a$: 
+\(hf_a = \ma c^2\). Previous experimental results typically adopt the 
+following function for frequency $f\ge f_a$: 
 \begin{equation}
-f(\nu) = \frac{2}{\sqrt{\pi}}\sqrt{\nu-\nu_a}\left(\frac{3}{\alpha}\right)^{3/2}
-e^{\frac{-3\left(\nu-\nu_a\right)}{\alpha}}, 
+\mathcal{F}(f) = \frac{2}{\sqrt{\pi}}\sqrt{f-f_a}\left(\frac{3}{\alpha}\right)^{3/2}
+e^{\frac{-3\left(f-f_a\right)}{\alpha}}, 
 \label{eq:simplesignal}
 \end{equation}
-where $\alpha\equiv  \nu_a \left<v^2\right>/c^2$. For a Maxwell-Boltzmann velocity 
+where $\alpha\equiv  f_a \left<v^2\right>/c^2$. For a Maxwell-Boltzmann velocity 
 distribution, the variance $\left<v^2\right>$ and the most probable velocity 
 (speed) $v_p$ are related to each other:
 $\left<v^2\right>=3v_p^2/2=$(270~km/s)$^2$, where $v_p=220$~km/s is the local 
@@ -214,8 +215,8 @@ strong evidence for any particular choice of the velocity distribution,
 the results without an assumption of signal line shape and the results 
 with a simple Gaussian weight are also presented for comparison. 
 In addition, a signal line width 
-$\Delta\nu_a=\ma\left<v^2\right>/h\simeq$~5~kHz, which is much smaller than 
-the TASEH cavity line width $\nu_a/Q_L\simeq$~250~kHz, is assumed and 
+$\Delta f_a=\ma\left<v^2\right>/h\simeq$~5~kHz, which is much smaller than 
+the TASEH cavity line width $f_a/Q_L\simeq$~250~kHz, is assumed and 
 five frequency bins are merged to perform the final analysis. For a signal 
 line shape as described in Eq.~\eqref{eq:simplesignal}, a 5-kHz bandwidth 
 includes about 95\% of the distribution.
@@ -228,8 +229,8 @@ includes about 95\% of the distribution.
 %(see Section~\ref{sec:ana}). The results including 
 %Eq.~\eqref{eq:simplesignal} in the weights for merging are presented only 
 %for comparison. A signal line width 
-%$\Delta\nu_a=\ma\left<v^2\right>/h\simeq$~5~kHz, which is much smaller than 
-%the TASEH cavity line-width $\nu_a/Q_L\simeq$~250~kHz, is still assumed and 
+%$\Delta f_a=\ma\left<v^2\right>/h\simeq$~5~kHz, which is much smaller than 
+%the TASEH cavity line-width $f_a/Q_L\simeq$~250~kHz, is still assumed and 
 %five frequency bins are merged to perform the final analysis. 
 
  
@@ -238,50 +239,73 @@ includes about 95\% of the distribution.
 Several physics processes can contribute to the total noise and all of them 
 can be seen as Johnson thermal noise at some effective temperature, or the 
 so-called system noise temperature \tsys. The total noise power in a 
-bandwidth $\Delta\nu$ is then:
+bandwidth $b$ is then:
 \begin{equation}
-  P_n = k_B\tsys\Delta\nu, 
+  P_n = k_B\tsys b, 
 \end{equation}
 where $k_B$ is the Boltzmann constant. 
 The system noise temperature \tsys\ has three major components: 
 \begin{equation}
-  k_B\tsys = h\nu\left(\frac{1}{e^{\left.h\nu\right/k_{B}T_\mathrm{cavity}}-1} + \frac{1}{2} \right) + k_B\ta. 
+%  k_B\tsys = hf\left(\frac{1}{e^{\left.hf\right/k_{B}T_\mathrm{cavity}}-1} + \frac{1}{2} \right) + k_B\ta. 
+  \tsys = T_\text{b} + T_\text{qn}  + \ta,
 \label{eq:pn}
 \end{equation}
- The three terms in Eq.~\eqref{eq:pn} correspond to: (i) the blackbody radiation 
-from the cavity at temperature $T_\mathrm{cavity}$, (ii) the quantum noise 
-associated with the zero-point fluctuation of the blackbody gas, and (iii) the 
-noise added by the receiver, which is expressed in terms of an effective 
-temperature \ta. Equation~\eqref{eq:pn} implies 
+where 
+\begin{equation}
+   T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right..
+\end{equation}
+ The three terms in Eq.~\eqref{eq:pn} correspond to the effective 
+temperatures of the following noise sources: (i) $T_\text{b}$, the blackbody 
+radiation from the cavity at a physical temperature $T_\mathrm{c}$, (ii) 
+$T_\text{qn}$, the quantum noise 
+associated with the zero-point fluctuation of the vacuum, and (iii) \ta, the 
+noise added by the receiver (mainly from the first-stage amplifier). 
+Equation~\eqref{eq:pn} implies 
 that the noise spectrum has little dependence on the frequency 
 (white spectrum) for the narrow bandwidth considered in the experiment. 
-However, the noise spectrum observed by TASEH 
-is actually Lorentzian due to a temperature difference between the cavity 
-and the transmission line in the dilution refrigerator. More details may be 
-found in Sec.~\ref{sec:taseh} and Appendix~\ref{sec:cavitynoise}. 
+However, apart from the flat baseline as described by 
+Eq.~\eqref{eq:pn}, the noise spectrum observed by TASEH has an additional 
+component with a Lorentzian shape due to the higher temperature at the 
+cavity with respect to the temperature in the DR. More details may be 
+found in Sec.~\ref{sec:taseh} and Appendix~\ref{sec:cavitynoise}. The 
+Lorentzian component will be removed from the measured spectrum and only 
+the baseline \tsys\ will be used in the final analysis (Sec.~\ref{sec:ana}). 
 
 Using the operation parameters of TASEH in Table~\ref{tab:tasehbenchmark} and 
 the results from the calibration of readout electronics, 
-the effective temperatures of these three sources are estimated to be about 
+the values of $T_\text{b}$, $T_\text{qn}$, and \ta\ are estimated to be about 
 0.07~K, 0.12~K, and \noise~K, respectively.  
-Therefore, the value of \tsys\ for TASEH 
+Therefore, the baseline value of \tsys\ for TASEH 
 is about 2.1--2.4~K, which gives a noise power of approximately 
-$\left(1.5-1.7\right)\times 10^{-19}$~W 
-for a bandwidth of 5~kHz (the assumed axion signal line-width), three 
+$\left(1.5-1.7\right)\times 10^{-19}$~W within the 5-kHz axion signal 
+line-width, three 
 orders of magnitude larger than the signal. Nevertheless, what matters in the 
 analysis is the signal significance, or the so-called signal-to-noise ratio 
 (SNR) using the standard terminology of axion experiments, i.e. the ratio of 
-the signal power to the uncertainty in the estimation of 
-the noise power:
+the signal power to the fluctuation in the averaged noise power spectrum 
+$\sigma_n$. 
+
+%Assuming that the amplitude distribution of the noise voltage within a 
+%bandwidth is Gaussian, the $\sigma_n$ can be expressed below 
+%according to Dicke's Radiometer Equation~\cite{Dicke}: 
+According to Dicke's Radiometer Equation~\cite{Dicke}, the $\sigma_n$ 
+is given by: 
 \begin{eqnarray}
-   \text{SNR} & = & \frac{P_s}{\delta P_n} = \frac{P_s}{P_n}\sqrt{\Delta\nu_a\tau}, \nonumber \\
-              & = & \frac{P_s}{k_B\tsys}\sqrt{\frac{\tau}{\Delta\nu_a}},
+ \sigma_n  &=&  \frac{P_n}{\sqrt{N_\text{avg}}}, \nonumber \\
+           &=&  \frac{P_n}{\sqrt{t\Delta f}}, \nonumber \\
+           &=&  k_B\tsys\sqrt{\frac{\Delta f}{t}} 
+ \label{eq:sigman}
+\end{eqnarray}
+where $N_\text{avg}$ is the number of noise power spectra used in the 
+average; it is related to the amount of data integration time $t$ 
+and the bandwidth over which a single measurement is made $\Delta f$.  
+The SNR will therefore be: 
+\begin{eqnarray}
+   \text{SNR} & = & \frac{P_s}{\sigma_n}, \nonumber \\
+              & = & \frac{P_s}{k_B\tsys}\sqrt{\frac{t}{\Delta f}},
  \label{eq:SNR}
 \end{eqnarray}  
-where $\tau$ is the amount of data integration time. Equation~\eqref{eq:SNR} 
-can be derived from Dicke's Radiometer Equation~\cite{Dicke}, assuming that 
-the amplitude distribution of the noise voltage within a bandwidth 
-$\Delta\nu_a$ is Gaussian. Combining Eq.~\eqref{eq:ps} and Eq.~\eqref{eq:SNR},
+Combining Eq.~\eqref{eq:ps} and Eq.~\eqref{eq:SNR},
 one could see that the SNR is maximized by an experimental setup with 
 a strong magnetic field, a large cavity volume, an efficient cavity 
 resonant mode, a receiver with low system noise temperature, and a 

@@ -6,13 +6,13 @@ order to achieve this, the analysis procedure includes the following steps:
     \begin{enumerate}
         %\item Read raw data (I, Q) from tdms file and do Fast Fourier transform every 1 millisecond of spectrum, then average all over spectra in 1 second to get power spectrum.
         \item Perform fast Fourier transform (FFT) on the 
-time-dependent spectrum to obtain the frequency-dependent spectrum.
+IQ time series data to obtain the frequency-domain power spectrum.
         %\item Divide the measured power by the gains from the receiver chain to retrieve real power from cavity.
         %\item HEMT drift to predict noise and gain from the environmental parameters.
         %\item Use the results of high-electron-mobility-transistor(HEMT) drifting (see Section \ref{hemt_drifting}) to predict adding noise and gain; the input environmental parameters include monitoring temperatures, voltages of power supplies, etc.
         %\item Use Savitzky-Golay filter \cite{SGFilter} to remove the spectrum structure, then subtract the mean power.
         \item Apply the Savitzky-Golay (SG) filter to remove the structure 
-of the background in the frequency-dependent spectrum.
+of the background in the frequency-domain power spectrum.
         \item Combine all power spectra from different frequency scans with 
 the weighting algorithm.
         %\item Cause the expected Axion bandwidth, and our frequency resolution is 1KHz, so we need to merge the bin.
@@ -28,13 +28,13 @@ adopted by the HAYSTAC experiment ~\cite{HAYSTACII}.
 
 %\subsection{Tdms}
 \subsection{Fast Fourier transform}
-The in-phase $I(t)$ and quadrature $Q(t)$ components of the time-dependent 
-data were recorded and saved in the TDMS 
+The in-phase $I(t)$ and quadrature $Q(t)$ components of the time-domain 
+data were sampled and saved in the TDMS 
 (Technical Data Management Streaming) files - a 
 binary format developed by National Instruments.
 %Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
-The fast Fourier Transform (FFT) is performed to convert the data into 
-frequency-dependent spectrum in which the measured power is calculated 
+The FFT is performed to convert the data into 
+frequency-domain power spectrum in which the measured power is calculated 
 using the following equation:
 
 \begin{equation}
@@ -42,11 +42,12 @@ using the following equation:
     \text{Power} = \frac{|\text{FFT}(I+i \cdot Q)|^{2}}{N \cdot 2R},
 \end{equation}
 where $N$ is the number of data points ($N  = 2000$ in the TASEH 
-CD102 data), and $R$ is the resistance of the signal analyzer (50~$\Omega$).
+CD102 data), and $R$ is the input resistance of the signal analyzer 
+(50~$\Omega$).
 The FFT is done for every one-millisecond subspectrum data. The integration 
 time for each frequency scan was about 32-42 minutes, which resulted 
 in 1920000 to 2520000 subspectra; an average over these subspectra gives 
-the averaged frequency-dependent spectrum for each scan. 
+the averaged frequency-domain power spectrum for each scan. 
 The frequency span in the spectrum from each resonant-frequency scan is 
 1.6~MHz while the 
 resolution is 1~kHz, giving 1600 frequency bins in each spectrum.  
@@ -58,8 +59,9 @@ resolution is 1~kHz, giving 1600 frequency bins in each spectrum.
 In the absence of the axion signal, the output data spectrum is simply the 
 noise from the cavity and the amplification chain. If axions are present 
 in the cavity, the signal will be buried in the noise because the 
-signal power is very weak. Therefore, the structure of the raw 
-output power spectrum, as shown in Fig.~\ref{fig:raw_sg_power}, is dominated 
+signal power is very weak. Therefore, the structure of the raw averaged 
+output power spectrum, as shown in the upper panel 
+Fig.~\ref{fig:raw_sg_power}, is dominated 
 by the noise of the system and an explanation for the structure can be found 
 in Appendix~\ref{sec:cavitynoise}. The Savitzky Golay (SG) 
 filter~\cite{SGFilter}, a digital filter that can smooth data without 
@@ -71,8 +73,12 @@ the number of
 data points used for fitting, the so-called window width, and the order of 
 the polynomial. If the window is too wide, the filter will not remove small 
 structures, and if it is too narrow, it may kill the signal. 
-The window and the order were first chosen during the data taking based on 
-the structure of data and the ratio of the raw data to the filter output. 
+%The window and the order were first chosen during the data taking based on 
+%the structure of data, by requiring the ratio of the raw data to the filter 
+%output consistent with unity.  
+The window and the order were first chosen during the data taking, by 
+requiring the ratio of the raw data to the filter 
+output consistent with unity.  
 After the data taking, they were optimized by injecting an axion signal on 
 top of 
 the noise data and found that they were consistent with the original choice 
@@ -80,44 +86,49 @@ the noise data and found that they were consistent with the original choice
 
 The raw averaged spectrum is divided by the output of the SG filter, then  
 unity is subtracted from the ratio to get the normalized spectrum 
-(Fig.~\ref{fig:raw_sg_power}).
-Therefore, if the axion signal exists, a power excess will be above zero.
+ (lower panel of Fig.~\ref{fig:raw_sg_power}); 
+if the axion signal exists, a power excess will be above zero.
 %After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
 During the data taking, the resonant frequency of the cavity was  
 adjusted by the tuning bar so to scan a large range of frequencies and to 
-reduce the uncertainty of the noise at the overlapped region. Therefore, the 
+reduce the uncertainty of the averaged noise power at the overlapped region. 
+Therefore, the 
 spectra of all the scans need to be combined to create one big spectrum. 
 Before doing this, 
-the normalized spectrum from each scan is rescaled by the system noise 
-(detailed in Sec~\ref{sec:intronoise} and Sec~\ref{sec:calibration}) and the 
-signal power with the Lorentzian cavity response taken into account. 
-The system-noise temperature \tsys\ is calculated following Eq.~\eqref{eq:pn},
- where the frequency dependence of the added-noise temperature \ta\ is 
-obtained from the fitting function in Fig.~\ref{fig:hemtcalvsf}. The rescaled 
-spectrum, shown in 
+the normalized spectrum from each scan is rescaled by $R_\text{scale}$, 
+and the rescaled spectrum, shown in 
 Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
-
 \begin{equation}
   \label{eq:respower_eqn}
-  \delta_{ij}^\text{res} = \frac{k_{B}\tsys \Delta\nu }{P_{ij}^{s} h}\delta_{ij}^\text{norm},
+  \delta_{ij}^\text{res} = R_\text{scale}\delta_{ij}^\text{norm},
 \end{equation}
-
 and the standard deviation of each bin is:
 \begin{equation}
   \label{eq:ressigma_eqn}
-  \sigma_{ij}^\text{res} = \frac{k_{B}\tsys\Delta\nu }{P_{ij}^{s} h}\sigma_{i}^\text{norm},
+  \sigma_{ij}^\text{res} = R_\text{scale}\sigma_{i}^\text{norm},
 \end{equation}
-where $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
+where 
+ \begin{equation}
+ R_\text{scale} = \frac{k_{B}\tsys \Delta f_\text{bin} }{P_{ij}^\text{KSVZ} h_{ij}}.
+ \label{eq:Rratio}
+ \end{equation}
+The $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
 $\sigma_{i}^\text{norm}$ ($\sigma_{ij}^\text{res}$) are the 
 normalized (rescaled) power and the 
 standard deviation of the $j^\text{th}$ frequency bin from the 
 $i^\text{th}$ resonant-frequency scan. 
-The $\Delta\nu$ is the bin 
-width of spectrum (1~kHz) and  $P_{ij}^{s}$ is the KSVZ axion signal power. 
-The $h = \frac{1}{1 + [2(\nu_{ij} - \nu_{ci})/\Delta\nu_{i}]^2}$ 
+The factor $R_\text{scale}$ is the ratio of 
+the system noise power to the expected signal power of the KSVZ axion 
+$P_{ij}^\text{KSVZ}$, with the Lorentzian cavity response $h_{ij}$ 
+taken into account. 
+The system-noise temperature \tsys\ is calculated following Eq.~\eqref{eq:pn},
+ where the frequency dependence of the added-noise temperature \ta\ is 
+obtained from the fitting function in Fig.~\ref{fig:hemtcalvsf}. 
+The $\Delta f_\text{bin}$ is the bin width of spectrum (1~kHz). 
+The $h_{ij} = \frac{1}{1 + [2(f_{ij} - f_{ci})/\Delta f_{ci}]^2}$ 
 describes the Lorentzian response of the cavity, where 
-$\Delta\nu_{i}$ is the cavity line width and depends on the resonant 
-frequency $\nu_{ci}$ and the loaded quality factor. 
+$\Delta f_{ci}$ is the cavity line width which depends on the resonant 
+frequency $f_{ci}$ and the loaded quality factor. 
 %
 If a signal appears in a certain frequency bin $j$, its expected power 
 will vary depending on the bin position due to the cavity's 
@@ -129,8 +140,9 @@ that is approximately equal to unity.
 \begin{figure} [htbp]
   \centering
   \includegraphics[width=8.6cm]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.png}
-  \caption{Upper panel: The raw power spectrum (red points) and the output of 
-the SG filter (blue curve) of one scan. Bottom panel: The normalized 
+  \caption{Upper panel: The raw averaged power spectrum (red points) and the 
+output of 
+the SG filter (blue curve) of one scan. Lower panel: The normalized 
 spectrum,  derived by taking the ratio of the raw spectrum to the SG filter 
 and subtracting unity from the ratio. }
   \label{fig:raw_sg_power}
@@ -141,7 +153,8 @@ and subtracting unity from the ratio. }
   \includegraphics[width=8.6cm]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
   \caption{
   The rescaled power spectrum, obtained by multiplying the normalized 
-power with the ratio of the system noise to the expected axion signal power, 
+power with the ratio of the system noise power to the expected signal power of 
+the KSVZ axion, 
 with the Lorentzian response of the cavity taken into account.}
   \label{fig:rescaled_power}
 \end{figure}
@@ -152,15 +165,15 @@ with the Lorentzian response of the cavity taken into account.}
 
 %\begin{equation}
 %    \label{eq:ts_mu}
-%    \mu = k_{B} \cdot T_{S} \cdot \Delta \nu 
+%    \mu = k_{B} \cdot T_{S} \cdot \Delta f 
 %\end{equation}
 %\begin{equation}
 %    \label{eq:ts_sigma}
-%    \sigma = \frac{k_{B} \cdot T_{S} \cdot \Delta \nu}{\sqrt{N}}
+%    \sigma = \frac{k_{B} \cdot T_{S} \cdot \Delta f}{\sqrt{N}}
 %\end{equation}
 
 %If we treat the spectrum after the SG filter as a pure noise, we know that the system temperature of a white noise can be calculated by $\mu$ and $\sigma$ (Eq.\eqref{eq:ts_mu}) (Eq.\eqref{eq:ts_sigma}),
-%where $k_{B}$ is the Boltzmann constant, $T_{S}$ is the system temperature, $\Delta \nu$ is the frequency resolution and N is the number of averaging. \\
+%where $k_{B}$ is the Boltzmann constant, $T_{S}$ is the system temperature, $\Delta f$ is the frequency resolution and N is the number of averaging. \\
 %If the chosen window is appropriate, the system temperature estimated from $\mu$ and $\sigma$ should be consistent  with each other. \\
 
 %We also did some studies to check if the SG filter removed the axion signal. Assuming a signal bandwidth of 5 kHz, we added the signal into noise spectrum and applied the SG filter. The result shows that the filter does not suppress the axion signal as given in Fig.\ref{fig:weighted_snr}.
@@ -277,19 +290,15 @@ are used to build the merged spectrum.
 \end{equation}
 where $M = 5$ is the number of merged bins, and 
 
-%\begin{equation}
-%    \label{eq:axion_line_shape}
-%    f(\nu) = \frac{2}{\sqrt{\pi}}\sqrt{\nu - \nu_a} \left( \frac{3}{\nu_a \big \langle \beta^{2} \big \rangle }\right)^{\frac{3}{2}} e^{- \frac{3(\nu-\nu_a)}{\nu_a \big \langle \beta^{2} \big \rangle}}
-%\end{equation}
 
 \begin{equation}
     \label{eq:Lq_integtal}
-    L_{n} = M \int_{\nu_a +\delta\nu_m + (n-1)\Delta\nu}^{\nu_a +\delta\nu_m + n\Delta\nu} f(\nu) \,d\nu,
+    L_{n} = M \int_{f_a +\delta f_m + (n-1)\Delta f}^{f_a +\delta f_m + n\Delta f} \mathcal{F}(f) \,df,
 \end{equation}
-where $n = 1,..,M$, $\nu_a=\left.\ma c^2\middle/h\right.$ is the axion frequency, 
-$\delta\nu_m$ is the misalignment between $\nu_a$ and the lower bin 
-boundaries in the combined spectrum and $\Delta\nu =1$~kHz is the frequency bin width. 
-The function $f(\nu)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
+where $n = 1,..,M$, $f_a=\left.\ma c^2\middle/h\right.$ is the axion frequency, 
+$\delta f_m$ is the misalignment between $f_a$ and the lower bin 
+boundaries in the combined spectrum and $\Delta f =1$~kHz is the frequency bin width. 
+The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
 
 %where $L_q$ is the integral of the line shape from the lower edge to higher 
 %edge of ${q^{th}}$ bin. 
