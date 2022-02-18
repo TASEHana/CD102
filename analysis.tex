@@ -258,8 +258,11 @@ the standard deviation, and the SNR of the combined spectrum, respectively.
 %    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\left(\delta_{ij}^{res} \cdot {w_{ij}}\right)}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
     \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^{res} \cdot {w_{ijn}}\right)}{ \sqrt{\sum\limits_{i}\sum\limits_{j}(\sigma_{ij}^{res} \cdot {w_{ijn}})^2}}.
 \end{equation} 
-For each bin $n$ in the combined spectrum, there are $m_n$ non-vanishing contributions to the sums above. In 
-general, the value of $m_n$ is XXXX. 
+For each bin $n$ in the combined spectrum, there are $m_n$ non-vanishing 
+contributions to the sums above. The value of $m_n$ ranges from 2 to 26; 
+in general the leftmost bin or the bin with the smallest frequency 
+(the rightmost bin or the bin with the highest frequency) in each scan has 
+the minimum (maximum) number of $m_n$. 
 
 
 \begin{figure}[h]
@@ -389,8 +392,11 @@ including data from both the original scans and the rescans, respectively.
 
 Since no candidates were found after the rescan, an upper limit on 
 the signal power $P_s$ is derived by setting $P_s$ equal to 
-$5\sigma_{g}^\text{merged}$ for a certain frequency bin $g$ in the merged 
-spectrum.  Then, the 95\% C.L. limits on the dimensionless parameter 
+$5\sigma_{g}^\text{merged}\times P_{g}^\text{KSVZ}$, where 
+the $\sigma_{g}^\text{merged}$ and $P_{g}^\text{KSVZ}$ are 
+the standard deviation and the expected signal power for the KSVZ axion 
+for a certain frequency bin $g$ in the merged spectrum. 
+Then, the 95\% C.L. limits on the dimensionless parameter 
 \ggamma\ and the axion-two-photon coupling \gagg\ could be derived 
 according to Eq.~\eqref{eq:ps} and Eq.~\eqref{eq:grelation}. 
 See Sec.~\ref{sec:results} for the final limits including the systematic 
