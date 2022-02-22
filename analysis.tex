@@ -16,8 +16,20 @@ the weighting algorithm.
       the axion-two-photon coupling \gagg\ if no candidates were found.
     \end{enumerate}
 
-    The analysis is done by following the procedure similar to that 
-adopted by the HAYSTAC experiment ~\cite{HAYSTACII}.
+    The analysis follows the procedure similar to that 
+developed by the HAYSTAC experiment~\cite{HAYSTACII}. The important points  
+and formulas for each step are 
+listed below for the convenience of the readers. Note there are a few  
+small differences between the HAYSTAC analysis and the one presented here. 
+In this paper, the uncertainties are considered to be uncorrelated between 
+different frequency bins while Ref.~\cite{HAYSTACII} takes into account 
+the correlation. The frequency-domain spectra processed by each intermediate 
+step are shown. The central results of the \gagg\ limits assume the signal 
+line shape described by Eq.~\eqref{eq:simplesignal} as in Ref.~\cite{HAYSTACII}, and 
+in addition the limits without an assumption of signal line shape (flat 
+signal distribution) and the limits assuming a simple Gaussian shape are 
+also shown for comparison in Sec.~\ref{sec:results}.
+
 % \end{flushleft}
 
 %\subsection{Tdms}
@@ -309,15 +321,16 @@ based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}],
 are used to build the merged spectrum: 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{gk} = \frac{L_{gk}}{(\sigma_{g+k-1}^\text{com})^{2}},
+    w_{gk} = \frac{L_{k}}{(\sigma_{g+k-1}^\text{com})^{2}},
 \end{equation}
  in which 
 \begin{equation}
     \label{eq:Lq_integtal}
-    L_{gk} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df. 
+    L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df. 
 \end{equation}
 Here, $g = 1,..,N-M+1$ is the index for 
-the frequency bins in the final spectrum and $M=5$ is the number of merged bins. 
+the frequency bins in the final spectrum and $M=5$ is the number of merged 
+bins. 
 The total number of bins in the combined (final merged) spectrum is
 $N$ ($N-M+1$). 
 The variable $k$ is the index within the group of bins for merging and 
@@ -352,12 +365,12 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
 %the frequency bins in the final spectrum.  
 %The total number of bins in the combined (final merged) spectrum is 
 %$N$ ($N-M+1$). 
-Without the multiplication factor $M$ in 
-Eqs.~\eqref{eq:merged_power}--~\eqref{eq:merged_sigma}, the results of the two equations 
-simply provide the weighted averages of RDP and standard deviation, respectively.   
-Assuming that the axion signal leaves a fraction $1/M$ of its power in one 
-frequency bin, adding the factor $M$ converts the average into a summation of the values in the 
-five bins and can recover the full size of the axion signal. 
+%Without the multiplication factor $M$ in 
+%Eqs.~\eqref{eq:merged_power}--~\eqref{eq:merged_sigma}, the results of the two equations 
+%simply provide the weighted averages of RDP and standard deviation, respectively.   
+%Assuming that the axion signal leaves a fraction $1/M$ of its power in one 
+%frequency bin, adding the factor $M$ converts the average into a summation of the values in the 
+%five bins and can recover the full size of the axion signal. 
 
 %Adding adjacent bin with a weight Eq.\eqref{eq:merged_power} Eq.\eqref{eq:merged_sigma}, where k is the number of adjacent bin to be merged, q is ${q^{th}}$ merged bin, with Eq.\eqref{eq:merged_sigma}, we can get our weighted merged power spectrum FIG.\ref{fig:merged_data}.
 
