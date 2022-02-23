@@ -70,7 +70,7 @@ signal power is very weak. Therefore, the structure of the raw averaged
 output power spectrum, as shown in the upper panel of 
 Fig.~\ref{fig:raw_sg_power}, is dominated 
 by the noise of the system and an explanation for the structure can be found 
-in Appendix~\ref{sec:cavitynoise}. The Savitzky Golay (SG) 
+in Appendix~\ref{sec:cavitynoise}. The SG 
 filter~\cite{SGFilter}, a digital filter that can smooth data without 
 distorting the signal tendency, is applied to remove the structure of the  
 background. The SG filter is performed on the averaged spectrum of each 
@@ -92,7 +92,7 @@ the noise data and found that they were consistent with the original choice
 (see Sec.~\ref{sec:sys}). 
 
 The raw averaged power spectrum is divided by the output of the SG filter, 
-then  unity is subtracted from the ratio to get the dimensionless 
+then unity is subtracted from the ratio to get the dimensionless 
 normalized spectrum (lower panel of Fig.~\ref{fig:raw_sg_power}). The value 
 in each bin of the normalized spectrum is the deviation of the 
 averaged measured power from the SG-filter output (can be considered 
@@ -133,7 +133,7 @@ where
  \end{equation}
 and 
  \begin{equation}
- h_{ij} = \frac{1}{1 + 4Q_{Li}(\left.f_{ij}\middle/f_{ci}\right.-1)^2}. 
+ h_{ij} = \frac{1}{1 + 4Q_{Li}^{2}(\left.f_{ij}\middle/f_{ci}\right.-1)^2}. 
  \label{eq:Lorentz}
  \end{equation}
 The $\delta_{ij}^\text{norm}$ ($\delta_{ij}^\text{res}$) and 
@@ -165,11 +165,12 @@ that is approximately equal to unity.
 
 \begin{figure} [htbp]
   \centering
-  \includegraphics[width=8.6cm]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.png}
-  \caption{Upper panel: The raw averaged power spectrum (red points) and the 
-output of the SG filter (blue curve) of one scan. Lower panel: The normalized 
+  \includegraphics[width=6.5cm]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.pdf}
+  \includegraphics[width=6.5cm]{figures/Histogram_RawPower_SGPower_Ratio_Step_0100.pdf}
+  \caption{Upper left panel: The raw averaged power spectrum (red points) and the 
+output of the SG filter (blue curve) of one scan. Lower left panel: The normalized 
 spectrum,  derived by taking the ratio of the raw spectrum to the SG filter 
-and subtracting unity from the ratio. }
+and subtracting unity from the ratio. Right plot: Histogram of the normalized spectrum with Gaussian fit.}
   \label{fig:raw_sg_power}
 \end{figure}
 
@@ -316,51 +317,90 @@ into different neighboring bins of the merged spectrum.
 %expected mean of the normalized power $\mu^\text{com}_k = 1$ if a KSVZ axion 
 %signal power leaves a fraction 1/$M$ of its power in the $k^\text{th}$ 
 %bin of the combined spectrum.
-Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
-based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
-are used to build the merged spectrum: 
+Due to the nonuniform distribution of the axion signal [Eq.~\eqref{eq:simplesignal}],
+the contributing bins need to be rescaled to have the same RDP from which the maximum likelihood (ML)
+weight is defined. The rescaling is performed by dividing $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$
+by the signal line shape $L_{k}$ as described in [Eq.~\eqref{eq:Lq_integral}].
+Here, $g = 1,..,N-M+1$ is the index for the frequency bins in the final spectrum
+and $k = 1,..,M$ with $M = 5$ is the number of merged bin in this analysis.
+$N$ and $N-M+1$ are the total number of bins in the combined and final spectrum, respectively.
+
+\begin{equation}
+  \label{eq:Lq_integral}
+  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df.
+\end{equation}
+
+where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is
+the axion frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
+boundary of the $g^\text{th}$ bin in the combined spectrum.
+The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.
+We have considered the misalignment effect as mentioned in the HAYSTAC paper ~\cite{HAYSTACII}.
+We found that our result was insensitive to this effect.
+
+The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and ML weight are defined:
+
+\begin{equation}
+  \label{eq:rescaled_delta_sigma_com}
+  \begin{split}
+  \delta^\text{rs}_{g+k-1} = \frac{\delta^\text{com}_{g+k-1}}{L_{k}}\\
+  \sigma^\text{rs}_{g+k-1} = \frac{\sigma^\text{com}_{g+k-1}}{L_{k}}
+  \end{split}
+\end{equation}
+
+%In order to get misalignment-indepedence lineshape, the average ($L\bar_{k}$) of
+%$L_{k}(\delta f_m)$ over the range $\delta f_m$ is used.
+%The range of $\delta f_m$ is defined $-z \Delta f_\text{bin} < \delta f_m < (1-z) \Delta f_\text{bin}$,
+%with $0 < z < 1$. 
+
+%Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
+%based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
+%are used to build the merged spectrum: 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{gk} = \frac{L_{k}}{(\sigma_{g+k-1}^\text{com})^{2}},
+    w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{L_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
 \end{equation}
- in which 
-\begin{equation}
-    \label{eq:Lq_integtal}
-    L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df. 
-\end{equation}
-Here, $g = 1,..,N-M+1$ is the index for 
-the frequency bins in the final spectrum and $M=5$ is the number of merged 
-bins. 
-The total number of bins in the combined (final merged) spectrum is
-$N$ ($N-M+1$). 
-The variable $k$ is the index within the group of bins for merging and 
-$k = 1,..,M$. 
-The frequency $f_a=\left.\ma c^2\middle/h\right.$ is 
-the axion frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower 
-boundary of the $g^\text{th}$ bin 
-in the combined spectrum. 
-The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
+
+% in which 
+%\begin{equation}
+%    \label{eq:Lq_integtal}
+%    L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df. 
+%\end{equation}
+%Here, $g = 1,..,N-M+1$ is the index for 
+%the frequency bins in the final spectrum and $M=5$ is the number of merged 
+%bins. 
+%The total number of bins in the combined (final merged) spectrum is
+%$N$ ($N-M+1$). 
+%The variable $k$ is the index within the group of bins for merging and 
+%$k = 1,..,M$. 
+%The frequency $f_a=\left.\ma c^2\middle/h\right.$ is 
+%the axion frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower 
+%boundary of the $g^\text{th}$ bin in the combined spectrum. 
 
 %where $L_q$ is the integral of the line shape from the lower edge to higher 
 %edge of ${q^{th}}$ bin. 
-The RDP, the standard deviation, and the SNR of the merged spectrum are:
 
 %We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal},
 
+The RDP, the standard deviation, and the SNR of the merged spectrum are:
+
 \begin{equation}
-    \delta_{g}^\text{merged} = M \frac{ \sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{com} \cdot {w_{gk}}\right)}{\sum\limits_{k = 1}^{M} {w_{gk}}},
+    \delta_{g}^\text{merged} = \frac{ \sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{L_{k}} \cdot \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2} {\sum\limits_{k = 1}^{M}\left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2},
     \label{eq:merged_power}
 \end{equation}
 
 \begin{equation}
-    \sigma_{g}^\text{merged} =  M \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{com} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}},
+  \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2},
     \label{eq:merged_sigma}
 \end{equation}
 
 \begin{equation}
     \label{eq:merged_snr}
-    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{com} \cdot {w_{gk}}\right)}{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{com} \cdot {w_{gk}}\right)^2}},
+    %    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{com} \cdot {w_{gk}}\right)}{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{com} \cdot {w_{gk}}\right)^2}},
+    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{L_{k}} \cdot \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
 \end{equation}
+
+For the flat distribution, $L_{k}$ is normalized by the number of merged bins to have the expected power excess of 1 for KSVZ signal.
+
 %where $M=5$ is the number of merged bins. $g = 1,..,N-M+1$ is the index for 
 %the frequency bins in the final spectrum.  
 %The total number of bins in the combined (final merged) spectrum is 
