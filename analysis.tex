@@ -305,8 +305,8 @@ Eq.\eqref{eq:comb_snr} of the combined spectrum. }
 The expected axion bandwidth is about 5~kHz at the frequency of $\approx5$~GHz. 
 In this paper, the interested frequency range is \flo -- \fhi~GHz and the bin 
 width is 1~kHz. Therefore, in order to maximize the SNR, a running window of 
-five consecutive bins in the combined spectrum are merged to construct a 
-final spectrum.
+five consecutive bins in the combined spectrum is applied and the five bins 
+within each window are merged to construct a final spectrum.
 The purpose of using a running window is to avoid the signal power broken 
 into different neighboring bins of the merged spectrum. 
 %Before defining the 
@@ -317,37 +317,45 @@ into different neighboring bins of the merged spectrum.
 %expected mean of the normalized power $\mu^\text{com}_k = 1$ if a KSVZ axion 
 %signal power leaves a fraction 1/$M$ of its power in the $k^\text{th}$ 
 %bin of the combined spectrum.
-Due to the nonuniform distribution of the axion signal [Eq.~\eqref{eq:simplesignal}],
-the contributing bins need to be rescaled to have the same RDP from which the maximum likelihood (ML)
-weight is defined. The rescaling is performed by dividing $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$
-by the signal line shape $L_{k}$ as described in [Eq.~\eqref{eq:Lq_integral}].
-Here, $g = 1,..,N-M+1$ is the index for the frequency bins in the final spectrum
-and $k = 1,..,M$ with $M = 5$ is the number of merged bin in this analysis.
-$N$ and $N-M+1$ are the total number of bins in the combined and final spectrum, respectively.
-
-\begin{equation}
-  \label{eq:Lq_integral}
-  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df.
-\end{equation}
-
-where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is
-the axion frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
-boundary of the $g^\text{th}$ bin in the combined spectrum.
-The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.
-We have considered the misalignment effect as mentioned in the HAYSTAC paper ~\cite{HAYSTACII}.
-We found that our result was insensitive to this effect.
-
-The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and ML weight are defined:
-
+Due to the nonuniform distribution of the axion signal 
+[Eq.~\eqref{eq:simplesignal}],
+the contributing bins need to be rescaled to have the same RDP from which the 
+maximum likelihood (ML)
+weight is defined. The rescaling is performed by dividing the 
+$\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ in the combined 
+spectrum by the integral of the signal line shape $L_{k}$ as described in 
+Eq.~\eqref{eq:Lq_integral}: 
 \begin{equation}
   \label{eq:rescaled_delta_sigma_com}
   \begin{split}
-  \delta^\text{rs}_{g+k-1} = \frac{\delta^\text{com}_{g+k-1}}{L_{k}}\\
-  \sigma^\text{rs}_{g+k-1} = \frac{\sigma^\text{com}_{g+k-1}}{L_{k}}
+  \delta^\text{rs}_{g+k-1} = \frac{\delta^\text{com}_{g+k-1}}{L_{k}},\\
+  \sigma^\text{rs}_{g+k-1} = \frac{\sigma^\text{com}_{g+k-1}}{L_{k}}.
   \end{split}
 \end{equation}
+Here, the $\delta^\text{rs}_{g+k-1}$ and $\sigma^\text{rs}_{g+k-1}$ are the 
+rescaled RDP and standard deviation that will be used later for merging. The 
+variable $g = 1,..,N-M+1$ is the index for the frequency bins in the final 
+spectrum and $k = 1,..,M$, in which $M = 5$ is the number of merged bin in 
+this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
+the combined and final spectrum, respectively. The integral $L_{k}$ is 
+defined as: 
+\begin{equation}
+  \label{eq:Lq_integral}
+  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df,
+\end{equation}
+where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion 
+frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
+boundary of the $g^\text{th}$ bin in the combined spectrum.
+The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
+The misalignment effect as mentioned in the HAYSTAC paper ~\cite{HAYSTACII} 
+has been studied and the results of the \gagg\ limits are found to be 
+insensitive to this effect. 
 
-%In order to get misalignment-indepedence lineshape, the average ($L\bar_{k}$) of
+%The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and 
+%ML weight are defined:
+
+
+%In order to get misalignment-independence line shape, the average ($L\bar_{k}$) of
 %$L_{k}(\delta f_m)$ over the range $\delta f_m$ is used.
 %The range of $\delta f_m$ is defined $-z \Delta f_\text{bin} < \delta f_m < (1-z) \Delta f_\text{bin}$,
 %with $0 < z < 1$. 
@@ -355,6 +363,7 @@ The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and ML 
 %Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
 %based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
 %are used to build the merged spectrum: 
+The ML weight for merging is defined as: 
 \begin{equation}
     \label{eq:merge_weight}
     w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{L_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
@@ -388,10 +397,11 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
     \label{eq:merged_power}
 \end{equation}
 
-\begin{equation}
-  \sigma_{g}^\text{merged} =  \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2},
+\begin{eqnarray}
+  \sigma_{g}^\text{merged} & =  & \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}  \nonumber \\
+    & = & \frac{1}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
     \label{eq:merged_sigma}
-\end{equation}
+\end{eqnarray}
 
 \begin{equation}
     \label{eq:merged_snr}
@@ -399,7 +409,8 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
     \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{L_{k}} \cdot \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
 \end{equation}
 
-For the flat distribution, $L_{k}$ is normalized by the number of merged bins to have the expected power excess of 1 for KSVZ signal.
+%For the flat distribution, $L_{k}$ is normalized by the number of merged bins 
+%to have the expected power excess of 1 for KSVZ signal.
 
 %where $M=5$ is the number of merged bins. $g = 1,..,N-M+1$ is the index for 
 %the frequency bins in the final spectrum.  
