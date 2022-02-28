@@ -67,7 +67,7 @@ In the absence of the axion signal, the output data spectrum is simply the
 noise from the cavity and the amplification chain. If axions are present 
 in the cavity, the signal will be buried in the noise because the 
 signal power is very weak. Therefore, the structure of the raw averaged 
-output power spectrum, as shown in the upper panel of 
+output power spectrum, as shown in the upper left panel of 
 Fig.~\ref{fig:raw_sg_power}, is dominated 
 by the noise of the system and an explanation for the structure can be found 
 in Appendix~\ref{sec:cavitynoise}. The SG 
@@ -93,7 +93,7 @@ the noise data and found that they were consistent with the original choice
 
 The raw averaged power spectrum is divided by the output of the SG filter, 
 then unity is subtracted from the ratio to get the dimensionless 
-normalized spectrum (lower panel of Fig.~\ref{fig:raw_sg_power}). The value 
+normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). The value 
 in each bin of the normalized spectrum is the deviation of the 
 averaged measured power from the SG-filter output (can be considered 
 as the averaged noise power) relative to the SG output. The symbol 
@@ -104,7 +104,8 @@ In the absence of the axion signal, the RDPs in the normalized spectrum are
 samples drawn from a Gaussian 
 distribution with a zero mean and a standard deviation of 
 $\left.1\middle/\sqrt{N_\text{spectra}}\right.$, where $N_\text{spectra}$ is 
-the number of subspectra used to compute the average (Sec.~\ref{sec:FFT}). 
+the number of subspectra used to compute the average (see Sec.~\ref{sec:FFT} 
+and the right panel of Fig.~\ref{fig:raw_sg_power}). 
 If the axion signal exists, there will be a significant excess above zero. 
  
 %After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
@@ -171,8 +172,10 @@ that is approximately equal to unity.
 output of the SG filter (blue curve) of one scan. Lower left panel: The normalized 
 spectrum,  derived by taking the ratio of the raw spectrum to the SG filter 
 and subtracting unity from the ratio.
-Right plot: Histogram of the normalized spectrum (lower panel in left plot) with Gaussian fit.
-The fitted mean and standard deviation are shown to be consistent with the prediction.}
+Right plot: Histogram of the normalized spectrum (lower panel in left plot) with a Gaussian 
+fit; there are 1600 entries in total (from the 1600 frequency bins). 
+The fitted mean and standard deviation are shown to be consistent with the prediction 
+when the axion signal is not present.}
   \label{fig:raw_sg_power}
 \end{figure}
 
@@ -325,7 +328,7 @@ the contributing bins need to be rescaled to have the same RDP, of which the
 standard deviation is used to define the maximum likelihood (ML)
 weight for merging. The rescaling is performed by dividing the 
 $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ in the combined 
-spectrum by an integral of the signal line shape $L_{k}$ 
+spectrum with an integral of the signal line shape $L_{k}$ 
 [Eq.~\eqref{eq:Lq_integral}]: 
 \begin{equation}
   \label{eq:rescaled_delta_sigma_com}
@@ -347,12 +350,14 @@ defined as:
 \end{equation}
 where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion 
 frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
-boundary of the $g^\text{th}$ bin in the combined spectrum.
+boundary of the $g^\text{th}$ bin in the merged spectrum.
 The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
-In order to get misalignment-independent line shape, the average ($\bar{L}_{k}$) of
-$L_{k}(\delta f_m)$ over the range $\delta f_m$ is used instead of $L_{k}(\delta f_m)$.
-In our analysis, $\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for bin index from 1 to 5.
-The misalignment effect as mentioned in the HAYSTAC paper ~\cite{HAYSTACII} 
+In order to get a misalignment-independent line shape, instead of using an 
+$L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
+$L_{k}$ over the range of $\delta f_m$ is used.
+In the analysis presented here, 
+$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively. 
+The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
 has been studied and the results of the \gagg\ limits are found to be 
 insensitive to this effect. 
 
@@ -371,7 +376,7 @@ insensitive to this effect.
 The ML weight is defined as: 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{L_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
+    w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
 \end{equation}
 
 % in which 
@@ -398,20 +403,20 @@ The ML weight is defined as:
 The RDP, the standard deviation, and the SNR of the merged spectrum are:
 
 \begin{equation}
-    \delta_{g}^\text{merged} = \frac{ \sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{L_{k}} \cdot \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2} {\sum\limits_{k = 1}^{M}\left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2},
+    \delta_{g}^\text{merged} = \frac{ \sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{\bar{L}_{k}} \cdot \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2} {\sum\limits_{k = 1}^{M}\left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2},
     \label{eq:merged_power}
 \end{equation}
 
 \begin{eqnarray}
-  \sigma_{g}^\text{merged} & =  & \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}  \nonumber \\
-    & = & \frac{1}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
+  \sigma_{g}^\text{merged} & =  & \frac{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{rs} \cdot {w_{gk}}\right)^2}}{\sum\limits_{k = 1}^{M} {w_{gk}}} = \frac{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}{\sum\limits_{k = 1}^{M} \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}  \nonumber \\
+    & = & \frac{1}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
     \label{eq:merged_sigma}
 \end{eqnarray}
 
 \begin{equation}
     \label{eq:merged_snr}
     %    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\left(\delta_{g+k-1}^\text{com} \cdot {w_{gk}}\right)}{ \sqrt{\sum\limits_{k = 1}^{M} \left(\sigma_{g+k-1}^\text{com} \cdot {w_{gk}}\right)^2}},
-    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{L_{k}} \cdot \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{L_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
+    \text{SNR}_{g}^\text{merged} = \frac{\delta^\text{merged}_{g}}{\sigma^\text{merged}_{g}} = \frac{\sum\limits_{k = 1}^{M}\frac{\delta_{g+k-1}^\text{com}}{\bar{L}_{k}} \cdot \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}{\sqrt{\sum\limits_{k = 1}^{M} \left(\frac{\bar{L}_{k}}{\sigma_{g+k-1}^\text{com}}\right)^2}}
 \end{equation}
 
 %For the flat distribution, $L_{k}$ is normalized by the number of merged bins 
