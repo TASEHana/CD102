@@ -162,7 +162,8 @@ will vary depending on the bin position due to the cavity's
 Lorentzian response. The rescaling will take into account this effect. 
 The procedure of the normalization and the rescaling also ensures that a 
 KSVZ axion signal will have a rescaled RDP $\delta_{ij}^\text{res}$ 
-that is approximately equal to unity. 
+that is approximately equal to unity, if the signal power is distributed 
+in only one frequency bin. 
 
 \begin{figure} [htbp]
   \centering
@@ -335,14 +336,15 @@ spectrum with an integral of the signal line shape $L_{k}$:
   \label{eq:Lq_integral}
   L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df,
 \end{equation}
-where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
-frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
+where the variable $k$ is the index within the group of bins for 
+merging, the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
+frequency, and $\delta f_m$ is the misalignment between $f_a$ and the lower
 boundary of the $g^\text{th}$ bin in the merged spectrum.
 The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.
 In order to get a misalignment-independent line shape, instead of using an
 $L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
 $L_{k}$ over the range of $\delta f_m$ is used.
-In the analysis presented here,
+In the analysis presented here, 
 $\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.
 The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII}
 has been studied and the results of the \gagg\ limits are found to be
@@ -360,9 +362,11 @@ standard deviation ($\sigma^\text{rs}_{g+k-1}$) are calculated:
 %Here, the $\delta^\text{rs}_{g+k-1}$ and $\sigma^\text{rs}_{g+k-1}$ are the 
 %rescaled RDP and standard deviation that will be used later for merging.
 The variable $g = 1,..,N-M+1$ is the index for the frequency bins in the final 
-spectrum and $k = 1,..,M$, in which $M = 5$ is the number of merged bin in 
+spectrum and $M = 5$ is the number of merged bin in 
 this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
-the combined and final spectrum, respectively.
+the combined and final spectrum, respectively. After this rescaling 
+procedure, a KSVZ axion signal is expected to have an RDP equal to unity for 
+each bin of the five merged bins.    
 %The integral $L_{k}$ is defined as: 
 %\begin{equation}
 %  \label{eq:Lq_integral}
