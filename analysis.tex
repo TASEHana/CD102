@@ -328,38 +328,58 @@ the contributing bins need to be rescaled to have the same RDP, of which the
 standard deviation is used to define the maximum likelihood (ML)
 weight for merging. The rescaling is performed by dividing the 
 $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ in the combined 
-spectrum with an integral of the signal line shape $L_{k}$ 
-[Eq.~\eqref{eq:Lq_integral}]: 
-\begin{equation}
-  \label{eq:rescaled_delta_sigma_com}
-  \begin{split}
-  \delta^\text{rs}_{g+k-1} = \frac{\delta^\text{com}_{g+k-1}}{L_{k}},\\
-  \sigma^\text{rs}_{g+k-1} = \frac{\sigma^\text{com}_{g+k-1}}{L_{k}}.
-  \end{split}
-\end{equation}
-Here, the $\delta^\text{rs}_{g+k-1}$ and $\sigma^\text{rs}_{g+k-1}$ are the 
-rescaled RDP and standard deviation that will be used later for merging. The 
-variable $g = 1,..,N-M+1$ is the index for the frequency bins in the final 
-spectrum and $k = 1,..,M$, in which $M = 5$ is the number of merged bin in 
-this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
-the combined and final spectrum, respectively. The integral $L_{k}$ is 
-defined as: 
+spectrum with an integral of the signal line shape $L_{k}$:
+
+%[Eq.~\eqref{eq:Lq_integral}]:
 \begin{equation}
   \label{eq:Lq_integral}
   L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df,
 \end{equation}
-where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion 
+where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
 frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
 boundary of the $g^\text{th}$ bin in the merged spectrum.
-The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
-In order to get a misalignment-independent line shape, instead of using an 
+The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.
+In order to get a misalignment-independent line shape, instead of using an
 $L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
 $L_{k}$ over the range of $\delta f_m$ is used.
-In the analysis presented here, 
-$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively. 
-The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
-has been studied and the results of the \gagg\ limits are found to be 
-insensitive to this effect. 
+In the analysis presented here,
+$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.
+The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII}
+has been studied and the results of the \gagg\ limits are found to be
+insensitive to this effect.
+
+The rescaled RDP ($\delta^\text{rs}_{g+k-1}$) and
+standard deviation ($\sigma^\text{rs}_{g+k-1}$) are calculated:
+\begin{equation}
+  \label{eq:rescaled_delta_sigma_com}
+  \begin{split}
+  \delta^\text{rs}_{g+k-1} = \frac{\delta^\text{com}_{g+k-1}}{\bar{L}_{k}},\\
+  \sigma^\text{rs}_{g+k-1} = \frac{\sigma^\text{com}_{g+k-1}}{\bar{L}_{k}}.
+  \end{split}
+\end{equation}
+%Here, the $\delta^\text{rs}_{g+k-1}$ and $\sigma^\text{rs}_{g+k-1}$ are the 
+%rescaled RDP and standard deviation that will be used later for merging.
+The variable $g = 1,..,N-M+1$ is the index for the frequency bins in the final 
+spectrum and $k = 1,..,M$, in which $M = 5$ is the number of merged bin in 
+this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
+the combined and final spectrum, respectively.
+%The integral $L_{k}$ is defined as: 
+%\begin{equation}
+%  \label{eq:Lq_integral}
+%  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df,
+%\end{equation}
+%where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion 
+%frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
+%boundary of the $g^\text{th}$ bin in the merged spectrum.
+%The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
+%In order to get a misalignment-independent line shape, instead of using an 
+%$L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
+%$L_{k}$ over the range of $\delta f_m$ is used.
+%In the analysis presented here, 
+%$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively. 
+%The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
+%has been studied and the results of the \gagg\ limits are found to be 
+%insensitive to this effect. 
 
 %The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and 
 %ML weight are defined:
@@ -373,7 +393,7 @@ insensitive to this effect.
 %Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
 %based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
 %are used to build the merged spectrum: 
-The ML weight is defined as: 
+And the ML weight is defined as: 
 \begin{equation}
     \label{eq:merge_weight}
     w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
