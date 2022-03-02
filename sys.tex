@@ -30,12 +30,12 @@ of the optimization is to find a set of SG-filter parameters that only
 model the noise spectrum and do not remove a real signal. 
 The methods include:
 \begin{itemize}
- \item Minimize the difference between the two functions returned by the SG 
+ \item Minimize the difference between the two outputs returned by the SG 
 filter, when the SG filter is applied to: (i) the real data only, and (ii) 
 the sum of the real data and a simulated axion signal. 
- \item Minimize the difference between the function returned by the 
- SG filter and the input noise function (including the Lorentzian distribution 
-due to the cavity noise), when the SG filter is applied to
+ \item Minimize the difference between the output returned by the 
+ SG filter and the input noise function (derived by fitting the CD102 data), 
+when the SG filter is applied to
 a spectrum that includes the simulation of the axion signal and 
 the simulation based on the input noise function. See Fig.~\ref{fig:sgcompare} 
 for a comparison of  the simulated spectrum, input noise function, and the 
@@ -47,7 +47,8 @@ function returned by
 as a function of window widths when the order of polynomial is 
  set to three, four, and six. 
  \item Compare the mean $\mu_\text{noise}$ and the width $\sigma_\text{noise}$ 
-of the measured power, assuming that no signal is present in the 
+of the measured power after applying the SG filter, 
+assuming that no signal is present in the 
 data. See Fig.~\ref{fig:noisegauss} for an example distribution 
 of the measured power from the averaged spectrum of a 
 single scan; %, when the cavity resonant frequency 
@@ -88,10 +89,10 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
 %  \includegraphics[width=0.4\textwidth,height = 0.35\textwidth]{figures/GeneratedSpectrum_Optimized_SGFilter_NPar_3_Window_141.png}
   \includegraphics[width=8.6cm]{figures/GeneratedSpectrum_Optimized_SGFilter_NPar_3_Window_141.png}
   \caption{Upper panel: 
- The simulated spectrum, including the axion signal and the noise, 
- is overlaid with the input noise function and the function returned by 
- the SG filter. Lower panel: The ratio of the function returned by the SG 
- filter to the input noise function.}
+ The simulated spectrum (red), including the axion signal and the 
+noise, is overlaid with the input noise function (black) and the output 
+returned by the SG filter (green). Lower panel: The ratio of the output 
+returned by the SG filter to the input noise function.}
   \label{fig:sgcompare}
 \end{figure}
 
@@ -100,7 +101,7 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
   \centering
 %  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/chi2_Different_Order_Window_SGFilter.png}
   \includegraphics[width=8.6cm]{figures/chi2_Different_Order_Window_SGFilter.png}
-  \caption{The difference between the function returned by the SG filter 
+  \caption{The difference between the output returned by the SG filter 
   and the input noise function, when various values of window widths and 
   a 3$^\text{rd}$, a 4$^\text{th}$, or a 
   6$^\text{th}$-order polynomial are applied in the SG filter. In this 
@@ -114,8 +115,8 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
 \begin{figure} [htbp]
   \centering
   \includegraphics[width=8.6cm]{figures/sysSG_temphistogram.png}
-  \caption{An example of the distribution of the measured power, after 
-removing the receiver gain and applying the SG filter, when 
+  \caption{An example of the distribution of the measured power after 
+applying the SG filter, when 
 the cavity resonant frequency is 4.798147~GHz. The distribution contains 
 1600 entries and each entry corresponds to the measured power 
 in one frequency bin, averaged
