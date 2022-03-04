@@ -25,9 +25,10 @@ In this paper, the uncertainties are considered to be uncorrelated between
 different frequency bins while Ref.~\cite{HAYSTACII} takes into account 
 the correlation. The frequency-domain spectra processed by each intermediate 
 step are shown. The central results of the \gagg\ limits assume the signal 
-line shape described by Eq.~\eqref{eq:simplesignal} as in Ref.~\cite{HAYSTACII}, and 
-in addition the limits without an assumption of signal line shape (flat 
-signal distribution) and the limits assuming a simple Gaussian shape are 
+line shape described by Eq.~\eqref{eq:simplesignal} as in 
+Ref.~\cite{HAYSTACII}. In addition, the limits without an assumption of 
+signal line shape and the limits assuming a 
+Gaussian signal with a narrower FWHM are 
 shown for comparison in Sec.~\ref{sec:results}.
 
 % \end{flushleft}
@@ -114,10 +115,12 @@ adjusted by the tuning bar so to scan a large range of frequencies and to
 reduce the uncertainty of the averaged noise power at the overlapped region. 
 Therefore, the 
 spectra of all the scans need to be combined to create one big spectrum. 
-Before doing this, 
-the normalized spectrum from each scan is rescaled and the rescaled spectrum, 
-shown in 
-Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
+%Before doing this, 
+%the normalized spectrum from each scan is rescaled and the rescaled spectrum, 
+%shown in 
+%Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
+Before doing this, the normalized spectrum from each scan is rescaled and 
+the rescaled spectrum is computed with the following formula:
 \begin{equation}
   \label{eq:respower_eqn}
   \delta_{ij}^\text{res} = R_{ij}\delta_{ij}^\text{norm},
@@ -180,16 +183,16 @@ when the axion signal is not present.}
   \label{fig:raw_sg_power}
 \end{figure}
 
-\begin{figure} [htbp]
-  \centering
-  \includegraphics[width=8.6cm]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
-  \caption{
-  The rescaled spectrum, obtained by multiplying the RDPs in the normalized 
-spectrum with the ratio of the system noise power to the expected signal 
-power of the KSVZ axion, 
-with the Lorentzian response of the cavity taken into account.}
-  \label{fig:rescaled_power}
-\end{figure}
+%\begin{figure} [htbp]
+%  \centering
+%  \includegraphics[width=8.6cm]{figures/RescaledPower_vs_Freq_Step_0100.pdf}
+%  \caption{
+%  The rescaled spectrum, obtained by multiplying the RDPs in the normalized 
+%spectrum with the ratio of the system noise power to the expected signal 
+%power of the KSVZ axion, 
+%with the Lorentzian response of the cavity taken into account.}
+%  \label{fig:rescaled_power}
+%\end{figure}
 
 
 
@@ -259,8 +262,9 @@ $\delta^\text{com}_{n}$ to
 $\sigma^\text{com}_{n}$ as given in Eq.~\eqref{eq:comb_snr}. 
 %Figure~\ref{fig:power_sigma_comb} and Fig.~\ref{fig:SNR_comb} show the power, 
 %the standard deviation, and the SNR of the combined spectrum, respectively.
-Figure~\ref{fig:power_sigma_comb} and Fig.~\ref{fig:SNR_comb} show the RDP, 
-the standard deviation, and the SNR of the combined spectrum, respectively.
+%Figure~\ref{fig:power_sigma_comb} and Fig.~\ref{fig:SNR_comb} show the RDP, 
+%the standard deviation, and the SNR of the combined spectrum, respectively.
+Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum. 
 
 \begin{equation}
     \label{eq:comb_power}
@@ -284,15 +288,15 @@ in general the leftmost bin or the bin with the smallest frequency
 the minimum (maximum) number of $m_n$. 
 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
-    \includegraphics[width=8.6cm]{figures/Sigma_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
-    \caption{The combined RDP $\delta$ following Eq.~\eqref{eq:comb_power} 
-(upper) and the standard deviation $\sigma$ derived from 
-Eq.~\eqref{eq:comb_sigma} (lower).}
-    \label{fig:power_sigma_comb}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
+%    \includegraphics[width=8.6cm]{figures/Sigma_CombSpectrum_AxionRun_AllSteps_Rescan_SG4_W201_LqWeight.png}
+%    \caption{The combined RDP $\delta$ following Eq.~\eqref{eq:comb_power} 
+%(upper) and the standard deviation $\sigma$ derived from 
+%Eq.~\eqref{eq:comb_sigma} (lower).}
+%    \label{fig:power_sigma_comb}
+%\end{figure}
 
 \begin{figure}[hbt!]
     \centering
@@ -308,13 +312,19 @@ Eq.\eqref{eq:comb_snr} of the combined spectrum. }
 \subsection{Merge bins}
 \label{sec:merge}
 
-The expected axion bandwidth is about 5~kHz at the frequency of $\approx5$~GHz. 
+The expected axion bandwidth is about 5~kHz at the frequency of 
+$\approx5$~GHz. 
 In this paper, the interested frequency range is \flo -- \fhi~GHz and the bin 
 width is 1~kHz. Therefore, in order to maximize the SNR, a running window of 
 five consecutive bins in the combined spectrum is applied and the five bins 
-within each window are merged to construct a final spectrum.
+within each window are merged to construct a final spectrum.  
 The purpose of using a running window is to avoid the signal power broken 
 into different neighboring bins of the merged spectrum. 
+The number of bins for merging is studied by injecting 
+simulated axion signals on top of the CD102 data and optimized based 
+on the SNR. 
+%For a signal line shape as described in Eq.~\eqref{eq:simplesignal}, 
+%five frequency bins include about 95\% of the distribution.  
 %Before defining the 
 %weights for merging, 
 %the power and the standard deviation of each bin in the combined spectrum are 
@@ -462,7 +472,8 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
 
 \subsection{Rescan and set limits on \gagg} 
 Before the collection of the CD102 data, a 5$\sigma$ SNR target was chosen, 
-which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% confidence.
+which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% 
+confidence level (C.L.).
  After the merging as described in Sec.~\ref{sec:merge}, if there were 
 any potential signal with an SNR larger than 
 3.355, a rescan would be proceeded to check if it were a real signal 
@@ -484,9 +495,11 @@ Therefore, these five candidates are considered external signals and
 no limits are placed for the above two frequency ranges.  
 More details can be found in the 
 TASEH instrumentation paper~\cite{TASEHInstrumentation}. 
-Figure~\ref{fig:power_sigma_merged} and Fig.~\ref{fig:SNR_merged} show the 
-RDP, the standard deviation, and the SNR of the merged spectrum after 
-including data from both the original scans and the rescans, respectively. 
+%Figure~\ref{fig:power_sigma_merged} and Fig.~\ref{fig:SNR_merged} show the 
+%RDP, the standard deviation, and the SNR of the merged spectrum after 
+%including data from both the original scans and the rescans, respectively. 
+Figure~\ref{fig:SNR_merged} shows the SNR of the merged spectrum after 
+including data from both the original scans and the rescans. 
 
 Since no candidates were found after the rescan, an upper limit on 
 the signal power $P_s$ is derived by setting $P_s$ equal to 
@@ -500,15 +513,15 @@ according to Eq.~\eqref{eq:ps} and Eq.~\eqref{eq:grelation}.
 See Sec.~\ref{sec:results} for the final limits including the systematic 
 uncertainties.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \includegraphics[width=8.6cm]{figures/Sigma_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \caption{The merged RDP $\delta$ following Eq.~\eqref{eq:merged_power} 
-(upper) and the standard deviation $\sigma$ derived from Eq.~\eqref{eq:merged_sigma} (lower). The results shown are obtained using data from both the 
-original scans and the rescans.}
-    \label{fig:power_sigma_merged}
-\end{figure}
+%\begin{figure}[h]
+%    \centering
+%    \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+%    \includegraphics[width=8.6cm]{figures/Sigma_GrandSpectrum_AxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+%    \caption{The merged RDP $\delta$ following Eq.~\eqref{eq:merged_power} 
+%(upper) and the standard deviation $\sigma$ derived from Eq.~\eqref{eq:merged_sigma} (lower). The results shown are obtained using data from both the 
+%original scans and the rescans.}
+%    \label{fig:power_sigma_merged}
+%\end{figure}
 
 \begin{figure}[hbt!]
     \centering

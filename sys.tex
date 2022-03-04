@@ -7,7 +7,7 @@ $\left.Q_L\beta\middle/\left(1+\beta\right)\right.$ in Eq.~\eqref{eq:ps}:
 In order to extract the loaded quality factor $Q_L$ and the coupling 
 coefficient $\beta$, a fitting of the measured results of the cavity 
 scattering matrix was performed, which results in a relative uncertainty of 
-0.2\% on this product. 
+5\% on this product. 
 
 \item Uncertainty on the noise temperature \ta\ from the RMS of 
 the measurements in the calibration: 
@@ -18,6 +18,10 @@ $\left. \Delta \ta\middle/\ta\right.= 2.3\%$
 between the value determined by the calibration and that from the axion 
 data: $\left. \Delta \ta\middle/\ta\right.= 4\%$ 
 (see Sec.~\ref{sec:calibration} and Fig.~\ref{fig:hemtcalvsf}). 
+
+\item Uncertainty on the misalignment $\delta f_m$ between the true 
+axion frequency $f_a$ and the lower bin boundaries in the merged spectrum 
+(see Sec.~\ref{sec:merge}). MORE DESCRIPTION.
 
 \item Uncertainty from the choice of the SG-filter parameters: i.e.  
 the window width and the order of the polynomial in the SG filter. At the 
@@ -32,14 +36,15 @@ The methods include:
 \begin{itemize}
  \item Minimize the difference between the two outputs returned by the SG 
 filter, when the SG filter is applied to: (i) the real data only, and (ii) 
-the sum of the real data and a simulated axion signal. 
+the sum of the real data and the simulated axion signals. 
  \item Minimize the difference between the output returned by the 
- SG filter and the input noise function (derived by fitting the CD102 data), 
-when the SG filter is applied to
-a spectrum that includes the simulation of the axion signal and 
-the simulation based on the input noise function. See Fig.~\ref{fig:sgcompare} 
-for a comparison of  the simulated spectrum, input noise function, and the 
-function returned by 
+ SG filter and the function ${\cal G}_\text{noise}$ 
+that models the noise spectrum (derived by fitting the CD102 data), 
+when the SG filter is applied to the sum of the simulated noise based on 
+${\cal G}_\text{noise}$ and the simulated axion signals. 
+See Fig.~\ref{fig:sgcompare} for an example of the 
+simulated spectrum, the function ${\cal G}_\text{noise}$, and the 
+output returned by 
  the SG filter when a 3$^\text{rd}$-order polynomial and a window of 141 
  bins are chosen; the differences from all the frequency bins are summed 
  together when performing the optimization.
@@ -68,8 +73,8 @@ general, $N_\text{spectra}=1920000-2520000$.
 In addition, one could choose to optimize for each frequency step 
 individually, optimize for a certain frequency step but apply the results to 
 all data, or optimize by adding all the frequency steps together. 
-Figure~\ref{fig:syssgfilter} shows that 
-the deviations from the central results using different optimization 
+%Figure~\ref{fig:syssgfilter} shows that 
+The deviations from the central results using different optimization 
 approaches are in general within 1\% and the 
 maximum deviation of 1.8\% 
 on the \gagg\ limit is used as a conservative estimate of the systematic 
@@ -77,12 +82,16 @@ uncertainty from the SG filter.
 
 \end{itemize}
 
-The first source of the systematic uncertainty 
-has negligible effect on the limits of \gagg\ while the 
-latter three sources are studied and added in quadrature to obtain the total 
-systematic uncertainty. The systematic uncertainties on the \gagg\ limits 
+%The first source of the systematic uncertainty 
+%has negligible effect on the limits of \gagg\ while the 
+%latter three sources are studied and added in quadrature to obtain the total 
+%systematic uncertainty. 
+The effects on the \gagg\ limits from these five sources are studied and added in 
+quadrature to obtain the total systematic uncertainty. 
+The systematic uncertainties on the \gagg\ limits 
 are displayed together with the central results in Sec.~\ref{sec:results}. 
-Overall the total relative systematic uncertainty is $\approx 3.4\%$.
+%Overall the total relative systematic uncertainty is $\approx 3.4\%$.
+Overall the total relative systematic uncertainty is $\approx XXX\%$.
 
 \begin{figure} [htbp]
   \centering
@@ -90,9 +99,10 @@ Overall the total relative systematic uncertainty is $\approx 3.4\%$.
   \includegraphics[width=8.6cm]{figures/GeneratedSpectrum_Optimized_SGFilter_NPar_3_Window_141.png}
   \caption{Upper panel: 
  The simulated spectrum (red), including the axion signal and the 
-noise, is overlaid with the input noise function (black) and the output 
-returned by the SG filter (green). Lower panel: The ratio of the output 
-returned by the SG filter to the input noise function.}
+noise, is overlaid with the function that models the noise 
+${\cal G}_\text{noise}$ (black) and the 
+output returned by the SG filter (green). Lower panel: The ratio of the output 
+returned by the SG filter to the function ${\cal G}_\text{noise}$.}
   \label{fig:sgcompare}
 \end{figure}
 
@@ -102,7 +112,8 @@ returned by the SG filter to the input noise function.}
 %  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/chi2_Different_Order_Window_SGFilter.png}
   \includegraphics[width=8.6cm]{figures/chi2_Different_Order_Window_SGFilter.png}
   \caption{The difference between the output returned by the SG filter 
-  and the input noise function, when various values of window widths and 
+  and the function that models the noise spectrum, when various values of 
+  window widths and 
   a 3$^\text{rd}$, a 4$^\text{th}$, or a 
   6$^\text{th}$-order polynomial are applied in the SG filter. In this 
   figure, the best choice is a 4$^\text{th}$-order polynomial with 
@@ -128,19 +139,19 @@ a 1-kHz frequency bin would imply a noise temperature of 2.3~K.}
 \end{figure}
  
 
-\begin{figure} [htbp]
-  \centering
-  \includegraphics[width=8.6cm]{figures/sys_compareSG_4_201.png}
-  \caption{The ratios of the limits on \gagg\ due to the different choices 
- of the window width and the order of polynomial in the SG filter, with 
-respect to 
- the central results (a window width of 201 bins and the 4$^\text{th}$-order 
- polynomial). The window width of 241 bins and the 4$^\text{th}$-order 
- polynomial are obtained from the optimization after injecting an axion 
-signal on top of a simulated noise spectrum. The window width of 189 bins and 
-the 3$^\text{rd}$-order polynomial are obtained from the optimization 
- after comparing the means and the widths of the measured power distributions.}
-  \label{fig:syssgfilter}
-\end{figure}
+%\begin{figure} [htbp]
+%  \centering
+%  \includegraphics[width=8.6cm]{figures/sys_compareSG_4_201.png}
+%  \caption{The ratios of the limits on \gagg\ due to the different choices 
+% of the window width and the order of polynomial in the SG filter, with 
+%respect to 
+% the central results (a window width of 201 bins and the 4$^\text{th}$-order 
+% polynomial). The window width of 241 bins and the 4$^\text{th}$-order 
+% polynomial are obtained from the optimization after injecting an axion 
+%signal on top of a simulated noise spectrum. The window width of 189 bins and 
+%the 3$^\text{rd}$-order polynomial are obtained from the optimization 
+% after comparing the means and the widths of the measured power distributions.}
+%  \label{fig:syssgfilter}
+%\end{figure}
  
 

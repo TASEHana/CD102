@@ -30,10 +30,12 @@ merging the spectra. Since it is not possible to perform a rescan,
 the real axion data from the two scans that had resonant frequencies close to 
 the candidate frequency are added so to mimic the rescan; the candidate is 
 found to be a statistical fluctuation.  
-Figures~\ref{fig:faxioncombine}--~\ref{fig:faxionmerge} present 
-the RDP spectra with the corresponding SNR, respectively, after combining 
-the spectra that share the same frequency bins and after merging five 
-neighboring bins; the 24 scans of the synthetic axion data and the two 
+%Figures~\ref{fig:faxioncombine}--~\ref{fig:faxionmerge} present 
+%the RDP spectra with the corresponding SNR, respectively, after combining 
+Figure~\ref{fig:faxioncombinemerge} presents 
+the SNR after combining the spectra that share the same frequency bins and 
+after merging five neighboring bins, respectively; the 24 scans of the 
+synthetic axion data and the two 
 scans of the real axion data are included and processed together. 
 The analysis results of the synthetic axion signals prove that a power 
 excess of more than 5$\sigma$ can be found at the expected frequencies via 
@@ -41,7 +43,6 @@ the standard analysis procedure.
 
 \begin{figure}[htbp]                                                                                                  
     \centering                                                                                                                       
-%    \includegraphics[width=0.48\textwidth]{figures/RawSpectra_Faxion_YAxis_Shifted.pdf}
     \includegraphics[width=8.6cm]{figures/faxion_rawpower_24steps.png}
  \caption{The raw output power spectra, before applying the 
  SG filter, from the 24 frequency steps of the synthetic axion 
@@ -50,29 +51,44 @@ with respect to each other with an arbitrary offset in the vertical scale.}
 \label{fig:faxionstep}                                                                                                            
 \end{figure}                       
 
+%\begin{figure}[htbp]                                                                                                  
+%    \centering                                                                                                                       
+%    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
+%    \includegraphics[width=8.6cm]{figures/SNR_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
+%    \caption{The RDP (upper) and the 
+%signal-to-noise ratio (lower) after combining the spectra 
+%of the synthetic axion data with overlapping frequencies from different scans.
+% The procedure and the weights for combination are summarized in 
+%Sec.~\ref{sec:weighting_algorithm}.}                
+%\label{fig:faxioncombine} 
+%\end{figure}                       
+
+
+%\begin{figure}[htbp]                                                   
+%\centering                                                                                                                       
+%   \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+%    \includegraphics[width=8.6cm]{figures/SNR_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
+%    \caption{The RDP (upper) and the signal-to-noise ratio (lower) after 
+%merging the RDP measured in five neighboring frequency bins of the 
+%synthetic axion data. 
+%The procedure and the weights for merging 
+%are summarized in Sec.~\ref{sec:merge}.}                
+%\label{fig:faxionmerge}    
+%\end{figure}                       
+
+
+
 \begin{figure}[htbp]                                                                                                  
     \centering                                                                                                                       
-    \includegraphics[width=8.6cm]{figures/Power_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
     \includegraphics[width=8.6cm]{figures/SNR_CombSpectrum_FaxionRun_AllSteps_Rescan_SG4_W201.png}
-    \caption{The RDP (upper) and the 
-signal-to-noise ratio (lower) after combining the spectra 
-of the synthetic axion data with overlapping frequencies from different scans.
- The procedure and the weights for combination are summarized in 
-Sec.~\ref{sec:weighting_algorithm}.}                
-\label{fig:faxioncombine}                                                                                                            
-\end{figure}                       
-
-
-\begin{figure}[htbp]                                                                                                  
-    \centering                                                                                                                       
-    \includegraphics[width=8.6cm]{figures/Power_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
     \includegraphics[width=8.6cm]{figures/SNR_GrandSpectrum_FaxionRun_AllSteps_Rescan_Merged_5bin_SG4_W201_LqWeight.png}
-    \caption{The RDP (upper) and the signal-to-noise ratio (lower) after 
-merging the RDP measured in five neighboring frequency bins of the 
-synthetic axion data. 
-The procedure and the weights for merging 
-are summarized in Sec.~\ref{sec:merge}.}                
-\label{fig:faxionmerge}    
+    \caption{The signal-to-noise ratio, from the synthetic axion data, 
+after combining the spectra with overlapping frequencies from different 
+scans (upper) and after merging the RDP measured in five neighboring 
+frequency bins (lower). 
+The procedure and the weights for combination and merging are summarized in 
+Sec.~\ref{sec:weighting_algorithm} and Sec.~\ref{sec:merge}, respectively.}               
+\label{fig:faxioncombinemerge} 
 \end{figure}                       
 
    
