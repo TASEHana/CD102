@@ -84,13 +84,19 @@ structures, and if it is too narrow, it may kill the signal.
 %The window and the order were first chosen during the data taking based on 
 %the structure of data, by requiring the ratio of the raw data to the filter 
 %output consistent with unity.  
-The window and the order were first chosen during the data taking, by 
+A window width of 201 frequency bins and a 4$^\text{th}$ order polynomial 
+were first chosen during the data taking, by 
 requiring the ratio of the raw data to the filter 
 output consistent with unity.  
 After the data taking, they were optimized by injecting an axion signal on 
 top of 
 the noise data and found that they were consistent with the original choice 
-(see Sec.~\ref{sec:sys}). 
+(see Sec.~\ref{sec:sys}). The SG-filter parameters 
+are also cross-checked with 10000 pseudo-experiments that include simulations 
+of the noise spectrum and an axion signal with 
+$\ggamma\approx 10 \left|g_\text{KSVZ}\right|$; the measured signal power 
+is found to be consistent with the injected one within 1\%.
+
 
 The raw averaged power spectrum is divided by the output of the SG filter, 
 then unity is subtracted from the ratio to get the dimensionless 
@@ -356,9 +362,11 @@ $L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
 $L_{k}$ over the range of $\delta f_m$ is used.
 In the analysis presented here, 
 $\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.
-The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII}
-has been studied and the results of the \gagg\ limits are found to be
-insensitive to this effect.
+The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
+has been studied and the variation on the \gagg\ limits is quoted as a part of 
+the systematic uncertainty, see Sec.~\ref{sec:sys}.
+%and the results of the \gagg\ limits are found to be
+%insensitive to this effect.
 
 The rescaled RDP ($\delta^\text{rs}_{g+k-1}$) and
 standard deviation ($\sigma^\text{rs}_{g+k-1}$) are calculated:
