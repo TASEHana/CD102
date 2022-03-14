@@ -84,7 +84,7 @@ structures, and if it is too narrow, it may kill the signal.
 %The window and the order were first chosen during the data taking based on 
 %the structure of data, by requiring the ratio of the raw data to the filter 
 %output consistent with unity.  
-A window width of 201 frequency bins and a 4$^\text{th}$ order polynomial 
+A window width of 201 frequency bins and a 4$^\text{th}$-order polynomial 
 were first chosen during the data taking, by 
 requiring the ratio of the raw data to the filter 
 output consistent with unity.  
@@ -92,7 +92,7 @@ After the data taking, they were optimized by injecting an axion signal on
 top of 
 the noise data and found that they were consistent with the original choice 
 (see Sec.~\ref{sec:sys}). The SG-filter parameters 
-are also cross-checked with 10000 pseudo-experiments that include simulations 
+are also cross-checked using 10000 pseudo-experiments that include simulations 
 of the noise spectrum and an axion signal with 
 $\ggamma\approx 10 \left|g_\text{KSVZ}\right|$; the measured signal power 
 is found to be consistent with the injected one within 1\%.
@@ -100,10 +100,11 @@ is found to be consistent with the injected one within 1\%.
 
 The raw averaged power spectrum is divided by the output of the SG filter, 
 then unity is subtracted from the ratio to get the dimensionless 
-normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). The value 
-in each bin of the normalized spectrum is the deviation of the 
-averaged measured power from the SG-filter output (can be considered 
-as the averaged noise power) relative to the SG output. The symbol 
+normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). The 
+value in each bin of the normalized spectrum is the deviation of the 
+averaged measured power from the SG-filter output, computed 
+relative to the SG output. The SG-filter output can be considered 
+as the averaged noise power. The symbol 
 $\delta$ and term ``RDP'' are used to denote the relative deviation of power 
 in the normalized spectrum and also in the spectra processed with rescaling, 
 combining, and merging afterwards; the value can be zero, positive, or negative. 
@@ -117,7 +118,7 @@ If the axion signal exists, there will be a significant excess above zero.
  
 %After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
 During the data taking, the resonant frequency of the cavity was  
-adjusted by the tuning bar so to scan a large range of frequencies and to 
+adjusted by the tuning bar to scan a large range of frequencies and to 
 reduce the uncertainty of the averaged noise power at the overlapped region. 
 Therefore, the 
 spectra of all the scans need to be combined to create one big spectrum. 
@@ -174,7 +175,7 @@ KSVZ axion signal will have a rescaled RDP $\delta_{ij}^\text{res}$
 that is approximately equal to unity, if the signal power is distributed 
 in only one frequency bin. 
 
-\begin{figure} [htbp]
+\begin{figure*} [htbp]
   \centering
   \includegraphics[width=6.5cm]{figures/RawPower_SGPower_Ratio_vs_Freq_Step_0100.pdf}
   \includegraphics[width=6.5cm]{figures/Histogram_RawPower_SGPower_Ratio_Step_0100.pdf}
@@ -187,7 +188,7 @@ fit; there are 1600 entries in total (from the 1600 frequency bins).
 The fitted mean and standard deviation are shown to be consistent with the prediction 
 when the axion signal is not present.}
   \label{fig:raw_sg_power}
-\end{figure}
+\end{figure*}
 
 %\begin{figure} [htbp]
 %  \centering
@@ -384,7 +385,7 @@ spectrum and $M = 5$ is the number of merged bin in
 this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
 the combined and final spectrum, respectively. After this rescaling 
 procedure, a KSVZ axion signal is expected to have an RDP equal to unity for 
-each bin of the five merged bins.    
+each bin in the final spectrum after merging. 
 %The integral $L_{k}$ is defined as: 
 %\begin{equation}
 %  \label{eq:Lq_integral}
@@ -493,8 +494,8 @@ In total, 22 candidates with an SNR greater than 3.355 were found.
 Among them, 17 candidates were from the fluctuations because they were gone 
 after a few rescans. 
 The remaining five candidates, in the frequency ranges of 
-4.710170 -- 4.710190~GHz and 4.747301 -- 4.747380~GHz, reached an SNR greater than 
-4 after rescanning. The signals in the second frequency 
+4.710170 -- 4.710190~GHz and 4.747301 -- 4.747380~GHz, reached an SNR 
+greater or equal to 5 after rescanning. The signals in the second frequency 
 range were detected via a portable antenna outside the DR and found 
 to come from the instruments in the laboratory, while the signals 
 in the first frequency range were weaker but still present after 
@@ -512,8 +513,8 @@ including data from both the original scans and the rescans.
 Since no candidates were found after the rescan, an upper limit on 
 the signal power $P_s$ is derived by setting $P_s$ equal to 
 $5\sigma_{g}^\text{merged}\times P_{g}^\text{KSVZ}$, where 
-the $\sigma_{g}^\text{merged}$ and $P_{g}^\text{KSVZ}$ are 
-the standard deviation and the expected signal power for the KSVZ axion 
+the $\sigma_{g}^\text{merged}$ is the standard deviation 
+and $P_{g}^\text{KSVZ}$ is the expected signal power for the KSVZ axion 
 for a certain frequency bin $g$ in the merged spectrum. 
 Then, the 95\% C.L. limits on the dimensionless parameter 
 \ggamma\ and the axion-two-photon coupling \gagg\ could be derived 
