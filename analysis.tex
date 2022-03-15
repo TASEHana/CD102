@@ -42,7 +42,7 @@ data were sampled and saved in the TDMS
 binary format developed by National Instruments.
 %Fast Fourier Transform (FFT) was performed to convert the data into frequency-dependent and into unit of power by using the equation:
 The FFT is performed to convert the data into 
-frequency-domain power spectrum in which the measured power is calculated 
+frequency-domain power spectrum in which the power is calculated 
 using the following equation:
 
 \begin{equation}
@@ -58,7 +58,7 @@ in 1920000 to 2520000 subspectra; an average over these subspectra gives
 the averaged frequency-domain power spectrum for each scan. 
 The frequency span in the spectrum from each resonant-frequency scan is 
 1.6~MHz while the 
-resolution is 1~kHz, giving 1600 frequency bins in each spectrum.  
+resolution is 1~kHz, giving 1600 frequency bins in each spectrum. 
 
 %\subsection{Savitzky Golay filter}
 \subsection{Remove the structure of the background}
@@ -276,8 +276,9 @@ Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum.
 \begin{equation}
     \label{eq:comb_power}
 %    \delta_{n}^\text{com} = \frac{ \sum_{1}^{k}\left(\delta_{ij}^\text{res} \cdot {w_{ij}}\right)}{\sum_{1}^{k} {w_{ij}}},
-    \delta_{n}^\text{com} = \frac{ \sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^\text{res} \cdot {w_{ijn}}\right)}{\sum\limits_{i}\sum\limits_{j} {w_{ijn}}},
+    \delta_{n}^\text{com} = \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^\text{res} \cdot {w_{ijn}}\right)}{\sum\limits_{i}\sum\limits_{j} {w_{ijn}}},
 \end{equation}
+
 \begin{equation}
     \label{eq:comb_sigma}
 %    \sigma_{n}^\text{com} = \frac{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^\text{res} \cdot {w_{ij}})^2}}{\sum_{1}^{k} {w_{ij}}},
@@ -288,6 +289,8 @@ Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum.
 %    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\left(\delta_{ij}^{res} \cdot {w_{ij}}\right)}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
     \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^{res} \cdot {w_{ijn}}\right)}{ \sqrt{\sum\limits_{i}\sum\limits_{j}(\sigma_{ij}^{res} \cdot {w_{ijn}})^2}}.
 \end{equation} 
+The summations over $i$ above run from 1 to 837 (steps) while the summations 
+over $j$ run from 1 to 1600 (bins).  
 For each bin $n$ in the combined spectrum, there are $m_n$ non-vanishing 
 contributions to the sums above. The value of $m_n$ ranges from 2 to 26; 
 in general the leftmost bin or the bin with the smallest frequency 
@@ -351,16 +354,22 @@ spectrum with an integral of the signal line shape $L_{k}$:
 %[Eq.~\eqref{eq:Lq_integral}]:
 \begin{equation}
   \label{eq:Lq_integral}
-  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f) \,df,
+  L_{k} = \int_{f_a +\delta f_m + (k-1)\Delta f_\text{bin}}^{f_a +\delta f_m + k\Delta f_\text{bin}} \mathcal{F}(f,f_a) \,df,
 \end{equation}
-where the variable $k$ is the index within the group of bins for 
-merging, the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
+where the variable $g$ is the index for the frequency bins in 
+the final merged spectrum and the variable 
+$k$ is the index within the group of bins for 
+merging. The frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
 frequency, and $\delta f_m$ is the misalignment between $f_a$ and the lower
 boundary of the $g^\text{th}$ bin in the merged spectrum.
-The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.
+The function $\mathcal{F}(f,f_a)$ has been defined in 
+Eq.~\eqref{eq:simplesignal}.
 In order to get a misalignment-independent line shape, instead of using an
-$L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
-$L_{k}$ over the range of $\delta f_m$ is used.
+$L_{k}$ that depends on the frequency $f_a$ and  $\delta f_m$, the average 
+($\bar{L}_{k}$) of $L_{k}$ over the ranges of $f_a$ and $\delta f_m$ is 
+used. 
+Note that given the frequency coverage of this analysis is $\approx$ 90~MHz, 
+the value of $L_{k}$ has only weak dependence on the $f_a$. 
 In the analysis presented here, 
 $\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.
 The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
@@ -379,13 +388,10 @@ standard deviation ($\sigma^\text{rs}_{g+k-1}$) are calculated:
   \end{split}
 \end{equation}
 %Here, the $\delta^\text{rs}_{g+k-1}$ and $\sigma^\text{rs}_{g+k-1}$ are the 
-%rescaled RDP and standard deviation that will be used later for merging.
-The variable $g = 1,..,N-M+1$ is the index for the frequency bins in the final 
-spectrum and $M = 5$ is the number of merged bin in 
-this analysis. The numbers $N$ and $N-M+1$ are the total numbers of bins in 
-the combined and final spectrum, respectively. After this rescaling 
+%rescaled RDP and standard deviation that will be used later for merging. 
+After this rescaling 
 procedure, a KSVZ axion signal is expected to have an RDP equal to unity for 
-each bin in the final spectrum after merging. 
+each bin in the spectrum. 
 %The integral $L_{k}$ is defined as: 
 %\begin{equation}
 %  \label{eq:Lq_integral}
@@ -419,9 +425,12 @@ each bin in the final spectrum after merging.
 And the ML weight is defined as: 
 \begin{equation}
     \label{eq:merge_weight}
-    w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}},
+    w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}}.
 \end{equation}
-
+The numbers $N$ and $N-M+1$ are the total numbers of bins in 
+the combined and final spectrum, respectively; $M=5$ is the number of 
+merged bin in this analysis. Therefore, the index $g$ runs from 1 to $N-M+1$. 
+%
 % in which 
 %\begin{equation}
 %    \label{eq:Lq_integtal}
@@ -437,12 +446,12 @@ And the ML weight is defined as:
 %The frequency $f_a=\left.\ma c^2\middle/h\right.$ is 
 %the axion frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower 
 %boundary of the $g^\text{th}$ bin in the combined spectrum. 
-
+%
 %where $L_q$ is the integral of the line shape from the lower edge to higher 
 %edge of ${q^{th}}$ bin. 
-
+%
 %We have a weight Eq.\eqref{eq:merge_weight}, where Lq is the area in ${q^{th}}$ bin and $\sigma_{q}$ is the weighted $\sigma$ in the $q^{\mathrm{th}}$ bin , Eq.\eqref{eq:axion_line_shape} is the axion CDM(cold dark matter) line shape, where $\big \langle \beta^{2} \big \rangle = \big \langle v^{2} \big \rangle /c^{2}$ and $\big \langle v^{2} \big \rangle = (270km/s)^{2}\ , \big \langle v^{2} \big \rangle$ is the squared virial velocity. Eq.\eqref{eq:L_q_integtal},
-
+%
 The RDP, the standard deviation, and the SNR of the merged spectrum are:
 
 \begin{equation}
