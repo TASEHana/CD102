@@ -93,19 +93,20 @@ benchmark model within the mass range of %1.9--3.69~$\mu$eV$/c^2$.
 of 2.66--3.31 and 3.9--4.1\muevcc, 
 respectively~\cite{ADMXI,ADMXII,ADMXIII,ADMXIV,ADMXV,ADMXVI,ADMXVII}. 
 %In addition to having sensitivity to the more weakly coupled DFSZ axions, 
-One of the major goals of ADMX G2 is to search for higher-mass axions in the range 
-of 4--40\muevcc\ (1--10~GHz), similarly for the axion experiments that 
-were established during the last ten years.  
+One of the major goals of ADMX G2 is to search for higher-mass axions in the 
+range of 4--40\muevcc\ (1--10~GHz), similarly for the 
+other haloscope experiments that were established during the last ten years.  
 The Haloscope at Yale Sensitive to Axion Cold dark matter 
 (HAYSTAC) had performed searches first for the mass range of 
-23.15--24\muevcc\ and later at around 17\muevcc; they excluded axions 
+23.15--24\muevcc~\cite{HAYSTACIII,HAYSTACIV} and later at 
+around 17\muevcc~\cite{HAYSTACI}; they excluded axions 
 with $\ggamma\geq 1.38 \ggamma^\text{KSVZ}$ for $m_a=16.96-17.12$ and 
 17.14--17.28\muevcc~\cite{HAYSTACI}. The Center 
 for Axion and Precision Physics Research (CAPP) constructed 
 and ran simultaneously several experiments targeting at 
-different frequencies; they have pushed the limits towards the 
-KSVZ value within a narrow mass region of 
-10.7126--10.7186\muevcc~\cite{CAPPI}.
+different frequencies~\cite{CAPPII,CAPPIII,CAPPI}; 
+they have pushed the limits towards the KSVZ value within a narrow mass 
+region of 10.7126--10.7186\muevcc~\cite{CAPPI}.
 The QUest for AXions-$a\gamma$ (QUAX-$a\gamma$) also pushed their limits 
 close to the upper bound of the QCD axion-two-photon couplings for 
 $m_a\approx43\muevcc$~\cite{QUAX}.   
@@ -135,23 +136,25 @@ respectively.
 \label{sec:introsignal}
 
 The signal power extracted from a microwave cavity on resonance is given 
-by:
+by~\cite{HAYSTACIII}:
 \begin{equation}
 P_s = \left(\bggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
 \left(\omega_c\frac{1}{\mu_0}B_0^2VC_{mnl}Q_L\frac{\beta}{1+\beta}\right),
 \label{eq:ps}
 \end{equation}
 where $\rho_a=0.45~\GeV/\mathrm{cm}^3$ is the local dark-matter 
-%density~\cite{Read:2014qva,PDG}. 
-density~\cite{[{}][{. Both $0.45~\GeV/\mathrm{cm}^3$ (used by ADMX, HAYSTAC, 
-CAPP, and QUAX-$a\gamma$) and $0.3~\GeV/\mathrm{cm}^3$ (more commonly cited 
-by the direct DM search experiments) are consistent with the recent 
-measurements.}]Read:2014qva,PDG}. 
+density. 
+%density~\cite{[{}][{. 
+Both $0.45~\GeV/\mathrm{cm}^3$ (used by ADMX, HAYSTAC, 
+CAPP, and QUAX) and $0.3~\GeV/\mathrm{cm}^3$ (more commonly cited 
+by the other direct DM search experiments) are consistent with the recent 
+measurements~\cite{Read:2014qva,PDG}. 
+%}]Read:2014qva,PDG}. 
 The second set of parentheses contains parameters related to the experimental 
 setup: the angular resonant frequency of the cavity $\omega_c$, 
 the vacuum permeability $\mu_0$, the nominal strength of the external magnetic 
-field $B_0$, the volume of the cavity $V$, and the loaded quality factor of the 
-cavity 
+field $B_0$, the volume of the cavity $V$, and the loaded quality factor of 
+the cavity 
 \(Q_L=Q_0/(1+\beta)\), where $Q_0$ is the unloaded, intrinsic quality factor 
 of the cavity and $\beta$ is the coupling coefficient which determines the 
 amount 
@@ -163,10 +166,10 @@ field $\vec{\bm{B}}$:
   C_{mnl} = \frac{\left[\int\left( \vec{\bm{B}}\cdot\vec{\bm{E}}_{mnl}\right) d^3\bm{x}\right]^2}{B_0^2V\int E_{mnl}^2 d^3\bm{x}}.
 \label{eq:formfactor} 
 \end{equation} 
-Here, the magnetic field $\vec{\bm{B}}$ points mostly along the axial 
+The magnetic field $\vec{\bm{B}}$ in TASEH points mostly along the axial 
 direction ($z$-axis) of the cavity. 
-The field strength has a small variation along the radial and axial directions and 
-$B_0$ is the nominal magnetic field strength. 
+The field strength has a small variation along the radial and axial 
+directions and $B_0$ is the nominal magnetic field strength. 
 For cylindrical cavities, the largest form factor is from the 
 TM$_{010}$ mode. The expected signal power derived from the experimental 
 parameters of TASEH (see Table~\ref{tab:tasehbenchmark}) 
@@ -182,19 +185,23 @@ to be spherically symmetric and close to be isothermal, which results in a
 velocity distribution similar to the Maxwell-Boltzmann distribution. The 
 distribution of the measured signal frequency can be further derived from the 
 velocity distribution after a change of variables and set 
-\(hf_a = \ma c^2\). Previous experimental results typically adopt the 
-following function for frequency $f\ge f_a$: 
+\(hf_a = \ma c^2\). 
+%Previous experimental results typically adopt the 
+%following function for frequency $f\ge f_a$: 
+For frequency $f\ge f_a$:
 \begin{equation}
 \mathcal{F}(f, f_a) = \frac{2}{\sqrt{\pi}}\sqrt{f-f_a}\left(\frac{3}{\alpha}\right)^{3/2}
 e^{\frac{-3\left(f-f_a\right)}{\alpha}}, 
 \label{eq:simplesignal}
 \end{equation}
-where $\alpha\equiv  f_a \left<v^2\right>/c^2$. For a Maxwell-Boltzmann velocity 
+where $\alpha\equiv  f_a \left<v^2\right>/c^2$. Previous axion searches 
+typically adopt Eq.~\eqref{eq:simplesignal} when deriving their analysis 
+results. For a Maxwell-Boltzmann velocity 
 distribution, the variance $\left<v^2\right>$ and the most probable velocity 
 (speed) $v_p$ are related to each other:
 $\left<v^2\right>=3v_p^2/2=$(270~km/s)$^2$, where $v_p=220$~km/s is the local 
-circular velocity of DM in the galactic rest frame. 
-Equation~\eqref{eq:simplesignal} 
+circular velocity of DM in the galactic rest frame and this value is also 
+used by other axion experiments. Equation~\eqref{eq:simplesignal} 
 is modified if one considers that the relative velocity of the DM halo with 
 respect to the Earth is not the same as the DM velocity in the galactic rest 
 frame~\cite{SignalLineShapeI}. The velocity distributions shall also be 
@@ -244,9 +251,9 @@ maximum (FWHM), see Sec.~\ref{sec:results} for more details.
 Several physics processes can contribute to the total noise and all of them 
 can be seen as Johnson thermal noise at some effective temperature, or the 
 so-called system noise temperature \tsys. The total noise power in a 
-bandwidth $b$ is then:
+bandwidth $\Delta f$ is then:
 \begin{equation}
-  P_n = k_B\tsys b, 
+  P_n = k_B\tsys \Delta f, 
 \end{equation}
 where $k_B$ is the Boltzmann constant. 
 The system noise temperature \tsys\ has three major components: 
@@ -255,14 +262,15 @@ The system noise temperature \tsys\ has three major components:
   \tsys = T_\text{b} + T_\text{qn}  + \ta,
 \label{eq:pn}
 \end{equation}
-where 
-\begin{equation}
-   T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right..
-\end{equation}
+%where 
+%\begin{equation}
+%   T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right..
+%\end{equation}
  The three terms in Eq.~\eqref{eq:pn} correspond to the effective 
-temperatures of the following noise sources: (i) $T_\text{b}$, the blackbody 
+temperatures of the following noise sources: (i) 
+$T_\text{b}=\left(\frac{1}{e^{\left.hf\middle/k_BT_\mathrm{c}\right.}-1}\right)\left. hf\middle/k_B\right.$, the blackbody 
 radiation from the cavity at a physical temperature $T_\mathrm{c}$, (ii) 
-$T_\text{qn}$, the quantum noise 
+$T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right.$, the quantum noise 
 associated with the zero-point fluctuation of the vacuum, and (iii) \ta, the 
 noise added by the receiver (mainly from the first-stage amplifier). 
 Equation~\eqref{eq:pn} implies 
@@ -303,8 +311,10 @@ is given by:
 \end{eqnarray}
 where $N_\text{avg}$ is the number of noise power spectra used in the 
 average; it is related to the data integration time $t$ 
-and the bandwidth over which a single measurement is made $\Delta f$.  
-The SNR will therefore be: 
+%and the bandwidth over which a single measurement is made $\Delta f$.  
+and the resolution bandwidth $\Delta f$.  
+Assuming that all the axion signal power falls within $\Delta f$, 
+the SNR will therefore be: 
 \begin{eqnarray}
    \text{SNR} & = & \frac{P_s}{\sigma_n}, \nonumber \\
               & = & \frac{P_s}{k_B\tsys}\sqrt{\frac{t}{\Delta f}},
