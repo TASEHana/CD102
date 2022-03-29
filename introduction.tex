@@ -256,38 +256,59 @@ bandwidth $\Delta f$ is then:
   P_n = k_B\tsys \Delta f, 
 \end{equation}
 where $k_B$ is the Boltzmann constant. 
-The system noise temperature \tsys\ has three major components: 
+%The system noise temperature \tsys\ has three major components: 
+The system noise temperature \tsys\ has two major components: 
 \begin{equation}
 %  k_B\tsys = hf\left(\frac{1}{e^{\left.hf\right/k_{B}T_\mathrm{cavity}}-1} + \frac{1}{2} \right) + k_B\ta. 
-  \tsys = T_\text{b} + T_\text{qn}  + \ta,
+%  \tsys = T_\text{bb} + T_\text{qn}  + \ta,
+  \tsys = T_\text{cn}  + \ta,
 \label{eq:pn}
 \end{equation}
 %where 
 %\begin{equation}
 %   T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right..
 %\end{equation}
- The three terms in Eq.~\eqref{eq:pn} correspond to the effective 
-temperatures of the following noise sources: (i) 
-$T_\text{b}=\left(\frac{1}{e^{\left.hf\middle/k_BT_\mathrm{c}\right.}-1}\right)\left. hf\middle/k_B\right.$, the blackbody 
-radiation from the cavity at a physical temperature $T_\mathrm{c}$, (ii) 
-$T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right.$, the quantum noise 
-associated with the zero-point fluctuation of the vacuum, and (iii) \ta, the 
+% The three terms in Eq.~\eqref{eq:pn} correspond to the effective 
+%temperatures of the following noise sources: (i) 
+ The two terms in Eq.~\eqref{eq:pn} correspond to the effective 
+temperatures of the following noise sources: %(i) 
+%$T_\text{bb}=\left(\frac{1}{e^{\left.hf\middle/k_BT_\mathrm{c}\right.}-1}\right)\left. hf\middle/k_B\right.$, the blackbody 
+%radiation from the cavity at a physical temperature $T_\mathrm{c}$, (ii) 
+%$T_\text{qn} = \frac{1}{2}\left. hf\middle/k_B\right.$, the quantum noise 
+%associated with the zero-point fluctuation of the vacuum, 
+(i) 
+$T_\text{cn}=\left(\frac{1}{e^{\left.hf\middle/k_BT_\mathrm{c}\right.}-1} + \frac{1}{2}\right)\left. hf\middle/k_B\right.$, the sum of the blackbody 
+radiation from the cavity at a physical temperature $T_\mathrm{c}$ and 
+the quantum noise associated with the zero-point fluctuation of the 
+vacuum, which is further modulated by a Lorentzian function due to the 
+higher temperature at the cavity with respect to that in the 
+dilution refrigerator. 
+More details may be found in Sec.~\ref{sec:taseh} and 
+Appendix~\ref{sec:cavitynoise}. (ii) \ta, the 
 noise added by the receiver (mainly from the first-stage amplifier). 
-Equation~\eqref{eq:pn} implies 
-that the noise spectrum has little dependence on the frequency 
-(white spectrum) for the narrow bandwidth considered in the experiment. 
-However, apart from the flat baseline as described by 
-Eq.~\eqref{eq:pn}, the noise spectrum observed by TASEH has an additional 
-component with a Lorentzian shape due to the higher temperature at the 
-cavity with respect to the temperature in the dilution refrigerator. 
-More details may be found in Sec.~\ref{sec:taseh} and Appendix~\ref{sec:cavitynoise}. 
-The Lorentzian component will be removed from the measured spectrum and only 
-the baseline \tsys\ will be used in the final analysis (Sec.~\ref{sec:ana}). 
+The Lorentzian modulation of $T_\text{cn}$ will be removed from the mean of 
+the averaged spectrum and only the baseline \tsys\ will be 
+used in the final analysis (Sec.~\ref{sec:ana}). The fluctuation of the 
+averaged spectrum near resonace is $\approx 5$\% larger 
+than the off-resonance regions; this 5\% difference has little effect 
+on the final analysis since the on-resonance region contributes $<10\%$ to 
+the full spectrum.  
+%Equation~\eqref{eq:pn} implies 
+%that the noise spectrum has little dependence on the frequency 
+%(white spectrum) for the narrow bandwidth considered in the experiment. 
+%However, apart from the flat baseline as described by 
+%Eq.~\eqref{eq:pn}, the noise spectrum observed by TASEH has an additional 
+%component with a Lorentzian shape due to the higher temperature at the 
+%cavity with respect to the temperature in the dilution refrigerator. 
+%The Lorentzian component will be removed from the measured spectrum and only 
+%the baseline \tsys\ will be used in the final analysis (Sec.~\ref{sec:ana}). 
 
 Using the operation parameters of TASEH in Table~\ref{tab:tasehbenchmark} and 
 the results from the calibration of readout electronics, 
-the values of $T_\text{b}$, $T_\text{qn}$, and \ta\ are estimated to be about 
-0.07~K, 0.12~K, and \noise~K, respectively.  
+%the values of $T_\text{bb}$, $T_\text{qn}$, and \ta\ are estimated to be 
+%about 0.07~K, 0.12~K, and \noise~K, respectively.  
+the baseline values of $T_\text{cn}$ and \ta\ near the cavity resonant 
+frequency are estimated to be about 0.19~K and \noise~K, respectively.  
 Therefore, the baseline value of \tsys\ for TASEH 
 is about 2.1--2.4~K, which gives a noise power of approximately 
 $\left(1.5-1.7\right)\times 10^{-19}$~W within the 5-kHz axion signal 
