@@ -56,9 +56,14 @@ The FFT is done for every one-millisecond subspectrum data. The integration
 time for each frequency scan was about 32-42 minutes, which resulted 
 in 1920000 to 2520000 subspectra; an average over these subspectra gives 
 the averaged frequency-domain power spectrum for each scan. 
+%The frequency span in the spectrum from each resonant-frequency scan is 
+%1.6~MHz while the 
+%resolution is 1~kHz, giving 1600 frequency bins in each spectrum. 
 The frequency span in the spectrum from each resonant-frequency scan is 
-1.6~MHz while the 
-resolution is 1~kHz, giving 1600 frequency bins in each spectrum. 
+2~MHz while the resolution is 1~kHz. In order to avoid the aliasing 
+effect, a band-pass filter is applied in the data acquisition, 
+giving a frequency span of 1.6~MHz (1600 frequency bins) that can be used 
+for the analysis. 
 
 
 %\subsection{Savitzky Golay filter}
@@ -89,26 +94,31 @@ A window width of 201 frequency bins and a 4$^\text{th}$-order polynomial
 were first chosen during the data taking, by 
 requiring the ratio of the raw data to the filter 
 output consistent with unity.  
-After the data taking, they were optimized by injecting an axion signal on 
-top of 
-the noise data and found that they were consistent with the original choice 
-(see Sec.~\ref{sec:sys}). The SG-filter parameters 
+%After the data taking, they were optimized by injecting an axion signal on 
+%top of the noise data and found that they were consistent with the original 
+%choice (see Sec.~\ref{sec:sys}). 
+The SG-filter parameters 
 are also cross-checked using 10000 pseudo-experiments that include simulations 
 of the noise spectrum and an axion signal with 
 $\ggamma\approx 10 \left|g_\text{KSVZ}\right|$; the measured signal power 
 is found to be consistent with the injected one within 1\%.
 
 
+The SG-filter output can be considered as the averaged noise power. 
 The raw averaged power spectrum is divided by the output of the SG filter, 
 then unity is subtracted from the ratio to get the dimensionless 
-normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). The 
-value in each bin of the normalized spectrum is the deviation of the 
-averaged measured power from the SG-filter output, computed 
-relative to the SG output. The SG-filter output can be considered 
-as the averaged noise power. The symbol 
-$\delta$ and term ``RDP'' are used to denote the relative deviation of power 
-in the normalized spectrum and also in the spectra processed with rescaling, 
-combining, and merging afterwards; the value can be zero, positive, or negative. 
+normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). %The 
+%value in each bin of the normalized spectrum is the deviation of the 
+%averaged measured power from the SG-filter output, computed 
+%relative to the SG output. 
+%The symbol 
+%$\delta$ and term ``RDP'' are used to denote the relative deviation of power 
+%in the normalized spectrum and also in the spectra processed with rescaling, 
+%combining, and merging afterwards; the value can be zero, positive, or negative. 
+The relative deviation of power in the normalized spectrum and also in the 
+spectra processed with rescaling, combining, and merging afterwards are 
+denoted by the symbol $\delta$ and referred to as ``RDP''. The values of 
+RDPs can be zero, positive, or negative. 
 In the absence of the axion signal, the RDPs in the normalized spectrum are 
 samples drawn from a Gaussian 
 distribution with a zero mean and a standard deviation of 
@@ -159,8 +169,8 @@ The factor $R_{ij}$ is the ratio of
 the system noise power to the expected signal power of the KSVZ axion 
 $P_{ij}^\text{KSVZ}$, with the Lorentzian cavity response $h_{ij}$ 
 taken into account. 
-The baseline system-noise temperature \tsys\ is calculated following 
-Eq.~\eqref{eq:pn},
+The system-noise temperature \tsys\ in Eq.~\eqref{eq:Rratio} is calculated 
+following Eq.~\eqref{eq:pn},
  where the frequency dependence of the added-noise temperature \ta\ is 
 obtained from the fitting function in Fig.~\ref{fig:hemtcalvsf}. 
 The $\Delta f_\text{bin}$ is the bin width of spectrum (1~kHz). 
