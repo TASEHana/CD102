@@ -115,9 +115,9 @@ normalized spectrum (lower left panel of Fig.~\ref{fig:raw_sg_power}). %The
 %$\delta$ and term ``RDP'' are used to denote the relative deviation of power 
 %in the normalized spectrum and also in the spectra processed with rescaling, 
 %combining, and merging afterwards; the value can be zero, positive, or negative. 
-The relative deviation of power in the normalized spectrum and also in the 
-spectra processed with rescaling, combining, and merging afterwards are 
-denoted by the symbol $\delta$ and referred to as ``RDP''. The values of 
+The relative deviation of power (RDP) in the normalized spectrum (and also in 
+the spectra processed with rescaling, combining, and merging afterwards) are 
+denoted by the symbol $\delta$. The values of 
 RDPs can be zero, positive, or negative. 
 In the absence of the axion signal, the RDPs in the normalized spectrum are 
 samples drawn from a Gaussian 
@@ -304,10 +304,11 @@ Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum.
 The summations over $i$ above run from 1 to 837 (steps) while the summations 
 over $j$ run from 1 to 1600 (bins).  
 For each bin $n$ in the combined spectrum, there are $m_n$ non-vanishing 
-contributions to the sums above. The value of $m_n$ ranges from 2 to 26; 
-in general the leftmost bin or the bin with the smallest frequency 
-(the rightmost bin or the bin with the highest frequency) in each scan has 
-the minimum (maximum) number of $m_n$. 
+contributions to the sums above. In general, the value of $m_n$ is 14--16.
+%The value of $m_n$ ranges from 2 to 26; 
+%in general the leftmost bin or the bin with the smallest frequency 
+%(the rightmost bin or the bin with the highest frequency) in each scan has 
+%the minimum (maximum) number of $m_n$. 
 
 
 %\begin{figure}[h]
@@ -380,7 +381,10 @@ In order to get a misalignment-independent line shape, instead of using an
 $L_{k}$ that depends on the frequency $f_a$ and  $\delta f_m$, the average 
 ($\bar{L}_{k}$) of $L_{k}$ over the ranges of $f_a$ and $\delta f_m$ is 
 used. 
-Note that given the frequency coverage of this analysis is $\approx$ 90~MHz, 
+Note that the relative variation of $f_a$ is at most 
+90~MHz/5~GHz$\approx2\%$ and the line shape of $\mathcal{F}(f,f_a)$ 
+can be considered constant for the full range of the operational 
+frequency. Therefore, 
 the value of $L_{k}$ has only weak dependence on the $f_a$. 
 In the analysis presented here, 
 $\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.
@@ -434,7 +438,7 @@ each bin in the spectrum.
 %Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
 %based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
 %are used to build the merged spectrum: 
-And the ML weight is defined as: 
+The ML weight is defined as: 
 \begin{equation}
     \label{eq:merge_weight}
     w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}}.
@@ -519,11 +523,12 @@ The remaining five candidates, in the frequency ranges of
 4.71017 -- 4.71019~GHz and 4.74730 -- 4.74738~GHz, reached an SNR 
 greater or equal to 5 after rescanning. The signals in the second frequency 
 range were detected via a portable antenna outside the DR and found 
-to come from the instruments in the laboratory, while the signals 
-in the first frequency range were weaker but still present after 
-turning off the external magnetic field. 
-Therefore, these five candidates are considered external signals and 
-no limits are placed for the above two frequency ranges.  
+to come from the instrument control computer in the laboratory, while the 
+signals in the first frequency range were not detected outside the DR but 
+still present after turning off the external magnetic field. 
+Therefore, these five candidates are excluded from consideration of 
+axion signal candidates 
+and no limits are placed for the above two frequency ranges.  
 More details can be found in the 
 TASEH instrumentation paper~\cite{TASEHInstrumentation}. 
 %Figure~\ref{fig:power_sigma_merged} and Fig.~\ref{fig:SNR_merged} show the 
