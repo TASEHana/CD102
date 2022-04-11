@@ -2,77 +2,82 @@
 \section{Derivation of the Function that Models the Noise Spectrum} 
 \label{sec:cavitynoise}
 
-The Hamiltonian of a single-mode cavity is
+The background noise from a cavity is governed by blackbody radiation. 
+According to Planck's law in one dimension (1D), the spectral density of 
+the electromagnetic noise from the cavity, thermalized with an environment of 
+temperature $T_{\rm c}$, through a transmission line is 
 \begin{equation}
-\label{eq:cavity_Hamiltonian}
-    H = \hbar \omega_{\rm c}(C^{\dagger}C+\frac{1}{2}),
+\label{eq:cavity_thermal_spectral_density}
+    S(\omega) = \hbar\omega \left( \frac{1}{e^{\hbar\omega/k_{\rm B}T_{\rm c}} - 1} +\frac{1}{2} \right),
 \end{equation}
-where $\omega_{\rm c}/2\pi$ is the cavity resonant frequency and $C$ is the 
-annihilation operator of the inner cavity field. The cavity field is coupled 
-to the modes $A$ of a transmission line with the rate $\kappa_2$. The cavity 
-field is also coupled to the environment modes $B$ with the rate $\kappa_0$. 
-Based on the model of Fig.~\ref{fig:cavity_in_out.jpg} and the input-output 
-theory, the equation of motion for $C$ is obtained:
-\begin{equation}
-\label{eq:EOM}
-    \frac{dC}{dt} = -i\omega_{\rm c} C - \frac{\kappa_2+\kappa_0}{2} C + \sqrt{\kappa_2} A_{\rm in} + \sqrt{\kappa_0}B_{\rm in}.
-\end{equation}
-A boundary condition holds for the transmission modes:
-\begin{equation}
-\label{eq:BC}
-    A_{\rm out} = \sqrt{\kappa_2} C - A_{\rm in}.
-\end{equation}
-Considering working in a rotating frame of the signal frequency $\omega$ near 
-$\omega_{\rm c}$, the equation of motion becomes:
-\begin{equation}
-\label{eq:EOM_rotating_frame}
-    -i\omega C + \frac{dC}{dt} = -i \omega_{\rm c} C - \frac{\kappa_2+\kappa_0}{2} C + \sqrt{\kappa_2} A_{\rm in} + \sqrt{\kappa_0} B_{\rm in}.
-\end{equation}
-The steady state solution for the cavity field is: 
-\begin{equation}
-\label{eq:cavity_field}
-    C = \frac {\sqrt{\kappa_2} A_{\rm in} + \sqrt{\kappa_0} B_{\rm in}} {-i (\omega-\omega_{\rm c}) + \frac{\kappa_2+\kappa_0}{2} }.
-\end{equation}
-By substituting Eq.~\eqref{eq:cavity_field} into Eq.~\eqref{eq:BC}, the 
-reflected modes of the transmission line $A_{\rm out}$ are expressed in terms 
-of the input modes of the transmission line $A_{\rm in}$ and the environment 
-$B_{\rm in}$:
-\begin{equation} \label{eq:output_field}
-\begin{split}
-	 A_{\rm out} & =  \frac{i(\omega - \omega_{\rm c}) + \frac{\kappa_2-\kappa_0}{2}}{-i(\omega - \omega_{\rm c}) + \frac{\kappa_2+\kappa_0}{2}} A_{\rm in} + \frac{\sqrt{\kappa_2 \kappa_0}}{-i(\omega - \omega_{\rm c}) + \frac{\kappa_2+\kappa_0}{2}} B_{\rm in} \\
-                           & = \frac{-(\omega-\omega_{\rm c})^2 + \frac{\kappa_2^2-\kappa_0^2}{4}+i\kappa_2(\omega-\omega_{\rm c})}{(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2} A_{\rm in}  \\ & + \frac{\sqrt{\kappa_2\kappa_0}\frac{\kappa_2+\kappa_0}{2}+i\sqrt{\kappa_2\kappa_0}(\omega-\omega_{\rm c})}{(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2} B_{\rm in}.
-\end{split}
-\end{equation}
+where $\omega$ is the angular frequency, $\hbar$ is the reduced Planck's 
+constant, and $k_{\rm B}$ is the Boltzmann constant. The first and the second 
+terms in Eq.~\eqref{eq:cavity_thermal_spectral_density} are the thermal noise 
+and the vacuum fluctuation from the cavity, respectively. The spectrum is 
+white when considering a narrow frequency span.
 
-Therefore, the autocorrelation of $A_{\rm out}$ is related to those of $A_{\rm in}$ and $B_{\rm in}$:
-\begin{equation}
-\label{eq:autocorrelation}
-\begin{split}
-    \langle A_{\rm out}^\dagger A_{\rm out} \rangle  = & \frac{[(\omega-\omega_{\rm c})^2 - \frac{\kappa_2^2-\kappa_0^2}{4}]^2+\kappa_2^2(\omega-\omega_{\rm c})^2}{[(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2]^2} \langle A_{\rm in}^\dagger A_{\rm in} \rangle \\ & +  \frac{\kappa_2\kappa_0(\frac{\kappa_2+\kappa_0}{2})^2+\kappa_2\kappa_0(\omega-\omega_{\rm c})^2}{[(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2]^2}\langle B_{\rm in}^\dagger B_{\rm in} \rangle.
-\end{split}
+However, the cavity body may not be thermalized with its 1D electromagnetic 
+environment. To understand the noise spectrum from the cavity near its 
+resonance frequency $\omega_{\rm c}/2\pi$ in this scenario, the model in 
+Fig.~\ref{fig:cavity_in_out} is considered. Through a probe the cavity field 
+mode $c$ is coupled to the modes $a_2$ of a 1D transmission line, representing
+ the path toward a signal receiver, with a rate $\kappa_2$. The cavity field 
+is also coupled to the environment modes $a_0$, representing the intrinsic 
+loss channels of the cavity body, with a rate $\kappa_0$. In a steady state, 
+the quantum input-output theory leads to a relation between the outgoing field 
+from the cavity to the 1D transmission line, $a_{\rm 2,out}$, and the incoming
+ fields, $a_{\rm 2,in}$ and $a_{\rm 0,in}$, through the elements of the 
+cavity scattering matrix:
+\begin{equation} \label{eq:outgoing_field}
+	 a_{\rm 2,out} = S^{*}_{\rm 22} a_{\rm 2,in} + S^{*}_{\rm 20} a_{\rm 0,in},
 \end{equation}
-The spectrum from the cavity $S(\omega)$ is found to be related to the spectrum 
-of the readout transmission line $S_{\rm rt}(\omega)$ and the spectrum of the 
-cavity environment $S_{\rm cav}(\omega)$:
+where $S_{\rm 22} = \frac {\kappa_0 - \kappa_{\rm 2} + i 2 \Delta} {\kappa_0+\kappa_{\rm 2} + i 2 \Delta}$, $S_{\rm 20} = \frac {2\sqrt{\kappa_0 \kappa_{\rm 2}}} {\kappa_0+\kappa_{\rm 2} + i 2 \Delta}$,
+and $\Delta = \omega-\omega_{\rm c}$ is the detuning. 
+
+As both incoming fields are in a thermal state, $\langle a_{i,\rm in}(0) a_{i,\rm in}(\tau) \rangle = n_{\rm th}(T_i) \delta(\tau)$, where $n_{\rm th}(T_i) = \frac{1}{e^{\hbar\omega/k_{\rm B}T_i} - 1}$ is the mean thermal photon number 
+of the incoming field $a_{i,\rm in}$ at the temperature $T_i$, and 
+$\delta(\tau)$ is the $\delta$-function. In the model the incoming field 
+$a_{\rm 2,in}$ comes from a nearby cold attenuator in the transmission line 
+with a temperature $T_{\rm att} \equiv T_{\rm 2}$, and $a_{\rm 0,in}$ comes 
+from the cavity body with a temperature $T_{\rm c} \equiv T_{\rm 0}$.
+
+By defining the effective temperature $\Tilde{T}_i = \left( n_{\rm th}(T_i) + \frac{1}{2} \right) \hbar\omega/k_{\rm B}$,
+the power spectral density of the outgoing field of the transmission line 
+modes is
 \begin{equation}
 \label{eq:spectrum_relation}
-\begin{split}
-    S(\omega) & = \frac{[(\omega-\omega_{\rm c})^2 - \frac{\kappa_2^2-\kappa_0^2}{4}]^2+\kappa_2^2(\omega-\omega_{\rm c})^2}{[(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2]^2} S_{\rm rt}(\omega) \\ & + \frac{\kappa_2\kappa_0(\frac{\kappa_2+\kappa_0}{2})^2+\kappa_2\kappa_0(\omega-\omega_{\rm c})^2}{[(\omega-\omega_{\rm c})^2+(\frac{\kappa_2+\kappa_0}{2})^2]^2}S_{\rm cav}(\omega).
-\end{split}
+\begin{aligned}
+    S_{\rm out}(\omega) 
+    =& \int_{-\infty}^{\infty} \hbar\omega \left(\langle a_{2,\rm out}(0) a_{2,\rm out}(\tau) \rangle + \frac{1}{2} \right) e^{-i\omega\tau} d\tau \\
+    =& |S_{\rm 22}|^2 k_{\rm B} \Tilde{T}_2 + |S_{\rm 20}|^2 k_{\rm B} \Tilde{T}_0.
+\end{aligned}
 \end{equation}
-As the the readout transmission line and the cavity environment are both in 
-thermal states, i.e. $S_{\rm rt}(\omega)=\left[n_{\rm BE}(T_{\rm rt})+1/2\right]\hbar\omega$ 
-and $S_{\rm cav}(\omega)=\left[n_{\rm BE}(T_{\rm cav})+1/2\right]\hbar\omega$, where 
-$n_{\rm BE}$ is the mean photon number given by the Bose-Einstein distribution, 
-$S(\omega)$ is white if $T_{\rm cav}=T_{\rm rt}$, and Lorentzian if 
-$T_{\rm cav} \gg T_{\rm rt}$.
+The total output noise can be viewed as the sum of the reflection of the 
+incoming noise from the attenuator by the cavity and the transmission of the 
+noise from the cavity body through the cavity. Via the unitary property of 
+the cavity scattering matrix, i.e. $|S_{\rm 22}|^2+|S_{\rm 20}|^2=1$,
+\begin{equation}
+\label{eq:spectrum_relation_Lorentz}
+\begin{aligned}
+    S_{\rm out}(\omega) =  k_{\rm B} \Tilde{T}_2 + k_{\rm B} (\Tilde{T}_0 - \Tilde{T}_2) L(\omega),
+\end{aligned}
+\end{equation}
+where $L(\omega) = |S_{\rm 20}|^2 = \frac {\kappa_0 \kappa_{\rm 2}}  {(\kappa_0+\kappa_{\rm 2})^2/4 + \Delta^2}$ is a Lorentzian function with a FWHM 
+$\kappa_0+\kappa_{\rm 2}$. Therefore, the noise spectrum has a white background
+ determined by the incoming noise of the attenuator with an effective 
+temperature $\Tilde{T}_{\rm att}$, plus an excess Lorentzian peak centered at 
+$\omega_{\rm c}$ determined by the effective temperature difference 
+$\Tilde{T}_{\rm c} - \Tilde{T}_{\rm att}$. (The center Lorentzian structure 
+can even be a dip if ${T}_{\rm c} < {T}_{\rm att}$.)
 
 \begin{figure}[htbp]
     \centering
-    \includegraphics[width=8.6cm]{figures/cavity_in_out.jpg}
-    \caption{A cavity is coupled to the modes of transmission line $A$ with the 
-rate $\kappa_2$ and the modes of environment $B$ with the rate $\kappa_0$.}
-    \label{fig:cavity_in_out.jpg}
+    \includegraphics[width=8.6cm]{figures/inout.png}
+    \caption{A cavity is coupled to the modes of transmission line $a_2$ with 
+the rate $\kappa_2$ and the modes of environment $a_0$ with the rate 
+$\kappa_0$.}
+    \label{fig:cavity_in_out}
 \end{figure}
+
 
 

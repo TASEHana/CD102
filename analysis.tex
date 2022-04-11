@@ -61,7 +61,7 @@ the averaged frequency-domain power spectrum for each scan.
 %resolution is 1~kHz, giving 1600 frequency bins in each spectrum. 
 The frequency span in the spectrum from each resonant-frequency scan is 
 2~MHz while the resolution is 1~kHz. In order to avoid the aliasing 
-effect, a band-pass filter is applied in the data acquisition, 
+effect, a band-pass filter was applied in the data acquisition, 
 giving a frequency span of 1.6~MHz (1600 frequency bins) that can be used 
 for the analysis. 
 
@@ -128,17 +128,21 @@ and the right panel of Fig.~\ref{fig:raw_sg_power}).
 If the axion signal exists, there will be a significant excess above zero. 
  
 %After filtering, the normalized spectrum (Fig. \cite{fig:}) was obtained by dividing the raw spectrum by the output of the SG filter subtract 1. Therefore, if the signal exists, the excess power will be above 0.
-During the data taking, the resonant frequency of the cavity was  
-adjusted by the tuning bar to scan a large range of frequencies and to 
-reduce the uncertainty of the averaged noise power at the overlapped region. 
-Therefore, the 
-spectra of all the scans need to be combined to create one big spectrum. 
+%
+%During the data taking, the resonant frequency of the cavity was  
+%adjusted by the tuning bar to scan a large range of frequencies and to 
+%reduce the uncertainty of the averaged noise power at the overlapped region. 
+%Therefore, the 
+%spectra of all the scans need to be combined to create one big spectrum. 
+%
 %Before doing this, 
 %the normalized spectrum from each scan is rescaled and the rescaled spectrum, 
 %shown in 
 %Fig.~\ref{fig:rescaled_power}, is computed with the following formula:
-Before doing this, the normalized spectrum from each scan is rescaled and 
-the rescaled spectrum is computed with the following formula:
+%Before doing this, the normalized spectrum from each scan is rescaled and 
+%the rescaled spectrum is computed with the following formula:
+The normalized spectrum from each scan is further rescaled 
+ with the following formula:
 \begin{equation}
   \label{eq:respower_eqn}
   \delta_{ij}^\text{res} = R_{ij}\delta_{ij}^\text{norm},
@@ -164,7 +168,8 @@ RDP and the standard deviation of the $j^\text{th}$ frequency bin in
 the normalized (rescaled) spectrum from the 
 $i^\text{th}$ resonant-frequency scan. 
 The value of $\sigma_{i}^\text{norm}$ is derived from the spread of the 
-RDPs over the 1600 frequency bins for the $i^\text{th}$ scan. 
+RDPs over the 1600 frequency bins for the $i^\text{th}$ scan 
+(see an example in the right panel of Fig.~\ref{fig:raw_sg_power}). 
 The factor $R_{ij}$ is the ratio of 
 the system noise power to the expected signal power of the KSVZ axion 
 $P_{ij}^\text{KSVZ}$, with the Lorentzian cavity response $h_{ij}$ 
@@ -253,23 +258,32 @@ when the axion signal is not present.}
 
 \subsection{Combine the spectra with the weighting algorithm} 
 \label{sec:weighting_algorithm}
-
+During the data taking, the resonant frequency of the cavity was  
+adjusted by the tuning bar to scan a large range of frequencies.  
+Therefore, the spectra of all the scans need to be combined to create one 
+big spectrum. 
 The purpose of the weighting algorithm is to add the spectra from different 
 resonant-frequency scans,
- particularly for the frequency bins that appear in multiple spectra.  
-Each spectrum was collected with a different cavity resonant frequency. 
-Therefore, if a signal appears in a certain frequency bin $j$, due to the
- difference in the resonant frequency and the Lorentzian response, the 
-expected signal
- power will be different in each spectrum $i$. The weighting algorithm is 
-expected to take this into account with a weight calculated for each bin $j$ of
- the rescaled spectrum $i$, as defined below: %in Eq.~\eqref{eq:weight}:
+ particularly for the frequency bins that appear in multiple spectra. 
+Note that the uncertainty of the averaged power at the overlapped region is 
+reduced due to the combination.  
+%Each spectrum was collected with a different cavity resonant frequency. 
+%Therefore, 
+%If a signal appears in a certain frequency bin $j$, due to the
+% difference in the resonant frequency and the Lorentzian response, the 
+%expected signal
+% power will be different in each spectrum $i$. The weighting algorithm is 
+%expected to take this into account with a weight calculated for each bin $j$ of
+% The weight for each bin $j$ of the $i^\text{th}$ rescaled spectrum, 
+%of which the RDP will be included in the $n^\text{th}$ bin of the combined 
+%spectrum, is defined below: %in Eq.~\eqref{eq:weight}: 
+The weight is defined below: 
 \begin{equation}
     \label{eq:weight}
     %    {w_{n}}^{i} = \frac{h \cdot p}{(\sigma_{n}^{i})^{2}}
     {w_{ijn}} = \frac{\Gamma_{ijn}}{(\sigma_{ij}^\text{res})^{2}}.
 \end{equation}
-Note, the symbol $\Gamma_{ijn}=1$ if the $j^\text{th}$ frequency bin in the 
+Here, the symbol $\Gamma_{ijn}=1$ if the $j^\text{th}$ frequency bin in the 
 $i^\text{th}$ rescaled spectrum correspond to the same frequency in 
 the $n^\text{th}$ bin of the combined spectrum; otherwise, $\Gamma_{ijn}=0$.
 
@@ -299,7 +313,7 @@ Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum.
 \begin{equation}
     \label{eq:comb_snr}
 %    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\left(\delta_{ij}^{res} \cdot {w_{ij}}\right)}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
-    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^{res} \cdot {w_{ijn}}\right)}{ \sqrt{\sum\limits_{i}\sum\limits_{j}(\sigma_{ij}^{res} \cdot {w_{ijn}})^2}}.
+    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^\text{res} \cdot {w_{ijn}}\right)}{ \sqrt{\sum\limits_{i}\sum\limits_{j}(\sigma_{ij}^\text{res} \cdot {w_{ijn}})^2}}.
 \end{equation} 
 The summations over $i$ above run from 1 to 837 (steps) while the summations 
 over $j$ run from 1 to 1600 (bins).  
@@ -356,6 +370,7 @@ on the SNR.
 %expected mean of the normalized power $\mu^\text{com}_k = 1$ if a KSVZ axion 
 %signal power leaves a fraction 1/$M$ of its power in the $k^\text{th}$ 
 %bin of the combined spectrum.
+
 Due to the nonuniform distribution of the axion signal 
 [Eq.~\eqref{eq:simplesignal}],
 the contributing bins need to be rescaled to have the same RDP, of which the 
@@ -372,7 +387,11 @@ spectrum with an integral of the signal line shape $L_{k}$:
 where the variable $g$ is the index for the frequency bins in 
 the final merged spectrum and the variable 
 $k$ is the index within the group of bins for 
-merging. The frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
+merging. The index $g$ runs from 1 to $N-M+1$, where 
+the number $N$ is the total number of bins in 
+the combined spectrum and $M=5$ is the number of 
+merged bin in this analysis. 
+The frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion
 frequency, and $\delta f_m$ is the misalignment between $f_a$ and the lower
 boundary of the $g^\text{th}$ bin in the merged spectrum.
 The function $\mathcal{F}(f,f_a)$ has been defined in 
@@ -416,25 +435,25 @@ each bin in the spectrum.
 %where the frequency $f_a=\left.\ma c^2\middle/h\right.$ is the axion 
 %frequency, $\delta f_m$ is the misalignment between $f_a$ and the lower
 %boundary of the $g^\text{th}$ bin in the merged spectrum.
-%The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}. 
+%The function $\mathcal{F}(f)$ has been defined in Eq.~\eqref{eq:simplesignal}.% 
 %In order to get a misalignment-independent line shape, instead of using an 
 %$L_{k}$ that depends on $\delta f_m$, the average ($\bar{L}_{k}$) of
 %$L_{k}$ over the range of $\delta f_m$ is used.
 %In the analysis presented here, 
-%$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively. 
+%$\bar{L}_{k} = 0.23, 0.33, 0.21, 0.11, 0.06$ for $k = 1, ... 5$, respectively.% 
 %The misalignment effect as mentioned in the HAYSTAC paper~\cite{HAYSTACII} 
 %has been studied and the results of the \gagg\ limits are found to be 
 %insensitive to this effect. 
-
+%
 %The rescaled $\delta^\text{com}_{g+k-1}$ and $\sigma^\text{com}_{g+k-1}$ and 
 %ML weight are defined:
-
-
+%
+%
 %In order to get misalignment-independence line shape, the average ($L\bar_{k}$) of
 %$L_{k}(\delta f_m)$ over the range $\delta f_m$ is used.
 %The range of $\delta f_m$ is defined $-z \Delta f_\text{bin} < \delta f_m < (1-z) \Delta f_\text{bin}$,
 %with $0 < z < 1$. 
-
+%
 %Then the maximum likelihood weights, defined in Eq.~\eqref{eq:merge_weight} 
 %based on the Maxwellian line shape for axions [Eq.~\eqref{eq:simplesignal}], 
 %are used to build the merged spectrum: 
@@ -443,9 +462,7 @@ The ML weight is defined as:
     \label{eq:merge_weight}
     w_{gk} = \frac{1}{(\sigma_{g+k-1}^\text{rs})^{2}} = \frac{\bar{L}_{k}^{2}}{(\sigma_{g+k-1}^\text{com})^{2}}.
 \end{equation}
-The numbers $N$ and $N-M+1$ are the total numbers of bins in 
-the combined and final spectrum, respectively; $M=5$ is the number of 
-merged bin in this analysis. Therefore, the index $g$ runs from 1 to $N-M+1$. 
+%
 %
 % in which 
 %\begin{equation}
