@@ -2,7 +2,8 @@
 \section{Derivation of the Function that Models the Noise Spectrum} 
 \label{sec:cavitynoise}
 
-The background noise from a cavity is governed by blackbody radiation. 
+The background noise from a cavity is governed by the thermal noise and the 
+vacuum fluctuation. %from the cavity. 
 According to Planck's law in one dimension (1D), the spectral density of 
 the electromagnetic noise from the cavity, thermalized with an environment of 
 temperature $T_{\rm c}$, through a transmission line is 
@@ -11,19 +12,20 @@ temperature $T_{\rm c}$, through a transmission line is
     S(\omega) = \hbar\omega \left( \frac{1}{e^{\hbar\omega/k_{\rm B}T_{\rm c}} - 1} +\frac{1}{2} \right),
 \end{equation}
 where $\omega$ is the angular frequency, $\hbar$ is the reduced Planck's 
-constant, and $k_{\rm B}$ is the Boltzmann constant. The first and the second 
-terms in Eq.~\eqref{eq:cavity_thermal_spectral_density} are the thermal noise 
-and the vacuum fluctuation from the cavity, respectively. The spectrum is 
-white when considering a narrow frequency span.
+constant, and $k_{\rm B}$ is the Boltzmann constant. 
+%The first and the second 
+%terms in Eq.~\eqref{eq:cavity_thermal_spectral_density} are the thermal noise 
+%and the vacuum fluctuation from the cavity, respectively. The spectrum is 
+%white when considering a narrow frequency span.
 
 However, the cavity body may not be thermalized with its 1D electromagnetic 
 environment. To understand the noise spectrum from the cavity near its 
-resonance frequency $\omega_{\rm c}/2\pi$ in this scenario, the model in 
+resonant frequency $\omega_{\rm c}/2\pi$ in this scenario, the model in 
 Fig.~\ref{fig:cavity_in_out} is considered. Through a probe the cavity field 
 mode $c$ is coupled to the modes $a_2$ of a 1D transmission line, representing
  the path toward a signal receiver, with a rate $\kappa_2$. The cavity field 
-is also coupled to the environment modes $a_0$, representing the intrinsic 
-loss channels of the cavity body, with a rate $\kappa_0$. In a steady state, 
+is also coupled to the modes of the cavity body $a_0$, representing the 
+intrinsic loss, with a rate $\kappa_0$. In a steady state, 
 the quantum input-output theory leads to a relation between the outgoing field 
 from the cavity to the 1D transmission line, $a_{\rm 2,out}$, and the incoming
  fields, $a_{\rm 2,in}$ and $a_{\rm 0,in}$, through the elements of the 
@@ -37,9 +39,10 @@ and $\Delta = \omega-\omega_{\rm c}$ is the detuning.
 As both incoming fields are in a thermal state, $\langle a_{i,\rm in}(0) a_{i,\rm in}(\tau) \rangle = n_{\rm th}(T_i) \delta(\tau)$, where $n_{\rm th}(T_i) = \frac{1}{e^{\hbar\omega/k_{\rm B}T_i} - 1}$ is the mean thermal photon number 
 of the incoming field $a_{i,\rm in}$ at the temperature $T_i$, and 
 $\delta(\tau)$ is the $\delta$-function. In the model the incoming field 
-$a_{\rm 2,in}$ comes from a nearby cold attenuator in the transmission line 
-with a temperature $T_{\rm att} \equiv T_{\rm 2}$, and $a_{\rm 0,in}$ comes 
-from the cavity body with a temperature $T_{\rm c} \equiv T_{\rm 0}$.
+$a_{\rm 2,in}$ comes from a nearby attenuator, anchored to the mixing flange, 
+in the transmission line 
+with a temperature $T_{\text mx} \equiv T_{\rm 2}$, and $a_{\rm 0,in}$ comes 
+from the cavity body with a temperature $T_{\text c} \equiv T_{\rm 0}$.
 
 By defining the effective temperature $\Tilde{T}_i = \left( n_{\rm th}(T_i) + \frac{1}{2} \right) \hbar\omega/k_{\rm B}$,
 the power spectral density of the outgoing field of the transmission line 
@@ -63,18 +66,18 @@ the cavity scattering matrix, i.e. $|S_{\rm 22}|^2+|S_{\rm 20}|^2=1$,
 \end{aligned}
 \end{equation}
 where $L(\omega) = |S_{\rm 20}|^2 = \frac {\kappa_0 \kappa_{\rm 2}}  {(\kappa_0+\kappa_{\rm 2})^2/4 + \Delta^2}$ is a Lorentzian function with a FWHM 
-$\kappa_0+\kappa_{\rm 2}$. Therefore, the noise spectrum has a white background
+$\kappa_0+\kappa_{\rm 2}$. Therefore, the noise spectrum has a flat background
  determined by the incoming noise of the attenuator with an effective 
-temperature $\Tilde{T}_{\rm att}$, plus an excess Lorentzian peak centered at 
+temperature $\Tilde{T}_{\rm 2}$, plus an excess Lorentzian peak centered at 
 $\omega_{\rm c}$ determined by the effective temperature difference 
-$\Tilde{T}_{\rm c} - \Tilde{T}_{\rm att}$. (The center Lorentzian structure 
-can even be a dip if ${T}_{\rm c} < {T}_{\rm att}$.)
+$\Tilde{T}_{\rm 0} - \Tilde{T}_{\rm 2}$. (The center Lorentzian structure 
+can even be a dip if ${T}_{\rm 0} < {T}_{\rm 2}$.)
 
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=8.6cm]{figures/inout.png}
     \caption{A cavity is coupled to the modes of transmission line $a_2$ with 
-the rate $\kappa_2$ and the modes of environment $a_0$ with the rate 
+the rate $\kappa_2$ and the modes of the cavity body $a_0$ with the rate 
 $\kappa_0$.}
     \label{fig:cavity_in_out}
 \end{figure}
