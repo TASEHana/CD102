@@ -18,8 +18,9 @@ constant, and $k_{\rm B}$ is the Boltzmann constant.
 %and the vacuum fluctuation from the cavity, respectively. The spectrum is 
 %white when considering a narrow frequency span.
 
-However, the cavity body may not be thermalized with its 1D electromagnetic 
-environment. To understand the noise spectrum from the cavity near its 
+However, the cavity body (the materials that form the cavity itself) may not 
+be thermalized with its 1D electromagnetic environment. To understand the 
+noise spectrum from the cavity near its 
 resonant frequency $\omega_{\rm c}/2\pi$ in this scenario, the model in 
 Fig.~\ref{fig:cavity_in_out} is considered. Through a probe the cavity field 
 mode $c$ is coupled to the modes $a_2$ of a 1D transmission line, representing
@@ -55,9 +56,13 @@ modes is
     =& |S_{\rm 22}|^2 k_{\rm B} \Tilde{T}_2 + |S_{\rm 20}|^2 k_{\rm B} \Tilde{T}_0.
 \end{aligned}
 \end{equation}
+%The total output noise can be viewed as the sum of the reflection of the 
+%incoming noise from the attenuator by the cavity and the transmission of the 
+%noise from the cavity body through the cavity. 
 The total output noise can be viewed as the sum of the reflection of the 
-incoming noise from the attenuator by the cavity and the transmission of the 
-noise from the cavity body through the cavity. Via the unitary property of 
+incoming noise from the attenuator and the transmission of the noise from the 
+cavity body itself.
+Via the unitary property of 
 the cavity scattering matrix, i.e. $|S_{\rm 22}|^2+|S_{\rm 20}|^2=1$,
 \begin{equation}
 \label{eq:spectrum_relation_Lorentz}

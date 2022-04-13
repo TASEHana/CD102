@@ -8,11 +8,16 @@ In order to extract the loaded quality factor $Q_L$ and the coupling
 coefficient $\beta$, a fitting of the measured results of the cavity 
 scattering matrix was performed. A relative uncertainty of 3.6\% is 
 assigned to this product, after a comparison of the measurements at 
-$T_\text{c}\simeq155$~mK with a prediction extrapolated from the measurements 
+$T_\text{c}\simeq155$~mK with a prediction rescaled from the measurements 
 at room temperature. More details about the measurements of the 
 cavity properties can be found in Ref.~\cite{TASEHInstrumentation}. 
 A 3.6\% variation of this product results in a 1.9\% uncertainty 
 on the \gagg\ limits. 
+
+\item Uncertainty on the form factor $C_{010}$ in Eq.~\eqref{eq:ps}: 
+the variation of $C_{010}$, due to the different grid sizes in the integrals 
+of Eq.~\eqref{eq:formfactor}, is within 1\%, which gives a $\leq 0.5$\% 
+uncertainty on the \gagg\ limits.
 
 \item Uncertainties on the noise temperature \ta\ from: (i) the RMS of 
 the measurements in the calibration: 
@@ -75,8 +80,8 @@ single scan; %, when the cavity resonant frequency
 %is 4.798147~GHz; 
 a Gaussian fit is performed to extract 
 $\mu_\text{noise}$ and $\sigma_\text{noise}$. Given the nature of the 
-thermal noise, the two variables are supposed to be related to 
-each other if proper window width and order are chosen:
+thermal noise~\cite{Dicke}, the two variables are supposed to be related to 
+each other if a proper window width and a proper order are chosen:
 \begin{equation*} 
 \sigma_\text{noise} = \frac{\mu_\text{noise}}{\sqrt{N_\text{spectra}}},
 \end{equation*}
@@ -125,11 +130,13 @@ returned by the SG filter to the function ${\cal G}_\text{noise}$.}
   \centering
 %  \includegraphics[width=0.4\textwidth,height = 0.25\textwidth]{figures/chi2_Different_Order_Window_SGFilter.png}
   \includegraphics[width=8.6cm]{figures/chi2_Different_Order_Window_SGFilter.png}
-  \caption{The difference between the output returned by the SG filter 
-  and the function that models the noise spectrum, when various values of 
-  window widths and 
-  a 3$^\text{rd}$, a 4$^\text{th}$, or a 
-  6$^\text{th}$-order polynomial are applied in the SG filter. In this 
+  \caption{The rescaled $\chi^2$ when various values of window widths and 
+  a 3$^\text{rd}$, a 4$^\text{th}$, or a 6$^\text{th}$-order polynomial 
+  are applied in the SG filter. The rescaled $\chi^2$ is defined as 
+  the sum of the squared differences  
+  from all the frequency bins, between the output returned by the SG filter 
+  and the function that models the noise spectrum ${\cal G}_\text{noise}$.  
+  In this 
   figure, the best choice is a 4$^\text{th}$-order polynomial with 
   a window width of 241 data points (bins). }
   \label{fig:sgoptimize}
