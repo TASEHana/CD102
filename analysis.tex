@@ -317,7 +317,7 @@ Figure~\ref{fig:SNR_comb} shows the SNR of the combined spectrum.
 %    \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum_{1}^{k}\left(\delta_{ij}^{res} \cdot {w_{ij}}\right)}{ \sqrt{\sum_{1}^{k}(\sigma_{ij}^{res} \cdot {w_{ij}})^2}},
     \text{SNR}_{n}^\text{com} = \frac{\delta^\text{com}_{n}}{\sigma^\text{com}_{n}}= \frac{\sum\limits_{i}\sum\limits_{j}\left(\delta_{ij}^\text{res} \cdot {w_{ijn}}\right)}{ \sqrt{\sum\limits_{i}\sum\limits_{j}(\sigma_{ij}^\text{res} \cdot {w_{ijn}})^2}}.
 \end{equation} 
-The summations over $i$ above run from 1 to 837 (steps) while the summations 
+The summations over $i$ run from 1 to 837 (steps) while the summations 
 over $j$ run from 1 to 1600 (bins).  
 For each bin $n$ in the combined spectrum, there are $m_n$ non-vanishing 
 contributions to the sums above. In general, the value of $m_n$ is 14--16.
@@ -428,7 +428,7 @@ standard deviation ($\sigma^\text{rs}_{g+k-1}$) are calculated:
 %rescaled RDP and standard deviation that will be used later for merging. 
 After this rescaling 
 procedure, a KSVZ axion signal is expected to have an RDP equal to unity for 
-each bin in the spectrum. 
+each of the five bins. 
 %The integral $L_{k}$ is defined as: 
 %\begin{equation}
 %  \label{eq:Lq_integral}
@@ -525,8 +525,7 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
 
 \subsection{Rescan and set limits on \gagg} 
 Before the collection of the CD102 data, a 5$\sigma$ SNR target was chosen, 
-which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% 
-confidence level (C.L.).
+which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% C.L..
  After the merging as described in Sec.~\ref{sec:merge}, if there were 
 any potential signal with an SNR larger than 
 3.355, a rescan would be proceeded to check if it were a real signal 

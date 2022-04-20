@@ -3,11 +3,12 @@
 The axion is a hypothetical particle predicted as a consequence of a  
 solution to the strong CP problem~\cite{strongCPI,strongCPII,strongCPIII}, 
 i.e. why the CP symmetry is conserved in the strong 
-interactions when there is an explicit CP-violating term in the QCD 
+interaction when there is an explicit CP-violating term in the QCD 
 Lagrangian. In other words, why is the electric dipole moment 
 of the neutron so tiny:  
 %$d_n =\left(0.0\pm 1.1_\mathrm{stat} \pm 0.2_\mathrm{sys}\right)\times10^{-26}~e\cdot\mathrm{cm}$~\cite{EDM}? 
-$\left|d_n\right| < 1.8 \times10^{-26}~e\cdot\mathrm{cm}$~\cite{EDM,PDG}? 
+$\left|d_n\right| < 1.8 \times10^{-26}~e\cdot\mathrm{cm}$ at 90\% 
+confidence level (C.L.)~\cite{EDM,PDG}? 
 The solution proposed by Peccei and Quinn is to introduce a new global 
 Peccei-Quinn U(1)$_\mathrm{PQ}$ symmetry that is spontaneously broken; the 
 axion is the pseudo Nambu-Goldstone boson of 
@@ -136,7 +137,7 @@ respectively.
 \label{sec:introsignal}
 
 The signal power extracted from a microwave cavity on resonance is given 
-by~\cite{HAYSTACIII}:
+by~\cite{AxionFormula,HAYSTACIII}:
 \begin{equation}
 P_s = \left(\bggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
 \left(\omega_c\frac{1}{\mu_0}B_0^2VC_{mnl}Q_L\frac{\beta}{1+\beta}\right),
@@ -297,14 +298,17 @@ The last term \ta\ is the effective temperature of the
 noise added by the receiver (mainly from the first-stage amplifier). 
 The sum of the first two terms, 
 $\Tilde{T}_\text{mx} + \left(\Tilde{T}_\text{c}-\Tilde{T}_\text{mx}\right)L(\omega)$, is equivalent 
-to the sum of the noise reflected by the cavity from the attenuator anchored 
-to the mixing flange and the noise from the cavity body itself. 
+%to the sum of the noise reflected by the cavity from the attenuator anchored 
+%to the mixing flange and the noise from the cavity body itself. 
+to the sum of the reflection of the incoming noise from
+the attenuator anchored to the mixing flange 
+and the transmission of the noise from the cavity body itself.
 The 
 $\Tilde{T}_i=\left(\frac{1}{e^{\left.\hbar\omega\middle/k_BT_i\right.}-1} + \frac{1}{2}\right)\left. \hbar\omega\middle/k_B\right.$ refers to  
 the effective temperature due to 
 the blackbody radiation at a physical temperature $T_i$ and         
-the quantum noise associated with the zero-point fluctuation of the vacuum; 
-$T_\text{c}\simeq155$~mK and $T_\text{mx}\simeq27$~mK are the physical 
+the quantum noise associated with the zero-point fluctuation of the vacuum. 
+The $T_\text{c}\simeq155$~mK and $T_\text{mx}\simeq27$~mK are the physical 
 temperatures of the cavity and of the mixing flange in the dilution 
 refrigerator, respectively (see Sec.~\ref{sec:taseh}). The difference 
 of the effective temperatures $\Tilde{T}_\text{c}-\Tilde{T}_\text{mx}$ is 
