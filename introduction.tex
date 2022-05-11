@@ -29,14 +29,14 @@ so-called ``inverse Primakoff effect''. For QCD axions, i.e. the axions
 proposed to solve the strong CP problem, the axion-two-photon coupling 
 constant \bgagg\ is related to the mass of the axion \ma: 
 \begin{equation}
- \bgagg = \left(\frac{\bggamma\alpha}{\pi \Lambda^2}\right)\ma, 
+ \bgagg = \left(\frac{g_{\gamma}\alpha}{\pi \Lambda^2}\right)\ma, 
 \label{eq:grelation}
 \end{equation}
-where \bggamma\ is a dimensionless model-dependent parameter, $\alpha$ is the 
+where $g_{\gamma}$ is a dimensionless model-dependent parameter, $\alpha$ is the 
 fine-structure constant, $\Lambda=78~\MeV$ is a scale parameter that can 
 be derived from the mass and the decay constant of the pion and the ratio of 
 the up to down quark masses. 
-The numerical values of \bggamma\ are -0.97 and 0.36 
+The numerical values of $g_{\gamma}$ are -0.97 and 0.36 
 in the Kim-Shifman-Vainshtein-Zakharov (KSVZ)~\cite{KSVZI,KSVZII} and 
 the Dine-Fischler-Srednicki-Zhitnitsky (DFSZ)~\cite{DFSZI,DFSZII} benchmark 
 models, respectively. 
@@ -72,7 +72,8 @@ The Haloscope at Yale Sensitive to Axion Cold dark matter
 (HAYSTAC) had performed searches first for the mass range of 
 23.15--24\muevcc~\cite{HAYSTACIII,HAYSTACIV} and later at 
 around 17\muevcc~\cite{HAYSTACI}; they excluded axions 
-with $\ggamma\geq 1.38 \ggamma^\text{KSVZ}$ for $m_a=16.96-17.12$ and 
+with $\left|g_{\gamma}\right|\geq 1.38 \left|g_{\gamma}^\text{KSVZ}\right|$ 
+for $m_a=16.96-17.12$ and 
 17.14--17.28\muevcc~\cite{HAYSTACI}. The Center 
 for Axion and Precision Physics Research (CAPP) constructed 
 and ran simultaneously several experiments targeting at 
@@ -109,7 +110,9 @@ respectively.
 The signal power extracted from a microwave cavity on resonance is given 
 by~\cite{AxionFormula,HAYSTACIII}:
 \begin{equation}
-P_s = \left(\bggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
+%P_s = \left(\bggamma^2\frac{\alpha^2\hbar^3c^3\rho_a}{\pi^2\Lambda^4}\right)\times
+%\left(\omega_c\frac{1}{\mu_0}B_0^2VC_{mnl}Q_L\frac{\beta}{1+\beta}\right),
+P_s = \left(\bgagg^2\frac{\hbar^3c^3\rho_a}{m_a^2}\right)\times
 \left(\omega_c\frac{1}{\mu_0}B_0^2VC_{mnl}Q_L\frac{\beta}{1+\beta}\right),
 \label{eq:ps}
 \end{equation}
