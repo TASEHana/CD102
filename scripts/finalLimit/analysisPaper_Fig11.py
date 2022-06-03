@@ -126,7 +126,8 @@ for each_limit_file in glob(f"{INPUT_EXPERIMENT_FLODER}/*.csv"):
         each_text = ax.text(text_x*0.98,text_y,
                             os.path.basename(each_limit_file)[0:-4].replace("_"," ")
                             ,fontsize=12,color="black",rotation=0,ha='center', va='center')
-
+    elif ("CAPP" in each_limit_file):    
+        each_text = ax.text(text_x*1.01,text_y,'CAPP',fontsize=12,color="black",rotation=0,ha='center', va='center')
     else:
         each_text = ax.text(text_x*1.01,text_y,os.path.basename(each_limit_file)[0:-4].replace("_"," "),fontsize=12,color="black",rotation=0,ha='center', va='center')
 
