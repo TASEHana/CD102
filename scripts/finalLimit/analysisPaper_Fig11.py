@@ -14,15 +14,18 @@ import mplhep as hep
 hep.style.use(hep.style.ROOT)
 
 INPUT_EXPERIMENT_FLODER = "others_experiment"
-INPUT_limit_PATH        = "gayy_unc_updateNoise_C.txt"
+INPUT_limit_PATH        = "gayy_unc_updateFF_06July.txt"
 OUTPUT_FILE_NAME        = "Figure11.png"
+
 
 color_map ={
     "ADMX"   :"#7FF547",
     "HAYSTAC":"#FFDC4A",
-    "CAPP"   :"#7157E8"
- }
-
+    "CAPP"   :"#7157E8",
+    "UF"     :"#9B6669",
+    "RBF"    :"#534D6D",
+    "CAST"   :"#9E7068"
+}
 ########################################################################## functions
 def ma_to_freq(ma):   # eat ev output GHz
     g = Glimit()
@@ -86,7 +89,7 @@ ax.text(7,1.6e-15,"model region",fontsize=18,color="black",rotation=3,ha='center
 
 ###########################################################################  plot other experiment
 
-WANT = ['ADMX',"HAYSTAC","CAPP"]
+WANT = ["HAYSTAC","CAPP","ADMX","RBF","UF","CAST"]
 
 for each_limit_file in glob(f"{INPUT_EXPERIMENT_FLODER}/*.csv"):
     flag = 0
@@ -105,6 +108,16 @@ for each_limit_file in glob(f"{INPUT_EXPERIMENT_FLODER}/*.csv"):
     limit  = array(df["G_ap[GeV^-1]"].values,dtype=float)
     this_x = ma_to_freq(df["m_a [eV]"].values)
     
+    if ("RBF" in each_limit_file):
+        sort_index = argsort(this_x)
+        this_x = this_x[sort_index]
+
+    if ("CAST" in each_limit_file):
+        new_x       = linspace(this_x[0],this_x[-1],1000)
+        this_interp = interp(new_x , this_x, limit)
+        limit       = this_interp 
+        this_x      = new_x
+
     text_x = mean(this_x)
     text_y = min(limit) * 60
     if ("HAYSTAC"  in each_limit_file):
@@ -118,30 +131,50 @@ for each_limit_file in glob(f"{INPUT_EXPERIMENT_FLODER}/*.csv"):
         continue
     else:
         ax.fill_between(this_x, limit,1,alpha=.3,color=this_color,label=os.path.basename(each_limit_file)[0:-4])
-    if ("highres" in each_limit_file):
-        each_text = ax.text(text_x*1.01,text_y,
-                            os.path.basename(each_limit_file)[0:-4].replace("_"," ").replace(" highres","\nhighres")
-                            ,fontsize=12,color="black",rotation=0,ha='center', va='center')
-    elif (not ("highres" in each_limit_file) and "HAYSTAC_2020" in each_limit_file):
-        each_text = ax.text(text_x*0.98,text_y,
-                            os.path.basename(each_limit_file)[0:-4].replace("_"," ")
-                            ,fontsize=12,color="black",rotation=0,ha='center', va='center')
-    elif ("CAPP" in each_limit_file):    
-        each_text = ax.text(text_x*1.01,text_y,'CAPP',fontsize=12,color="black",rotation=0,ha='center', va='center')
-    else:
-        each_text = ax.text(text_x*1.01,text_y,os.path.basename(each_limit_file)[0:-4].replace("_"," "),fontsize=12,color="black",rotation=0,ha='center', va='center')
+##### Eiko
+#    if ("highres" in each_limit_file):
+#        each_text = ax.text(text_x*1.01,text_y,
+#                            os.path.basename(each_limit_file)[0:-4].replace("_"," ").replace(" highres","\nhighres")
+#                            ,fontsize=11,color="black",rotation=0,ha='center', va='center')
+#    elif (not ("highres" in each_limit_file) and "HAYSTAC_2020" in each_limit_file):
+#        each_text = ax.text(text_x*0.98,text_y,
+#                            os.path.basename(each_limit_file)[0:-4].replace("_"," ")
+#                            ,fontsize=11,color="black",rotation=0,ha='center', va='center')
+    # elif ("UF" in each_limit_file or "RBF" in each_limit_file):
+    #     # each_text = ax.text(text_x*1.01,text_y,os.path.basename(each_limit_file)[0:-4].replace("_"," "),fontsize=12,color="black",rotation=0,ha='center', va='center')
+    #     pass
+    # else:
+    #     each_text = ax.text(text_x*1.01,text_y,os.path.basename(each_limit_file)[0:-4].replace("_"," "),fontsize=12,color="black",rotation=0,ha='center', va='center')
 
 
 
 ###########################################################################  plot TASEH
 
-limits =  center_limits
+limits    =  center_limits
 our_limit = ax.fill_between(1e-9 * hein_limit_freq[800:-800], limits[800:-800],1,alpha=1,color="r",label="TASEH CD102")
-ax.text(median(1e-9 * hein_limit_freq)*0.988,min(limits)/1.23,"TASEH CD102",fontsize=13,color="r",rotation=0,ha='center', va='center')
+#ax.text(median(1e-9 * hein_limit_freq)*0.988,min(limits)/1.23,"TASEH CD102",fontsize=12,color="r",rotation=0,ha='center', va='center')
 
 
-ax.text(7.2,1.1e-11,"ADMX sidecar",fontsize=12,color="black",rotation=0,ha='center', va='center')
-ax.text(4.1,1.1e-11,"ADMX sidecar",fontsize=12,color="black",rotation=0,ha='center', va='center')
+ax.text(7.2,1.1e-11,"ADMX sidecar",fontsize=13,color="black",rotation=0,ha='center', va='center')
+ax.text(5.5,1.1e-11  ,"ADMX sidecar",fontsize=13,color="black",rotation=0,ha='center', va='center')
+ax.text(4.1,1.1e-11,"ADMX sidecar",fontsize=13,color="black",rotation=0,ha='center', va='center')
+
+ax.text(1.3 ,1e-14    ,"CAPP",size=13)
+ax.text(2.35,2e-14    ,"CAPP",size=13)
+ax.text(3.1 ,4e-14    ,"CAPP",size=13)
+ax.text(4.6 ,1.1e-14  ,"CAPP",size=13)
+ax.text(4.85 ,8e-14  ,"TASEH",size=13,color="red")
+ax.text(4.85 ,4e-14  ,"CD102",size=13,color="red")
+#ax.text(0.7 ,9e-13  ,"ADMX",size=13,ha='center', va='center')
+ax.text(0.5 ,8.87e-13  ,"ADMX",size=13)
+ax.text(2   ,8.87e-13 ,"RBF" ,size=13)
+ax.text(1.3 ,8.87e-13 ,"UF"  ,size=13)
+ax.text(3.7 ,2e-13 ,"HAYSTAC"  ,size=13)
+ax.text(5.4 ,2e-13 ,"HAYSTAC"  ,size=13)
+ax.text(1.8   ,1.5e-10  ,"CAST",size=13)
+# ax.text(5.06,9e-14,"ADMX",size=12)
+
+# ax.text(4.57,1e-14,"CAPP",size=12)
 
 xlabel("Frequency [GHz]",size=20,labelpad=15)
 ylabel(r"$|g_{a \gamma \gamma}|\ \ [GeV^{-1}]$",size=15)
@@ -153,7 +186,7 @@ ax.xaxis.set_major_locator(MultipleLocator(1))
 ax.xaxis.set_minor_locator(MultipleLocator(0.2))
 ax.tick_params(which='both', width=2,top=None)
 xlim(0,8)
-ylim(1.6e-17,6.5e-11)
+ylim(1.6e-17,6.5e-10)
 
 ###########################################################################  right axis
 new_axis = twinx()
@@ -161,7 +194,7 @@ new_axis.plot(fa_x , KSVZ_g_a_gamma,"b--",alpha=0,label="KSVZ")
 new_axis.plot(fa_x , DFSZ_g_a_gamma,"r--",alpha=0,label="DFSZ")
 new_axis.fill_between(fa_x,KSVZ_g_a_gamma*4,DFSZ_g_a_gamma/4,alpha=0,color="#423D56",label="model region")
 new_axis.tick_params(which='both', width=2)
-new_axis.set_ylim(1.6e-17,6.5e-11)
+new_axis.set_ylim(ax.get_ylim())
 new_axis.set_yscale("log")
 new_axis.set_ylabel(ax.get_ylabel(),size=15)
 new_axis.grid(True, which='minor')
