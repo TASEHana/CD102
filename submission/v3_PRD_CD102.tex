@@ -342,7 +342,8 @@ Appendix~\ref{sec:cavitynoise}.
 Using the operation parameters of TASEH in Table~\ref{tab:tasehbenchmark} and 
 the results from the calibration of readout electronics, 
 the baseline value of $T_\text{sys}$ for TASEH 
-is about 2.0--2.3~K, which gives a noise power of approximately 
+is about 2.0--2.3~K, dominated by the first stage amplifier. Therefore, 
+the noise power is approximately 
 $\left(1.4-1.6\right)\times 10^{-19}$~W within the 5-kHz axion signal 
 line-width, five orders of magnitude larger than the signal. Nevertheless, what
  matters in the analysis is the signal significance, or the so-called 
@@ -493,7 +494,8 @@ procedure can be found in Ref.~\cite{TASEHInstrumentation}.
 
 The calibration was carried out before, during, and after the data taking, 
 which showed that the performance of the system was stable over time. The 
-average of the added noise $T_\text{a}$ over 19 measurements has the lowest 
+average of the added noise $T_\text{a}$ over 19 measurements, performed after 
+the data taking, has the lowest 
 value of 1.9~K at the frequency of 4.8~GHz and the highest value of 
 2.2~K at 4.72~GHz, as presented in Fig.~\ref{fig:hemtcalvsf}. 
 The error bars are the RMS of $T_\text{a}$ and the largest RMS is used to 
@@ -504,9 +506,13 @@ removing the gain and subtracting the contribution from the cavity noise,
 assuming 
 that the presence of a narrow signal in the data would have no effect on the 
 estimation. A good agreement between the results from the calibration  
-and the ones estimated from the CD102 data is shown. The biggest 
-difference is 0.076~K in the frequency range during which the data were 
-recorded after an earthquake. The source of the difference is not understood, 
+and the ones estimated from the CD102 data is shown. %The biggest 
+%difference is 0.076~K in the frequency range during which the data were 
+%recorded after an earthquake. 
+%%%% Yung-Fu
+The biggest difference about 0.076 K in a frequency range of 4.779-4.788 GHz arose concurrently when a magnet quench occurred at 9:20am on October 16 due to a cooling water failure and an earthquake of the intensity scale 4 stroke the lab at 1:11pm on October 24 during the data taking~\cite{TASEHInstrumentation}.
+%%%%%
+The source of the difference is not understood, 
 therefore, the difference is quoted as a systematic uncertainty together 
 with the RMS of the noise.
 
@@ -672,7 +678,7 @@ obtained from the fitting function in Fig.~\ref{fig:hemtcalvsf}.
 The symbol $\Delta f_\text{bin}$ is the bin width of spectrum (1~kHz). 
 The factor $h_{ij}$ describes the Lorentzian response of the cavity, 
 which depends on the loaded quality factor $Q_{Li}$ and the 
-difference between the frequency $f_{ij}$ in bin $j$ and the resonant 
+difference between the frequency $f_{ij}$ in bin $j$ and the cavity resonant 
 frequency $f_{ci}$. 
 %
 If a signal appears in a certain frequency bin $j$, its expected power 
@@ -846,12 +852,12 @@ The RDP, the standard deviation, and the SNR of the merged spectrum are:
 Before the collection of the CD102 data, a 5$\sigma$ SNR target was chosen, 
 which corresponds to a candidate threshold of 3.355$\sigma$ at 95\% C.L..
  After the merging as described in Sec.~\ref{sec:merge}, if there were 
-any potential signal with an SNR larger than 
-3.355, a rescan would be proceeded to check if it were a real signal 
+any potential signal with a SNR larger than 
+3.355, a rescan would be performed to check if it was a real signal 
 or a statistical fluctuation. 
 The procedure of the CD102 data taking was to perform a rescan after 
 covering every 10~MHz; the rescan was done by adjusting the tuning rod of the 
-cavity so to match the resonant frequency to the frequency of the candidate. 
+cavity to match the resonant frequency of the candidate. 
 In total, 22 candidates with an SNR greater than 3.355 were found. 
 Among them, 20 candidates were from the fluctuations because they were gone 
 after a few rescans. The remaining two candidates, 
@@ -994,7 +1000,7 @@ These two uncertainties on $T_\text{a}$ result in a 2.8\% uncertainty
 on the $\left|g_{a\gamma\gamma}\right|$ limits. 
 
 
-\item Uncertainty due to the misalignment (see Sec.~\ref{sec:merge}):
+\item Uncertainty due to the frequency misalignment (see Sec.~\ref{sec:merge}):
   estimated by comparing the central results to the one without misalignment
   ($\delta f_m = 0$)
   and to the ones with given values of $\delta f_m$.
@@ -1164,6 +1170,8 @@ observed SNR as described in the ADMX paper~\cite{ADMXVIII},
 rather than using the 5$\sigma$ target SNR, the average limit on 
 $\left|g_{a\gamma\gamma}\right|$ will 
 be $\approx 5.1\times 10^{-14}\,\text{Ge\hspace{-.08em}V}^{-1}$. 
+Note in Ref.~\cite{ADMXVIII}, the limits were derived at 90\% C.L., 
+rather than at 95\% C.L. as presented in this paper. 
 
 
 \begin{figure*} [htbp]
